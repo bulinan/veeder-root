@@ -1,0 +1,171 @@
+<div class="station-title">
+    <h2><span data-i18n="28001"></span></h2>
+</div>
+<div class="station-con tank-param-con common-con">
+    <div class="condition-list clearfix" id="tank-param-query">
+        <div class="block-loading"></div>
+        <div class="form-group form-date clearfix">
+            <label class="control-label"><span data-i18n="10002"></span>：</label>
+            <div class="form-control">
+                <div class="select-box" id="tank-list">
+                    <div class="select-title" data-value="0" name="TankID" data-check="default" data-default="0"><span><span data-i18n="20020"></span></span><a href="javascript:;" class="icon"></a></div>
+                    <ul class="select-con">
+                        <li data-value="0"><span data-i18n="20020"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group pull-left clearfix">
+            <a href="javascript:;" class="btn btn-default pull-left" id="param-submit"><span data-i18n="09901"></span></a>
+        </div>
+    </div>
+    <div class="record-box clearfix">
+        <a href="javascript:;" class="tab-trigger">
+            <span><span data-i18n="09009"></span></span>
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <div class="tab-cont">
+            <div class="pull-left">
+                <a href="javascript:;">10</a>
+                <a href="javascript:;">20</a>
+                <a href="javascript:;">50</a>
+                <a href="javascript:;">75</a>
+                <a href="javascript:;">100</a>
+            </div>
+            <div class="input pull-left">
+                <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+            </div>
+        </div>
+        <input type="hidden">
+    </div>
+    <div class="clear"></div>
+    <table class="table-result" width="100%" style="display: none;">
+        <thead>
+            <tr>
+                <th><span data-i18n="10002"></span></th>
+                <th class="even"><span data-i18n="20002"></span></th>
+                <th><span data-i18n="28002"></span></th>
+                <th class="even"><span data-i18n="28003"></span></th>
+                <th><span data-i18n="09909"></span></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<!-- 参数设置编辑窗口 -->
+<div class="modal modal-small" id="modal-tank-param-edit">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="28004"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <ul class="list list-col-2 clearfix">
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="28005"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box form-control-inner" disabled="disabled" name="paramName">
+                        </div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="28006"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box form-control-inner" disabled="disabled" name="paramValue">
+                        </div>
+                    </li>
+                </ul>
+                <ul class="list list-col-2 clearfix tank-param-edit-list" id="tank-param-edit-list-1">
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="28007"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box form-control-inner" name="ModifiedValue" data-check="required" data-title="28007">
+                            <span class="forbidden"><input type="checkbox" class="do-forbidden"><span data-i18n="28008"></span></span>
+                        </div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <div class="style01"><span data-i18n="28011"></span></div>
+                    </li>
+                </ul>
+                <ul class="list list-col-2 clearfix tank-param-edit-list" id="tank-param-edit-list-2">
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="28007"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box form-control-inner" name="ModifiedValue" data-check="required" data-title="28007">
+                        </div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <div class="style01"><span data-i18n="20008"></span></div>
+                    </li>
+                </ul>
+                <ul class="list list-col-2 clearfix tank-param-edit-list" id="tank-param-edit-list-101">
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="28007"></span>：</label>
+                        <div class="form-control">
+                            <div class="select-box" id="ProductList" data-open="false">
+                                <div class="select-title form-control-inner" data-value="" name="ModifiedValue" data-check="required" data-title="28007"><span><span data-i18n="20024"></span></span><a href="javascript:;" class="icon"></a></div>
+                                <ul class="select-con" style="display: none;"></ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="list list-col-2 clearfix tank-param-edit-list" id="tank-param-edit-list-122">
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="28007"></span>：</label>
+                        <div class="form-control">
+                            <div class="select-box" id="ProductList" data-open="false">
+                                <div class="select-title form-control-inner" data-value="" name="ModifiedValue" data-check="required" data-title="28007"><span><span data-i18n="20024"></span></span><a href="javascript:;" class="icon"></a></div>
+                                <ul class="select-con" style="display: none;">
+                                    <li data-value="00"><span data-i18n="02019"></span></li>
+                                    <li data-value="01"><span data-i18n="02020"></span></li>
+                                    <li data-value="02"><span data-i18n="02021"></span></li>
+                                    <li data-value="03"><span data-i18n="02022"></span></li>
+                                    <li data-value="04"><span data-i18n="02023"></span></li>
+                                    <li data-value="05"><span data-i18n="02024"></span></li>
+                                    <li data-value="06"><span data-i18n="02025"></span></li>
+                                    <li data-value="07"><span data-i18n="02026"></span></li>
+                                    <li data-value="08"><span data-i18n="02027"></span></li>
+                                    <li data-value="09"><span data-i18n="02028"></span></li>
+                                    <li data-value="10"><span data-i18n="02029"></span></li>
+                                    <li data-value="11"><span data-i18n="02030"></span></li>
+                                    <li data-value="12"><span data-i18n="02031"></span></li>
+                                    <li data-value="99"><span data-i18n="28008"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="list list-col-2 clearfix tank-param-edit-list" id="tank-param-edit-list-203">
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="28007"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box form-control-inner" name="ModifiedValue" data-check="required" data-title="28007">
+                        </div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <div class="style01"><span data-i18n="28009"></span></div>
+                    </li>
+                </ul>
+                <ul class="list list-col-2 clearfix tank-param-edit-list" id="tank-param-edit-list-203">
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="28007"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box form-control-inner" name="ModifiedValue" data-check="required" data-title="28007">
+                        </div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <div class="style01"><span data-i18n="28010"></span></div>
+                    </li>
+                </ul>
+                <ul class="list list-col-2 clearfix">
+                    <li class="form-group btn-submit clearfix">
+                        <a href="javascript:;" class="btn btn-primary btn-save pull-right tank-param-edit-submit" style=""><span data-i18n="09910"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/tankParam.js"></script>
+
+
+

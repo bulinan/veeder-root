@@ -1,0 +1,338 @@
+<div class="inner company-dashboard">
+    <div class="col-lg-8">
+        <!--总览-->
+        <div class="panel panel-common panel-overview">
+            <div class="panel-heading clearfix">
+                <div class="panel-title pull-left"><i class="fa fa-sitemap"></i><span data-i18n="11001"></span></div>
+                <div class="panel-options pull-right">
+                     <a href="javascript:;" class="text" data-type="VT">VT</a>
+                    <a href="javascript:;" class="text text-active" data-type="V20">V20</a>
+                    <!--<a class="update" href="javascript:;" data-i18n-title="09905"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>-->
+                    <a class="update" href="javascript:;" data-i18n-title="09905"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                    <a class="more" href="javascript:;"><i class="fa fa-chevron-down"></i><span data-i18n="09010"></span></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <ul class="stock-title stock-title-3 clearfix">
+                    <li class="item">
+                        <div class="select-box drop-down totalInventory">
+                            <div class="select-title"><span></span><i class="measure-volume"></i><i class="fa fa-caret-down"></i></div>
+                            <ul class="select-con"></ul>
+                        </div>
+                        <p><span data-i18n="11002"></span></p>
+                    </li>
+                    <li class="item">
+                        <div class="select-box drop-down totalSales">
+                            <div class="select-title"><span></span><i class="measure-volume"></i><i class="fa fa-caret-down"></i></div>
+                            <ul class="select-con"></ul>
+                        </div>
+                        <p><span data-i18n="11003"></span></p>
+                    </li>
+                    <li class="item item-border">
+                        <div class="select-box drop-down operationRatio">
+                            <div class="select-title"><span></span><i class="fa fa-caret-down"></i></div>
+                            <ul class="select-con"></ul>
+                        </div>
+                        <p><span data-i18n="11004"></span></p>
+                    </li>
+                </ul>
+                <table id="index-overview-table" width="100%">
+                    <thead>
+                        <tr><th><span data-i18n="10008"></span></th><th><span data-i18n="11005"></span></th><th><span data-i18n="00003"></span></th><th><span data-i18n="10901"></span></th><th><span data-i18n="10902"></span></th><th><span data-i18n="10903"></span></th></tr>
+                    </thead>
+                    <tfoot class="tfoot">
+                        <tr><td><span data-i18n="10009"></span></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="block-loading"></div>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading clearfix">
+                <div class="panel-title pull-left"><i class="fa fa-bell"></i><span data-i18n="00008"></span></div>
+                <div class="panel-options pull-right">
+                    <a class="update" href="javascript:;" data-i18n-title="09905"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                    <a class="more" href="javascript:;"><i class="fa fa-chevron-down"></i><span data-i18n="09010"></span></a>
+                </div>
+            </div>
+            <div class="panel-body clearfix">
+                <div class="mark pull-left"><i class="fa fa-bell-o"></i></div>
+                <div class="count pull-left">
+                    <div class="inner"></div>
+                </div>
+                <div class="list pull-left">
+                    <div class="row list-level clearfix"></div>
+                    <div class="row list-type clearfix"></div>
+                </div>
+            </div>
+            <div class="block-loading"></div>
+        </div>
+        <div class="panel panel-common panel-inventory">
+            <div class="panel-heading clearfix">
+                <div class="panel-title pull-left"><i class="fa fa-sitemap"></i><span data-i18n="00003"></span></div>
+                <div class="panel-options pull-right">
+                     <a href="javascript:;" class="text" data-type="VT">VT</a>
+                    <a href="javascript:;" class="text text-active" data-type="V20">V20</a>
+                    <a class="update" href="javascript:;" data-i18n-title="09905"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                    <a class="more" href="javascript:;"><i class="fa fa-chevron-down"></i><span data-i18n="09010"></span></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <ul class="stock-title stock-title-2 clearfix">
+                    <li class="item item-border">
+                        <div class="select-box drop-down totalInventory">
+                            <div class="select-title"><span></span><i class="measure-volume"></i><i class="fa fa-caret-down"></i></div>
+                            <ul class="select-con"></ul>
+                        </div>
+                        <p><span data-i18n="11002"></span></p>
+                    </li>
+                    <li class="item">
+                        <div class="select-box drop-down totalUllage">
+                            <div class="select-title"><span></span><i class="measure-volume"></i><i class="fa fa-caret-down"></i></div>
+                            <ul class="select-con"></ul>
+                        </div>
+                        <p><span data-i18n="11007"></span></p>
+                    </li>
+                </ul>
+                <div id="inventory-chart" class="bar-chart" data-chart="true"></div>
+            </div>
+            <div class="block-loading"></div>
+        </div>
+        <div class="panel panel-profit">
+            <div class="panel-heading clearfix">
+                <div class="panel-title pull-left"><i class="fa fa-money"></i><span data-i18n="00004"></span></div>
+                <div class="panel-options pull-right">
+                    <a href="javascript:;" class="text" data-type="VtVariance">VT</a>
+                    <a href="javascript:;" class="text text-active" data-type="V20Variance">V20</a>
+                    <a class="update" href="javascript:;" data-i18n-title="09905"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                    <a class="more" href="javascript:;"><i class="fa fa-chevron-down"></i><span data-i18n="09010"></span></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="tab-title">
+                    <a href="javascript:;" class="active">
+                        <p></p>
+                    </a>
+                    <a href="javascript:;">
+                        <p></p>
+                    </a>
+                    <a href="javascript:;">
+                        <p></p>
+                    </a>
+                </div>
+                <div id="profit-bar-chart" class="bar-chart" data-chart="true"></div>
+                <div id="profit-line-chart" class="line-chart" data-chart="true"></div>
+            </div>
+            <div class="block-loading"></div>
+        </div>
+        <div class="panel panel-subprofit">
+            <div class="panel-heading clearfix">
+                <div class="panel-title pull-left"><i class="fa fa-sitemap"></i><span data-i18n="11008"></span></div>
+                <div class="panel-options pull-right">
+                    <div class="select-box select_subdate select-callback pull-left">
+                        <div class="select-title"><span></span><i class="fa fa-angle-down"></i></div>
+                        <ul class="select-con"></ul>
+                    </div>
+                    <div class="select-box select_subcompany select-callback pull-left">
+                        <div class="select-title"><span><span data-i18n="10101"></span></span><i class="fa fa-angle-down"></i></div>
+                        <ul class="select-con"></ul>
+                    </div>
+                    <a href="javascript:;" class="text" data-type="VtVariance">VT</a>
+                    <a href="javascript:;" class="text text-active" data-type="V20Variance">V20</a>
+                    <a class="update" href="javascript:;" data-i18n-title="09905"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                    <a class="more" href="javascript:;"><i class="fa fa-chevron-down"></i><span data-i18n="09010"></span></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="tab-title tab-vt-title">
+                    <a href="javascript:;" class="active">
+                        <p></p>
+                    </a>
+                    <a href="javascript:;">
+                        <p></p>
+                    </a>
+                    <a href="javascript:;">
+                        <p></p>
+                    </a>
+                </div>
+                <div id="subprofit-bar-chart" class="bar-chart" data-chart="true"></div>
+            </div>
+            <div class="block-loading"></div>
+        </div>
+        <div class="panel panel-distribution">
+            <div class="panel-heading clearfix">
+                <div class="panel-title pull-left"><i class="fa fa-bus"></i><span data-i18n="00005"></span></div>
+                <div class="panel-options pull-right">
+                    <a class="update" href="javascript:;" data-i18n-title="09905"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                    <a class="more" href="javascript:;"><i class="fa fa-chevron-down"></i><span data-i18n="09010"></span></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <table class="table-common">
+                    <tbody>
+                        <tr>
+                            <td class="first-child">
+                                <em>100</em><span data-i18n="01002"></span>
+                                <p><span data-i18n="11009"></span></p>
+                            </td>
+                            <td>
+                                <span>20</span>
+                                <p><span data-i18n="11010"></span></p>
+                            </td>
+                            <td>
+                                <span>20</span>
+                                <p><span data-i18n="11011"></span></p>
+                            </td>
+                            <td>
+                                <span>20</span>
+                                <p><span data-i18n="11012"></span></p>
+                            </td>
+                            <td class="empty"></td>
+                        </tr>
+                        <tr>
+                            <td class="first-child">
+                                <em>3000</em><span data-i18n="01002"></span>
+                                <p><span data-i18n="11013"></span></p>
+                            </td>
+                            <td>
+                                <span>12</span>
+                                <p><span data-i18n="11014"></span></p>
+                            </td>
+                            <td colspan="3" class="empty"></td>
+                        </tr>
+                        <tr>
+                            <td class="first-child">
+                                <em>3000</em><i class="measure-volume"></i>
+                                <p><span data-i18n="11015"></span></p>
+                            </td>
+                            <td>
+                                <span>2500</span><small><i class="measure-volume"></i></small>
+                                <p><span data-i18n="11016"></span></p>
+                            </td>
+                            <td colspan="3" class="empty"></td>
+                        </tr>
+                        <tr>
+                            <td class="first-child">
+                                <em>3000</em><i class="measure-volume"></i>
+                                <p><span data-i18n="11017"></span></p>
+                            </td>
+                            <td>
+                                <span>3600</span><small><i class="measure-volume"></i></small>
+                                <p><span data-i18n="11018"></span></p>
+                            </td>
+                            <td colspan="3" class="empty"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="block-loading"></div>
+        </div>
+        <div class="panel panel-equipment">
+            <div class="panel-heading clearfix">
+                <div class="panel-title pull-left"><i class="fa fa-cogs"></i><span data-i18n="00006"></span></div>
+                <div class="panel-options pull-right">
+                    <a class="update" href="javascript:;" data-i18n-title="09905"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                    <a class="more" href="javascript:;"><i class="fa fa-chevron-down"></i><span data-i18n="09010"></span></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <table class="table-common">
+                    <tbody>
+                        <tr>
+                            <td class="first-child">
+                                <em>31</em><span data-i18n="01003"></span>
+                                <p><span data-i18n="11019"></span></p>
+                            </td>
+                            <td>
+                                <span>10</span>
+                                <p><span data-i18n="11020"></span></p>
+                            </td>
+                            <td colspan="4" class="empty"></td>
+                        </tr>
+                        <tr>
+                            <td class="first-child">
+                                <em>21</em><span data-i18n="01003"></span>
+                                <p><span data-i18n="11021"></span></p>
+                            </td>
+                            <td>
+                                <span>130</span>
+                                <p><span data-i18n="11022"></span></p>
+                            </td>
+                            <td>
+                                <span>120</span>
+                                <p><span data-i18n="11023"></span></p>
+                            </td>
+                            <td>
+                                <span>125</span>
+                                <p><span data-i18n="11024"></span></p>
+                            </td>
+                            <td class="empty"></td>
+                        </tr>
+                        <tr>
+                            <td class="first-child">
+                                <em>21</em><span data-i18n="01003"></span>
+                                <p><span data-i18n="11025"></span></p>
+                            </td>
+                            <td>
+                                <span>12</span>
+                                <p><span data-i18n="11026"></span></p>
+                            </td>
+                            <td colspan="4" class="empty"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="block-loading"></div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel-ranking">
+            <div class="panel panel-profit-ranking">
+                <div class="panel-heading clearfix">
+                    <div class="panel-title pull-left"><span data-i18n="11027"></span></div>
+                    <div class="panel-options pull-right">
+                        <div class="select-box pull-left"></div>
+                        <a class="update" href="javascript:;" data-i18n-title="09905"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                        <!--<a class="delete" href="javascript:;"><i class="fa fa-times-circle"></i><span data-i18n="09006"></span></a>-->
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-vt" id="table-vt" data-open="false" width="100%">
+                        <thead><tr><th class="first"><span>VT</span></th><th></th><th><span><span data-i18n="11028"></span></span></th><th><span><span data-i18n="11029"></span></span></th><th><span><span data-i18n="11030"></span></span></th><th><i class="fa vt"></i></th></tr></thead>
+                        <tbody>
+                            <tr class="loading"><td colspan="6"><span data-i18n="10801"></span></td></tr>
+                        </tbody>
+                        <!--<tfoot><tr class="thead"><td colspan="5">V20</td><td><i class="fa fa-plus v20"></i></td></tr></tfoot>-->
+                    </table>
+                    <table class="table table-v20" id="table-v20" data-open="true" width="100%">
+                        <thead>
+                            <tr><th class="first"><span>V20</span></th><th></th><th><span><span data-i18n="11028"></span></span></th><th><span><span data-i18n="11029"></span></span></th><th><span><span data-i18n="11030"></span></span></th><th><i class="fa v20"></i></th></tr>
+                            <!--<tr><td colspan="5">V20</td><td><i class="fa fa-plus v20"></i></td></tr>-->
+                        </thead>
+                        <tbody>
+                            <tr class="loading"><td colspan="6"><span data-i18n="10801"></span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-warning-ranking">
+                <div class="panel-heading clearfix">
+                    <div class="panel-title pull-left"><span data-i18n="11031"></span></div>
+                    <div class="panel-options pull-right">
+                        <a class="update" href="javascript:;" data-i18n-title="09905"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                        <!--去掉删除-->
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table" width="100%">
+                        <thead></thead>
+                        <tbody>
+                            <tr class="loading"><td colspan="6"><span data-i18n="10801"></span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/companyDashbord.js"></script>

@@ -1,0 +1,179 @@
+<div class="inner station">
+    <div class="col-lg-12">
+        <div class="station-title">
+            <h2><span data-i18n="00008"></span></h2>
+        </div>
+        <div class="station-con alarm-con">
+            <div class="condition-list" id="alarm-query-form">
+                <div class="block-loading"></div>
+                <div class="clearfix">
+                    <div class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="10004"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-date ui-datepicker-trigger" name="BeginDate" data-curdate="first" data-name="Date" data-title="10004" data-check="required date min">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="10005"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-date ui-datepicker-trigger" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="09803"></span>：</label>
+                        <div class="form-control">
+                            <div class="select-box select_categoryList select-callback" id="CategoryList" data-select="AlarmCategory">
+                                <div class="select-title"><span><span data-i18n="09001"></span></span><a href="javascript:;" class="icon"></a></div>
+                                <ul class="select-con">
+                                    <li data-value=""><span data-i18n="09001"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group label-none clearfix">
+                        <div class="form-control">
+                            <div class="select-box" id="TypeList" data-select="AlarmCode">
+                                <div class="select-title"><span><span data-i18n="09001"></span></span><a href="javascript:;" class="icon"></a></div>
+                                <ul class="select-con">
+                                    <li data-value=""><span data-i18n="09001"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group pull-left"><a href="javascript:;" class="btn btn-default" id="alarm-query"><span data-i18n="09901"></span></a></div>
+                </div>
+                <div class="clearfix">
+                    <div class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="10058"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box" name="UserName">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="17002"></span>：</label>
+                        <div class="form-control">
+                            <div class="select-box" id="StateList" data-select="AlarmState">
+                                <div class="select-title"><span><span data-i18n="09001"></span></span><a href="javascript:;" class="icon"></a></div>
+                                <ul class="select-con">
+                                    <li data-value=""><span data-i18n="09001"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="17003"></span>：</label>
+                        <div class="form-control">
+                            <div class="select-box" id="LevelList" data-select="AlarmLevel">
+                                <div class="select-title"><span><span data-i18n="09001"></span></span><a href="javascript:;" class="icon"></a></div>
+                                <ul class="select-con">
+                                    <li data-value=""><span data-i18n="09001"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!--<input type="checkbox" id="is-inform">
+                        <label for="is-inform" class="label-unstyled label-auto">仅查询有通知配置报警</label>-->
+                        <label class="checkbox-inline"><input type="checkbox" checked="checked" id="is-inform" disabled><span data-i18n="17004"></span></label>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="form-group">
+                        <label><span data-i18n="17005"></span>：</label>
+                        <div class="form-control color-rules clearfix">
+                            <span><i class="bg-tip"></i><span data-i18n="17006"></span></span>
+                            <span><i class="bg-warning"></i><span data-i18n="17007"></span></span>
+                            <span><i class="bg-danger"></i><span data-i18n="17008"></span></span>
+                            <span><i class="bg-primary"></i><span data-i18n="17009"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="record-box clearfix">
+                <a href="javascript:;" class="tab-trigger">
+                    <span><span data-i18n="09009"></span></span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <div class="tab-cont">
+                    <div class="pull-left">
+                        <a href="javascript:;">10</a>
+                        <a href="javascript:;">20</a>
+                        <a href="javascript:;">50</a>
+                        <a href="javascript:;">75</a>
+                        <a href="javascript:;">100</a>
+                    </div>
+                    <div class="input pull-left">
+                        <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+                    </div>
+                </div>
+                <input type="hidden">
+            </div>
+            <div class="clear"></div>
+            <table class="table-result" id="alarmTable" width="100%" style="display: none;">
+                <thead>
+                    <tr>
+                        <th><span><span data-i18n="10011"></span></span></th>
+                        <th class="even"><span><span data-i18n="09803"></span></span></th>
+                        <th><span><span data-i18n="10001"></span></span></th>
+                        <th class="even"><span><span data-i18n="10012"></span></span></th>
+                        <th><span><span data-i18n="17010"></span></span></th>
+                        <th class="even"><span><span data-i18n="17011"></span></span></th>
+                        <th><span><span data-i18n="10013"></span></span></th>
+                        <th class="even"><span><span data-i18n="17013"></span></span></th>
+                        <th><span><span data-i18n="17012"></span></span></th>
+                        <th class="even"><span><span data-i18n="10058"></span></span></th>
+                        <th><span data-i18n="09008"></span></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal modal-alarm" id="modal-alarm-edit">
+        <div class="modal-dialog modal-dialog-md">
+            <div class="modal-header">
+                <h4 class="modal-title"><span data-i18n="17017"></span></h4>
+                <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="main-content">
+                    <div id="alarm-edit-form">
+                        <div class="form-item clearfix">
+                            <label class="control-label"><span data-i18n="10058"></span>：</label>
+                            <div class="form-con">
+                                <input type="text" name="UserName" class="form-inline" data-check="delete" disabled>
+                                <input type="hidden" name="AlarmID">
+                            </div>
+                        </div>
+                        <div class="form-item clearfix">
+                            <label class="control-label"><span data-i18n="17014"></span>：</label>
+                            <div class="form-con">
+                                <div class="select-box" id="processTypeList" data-select="ProcessType">
+                                    <div class="select-title"><span></span><i class="fa fa-chevron-down"></i></div>
+                                    <ul class="select-con"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item form-item-auto clearfix">
+                            <label class="control-label"><span data-i18n="17012"></span>：</label>
+                            <div class="form-con">
+                                <textarea class="textarea-box" name="Remark"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-item form-item-none clearfix">
+                            <label class="control-label text-hide"><span data-i18n="17016"></span></label>
+                            <div class="form-con">
+                                <label class="checkbox-inline"><input type="checkbox" name="AlarmState" data-check="checkbox"><span data-i18n="17015"></span></label>
+                            </div>
+                        </div>
+                        <div class="btn-group clearfix">
+                            <a href="javascript:;" class="btn btn-save btn-center" id="alarm-edit-save"><span data-i18n="09903"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/alarm.js"></script>
+

@@ -1,0 +1,946 @@
+
+进油相关API
+
+>> 配送单查询所需基础数据
+API: ~/vrapi/Delivery/TicketDeliveryQueryMeta
+请求格式(post)
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"StationID" : ""
+}
+CompanyID/StationID 二选一
+
+应答：
+{
+	"OilDepotList" :
+	[
+		{
+			"DepotID" : "",
+			"DisplayName" : "",
+			"CraneList" :
+			[
+				{
+					"CraneID" : "",
+					"DisplayName" : ""
+				}
+				...
+			]
+		}
+		...
+	],
+	"ReceiveStationList" :
+	[
+		{
+			"StationID" : "",
+			"DisplayName" : ""
+		}
+		...
+	],
+	"ProductList" :
+	[
+		{
+			"ProductID" : "",
+			"DisplayName" : ""
+		}
+		...
+	],
+	"ClaimStateList" :
+	[
+		{
+			"StateID" : "",
+			"DisplayName" : ""
+		}
+		...
+	],
+	"ClaimCompensationMethodList" :
+	[
+		{
+			"StateID" : "",
+			"DisplayName" : ""
+		}
+		...
+	],
+    "AutoTicketControl" : true/false
+}
+
+>> 配送单查询
+API: ~/vrapi/Delivery/TicketDelivery
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"StationID" : "",
+	"BeginDate" : "",
+	"EndDate" : "",
+	"PlateNumber" : "",
+	"VarianceRange" : "min,max",
+	"OilDepot" : "",
+	"CraneNumber" : "",
+	"Driver" : "",
+	"TicketNumber" : "",
+	"ReceivedStation" : "",
+	"ReceivedTank" : "",
+	"Product" : "",
+	"ClaimState" : "",
+	"UseV20" : "",
+	"UseAtgDelivery" : "",
+	"PageInfo" :
+	{
+		"RecordOffset" : "1",			// 请求的开始记录编号
+		"RequestCount" : "100"			// 请求记录数量
+	}
+}
+参数如果没有就不需要传，下拉框如果选全部也不需要传值
+UseV20、UseAtgDelivery:1/0
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"PageInfo" :
+	{
+		"TotalCount" : "632",			// 只有请求中的RecordOffset=1时才有此字段
+		"RecordOffset" : "1",			// 应答中的开始记录编号
+		"ResponseCount" : "100"			// 应答中的记录数量
+	},
+	"DeliveryList" :
+	[
+		{
+			"Ticketid" : "",
+            "RcvDateTime" : "",
+            "SiteName" : "",
+			"OtShortName" : "",
+			"TankList" : "",
+			"DepottcVolume" : "",
+			"DepotVolume" : "",
+			"DepotTemperature" : "",
+			"TankDeliveryVolume" : "",
+			"TicketVariance" : "",            
+			"TicketVarianceRatio" : "",            
+			"DepotName" : "",
+			"SpSysID" : "",
+			"VehicleNumber" : "",
+			"Escort" : "",
+			"TankTransFlag" : "",
+			"ClaimState" : "",
+			"ClaimMethod" : "",
+			"ClaimEnable" : "",
+			"ClaimPrintEnable" : ""
+		}
+		...
+	]
+}
+
+>> 配送单详情
+API: ~/vrapi/Delivery/TicketDeliveryDetail
+请求格式(post):
+{
+	"SessionID" : "",
+	"TicketID" : ""
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"EditEnable" : true/false,
+    "OilDepotList" :
+	[
+		{
+			"DepotID" : "",
+			"DisplayName" : "",
+			"CraneList" :
+			[
+				{
+					"CraneID" : "",
+					"DisplayName" : ""
+				}
+				...
+			]
+		}
+		...
+	],
+	"TicketDeliveryDetail" :
+    {
+        "TicketDate" : "2015-05-08",    //开单日期
+        "VehicleNumber" : "琼E01170",    //车牌号
+        "OilDepot" : 2,    //发出库
+        "Gsid" : 90052,    //到站点
+        "OtName" : "",    //油品规格
+        "TankList" : "",    //卸入罐号
+        "DepotWeight" : 8000,    //流量计交接质量数
+        "DepottcVolume" : 9642,    //流量计交接V20
+        "DepotVolume" : 9632,    //流量计交接Vt
+        "DepotTemperature" : 18.80,    //发油温度
+        "DepotDensity" : 828.9000,    //发车标密
+        "DepottcVolumem" : 9642,    //人工计量数V20
+        "LoadDiff" : 9642,    //装车差量    
+        "RcvTemperature" : 18.80,    //实收罐车温度
+        "RcvDensity" : 0.0000,    //实收标密
+        "RcvtcVolumem" : 9642,    //人工计量实收量V20
+        "RcvVolumem" : 9642,    //人工实收量Vt
+        "TravelVariance" : 9642,    //运输损溢量    
+        "Escort" : 0,    //跟车与否
+        "Carrier" : "石华",    //司机
+        "DepotVolumem" : 9632,    //人工计量数Vt
+        "DepotPosition" : 150,    //发油鹤位
+        "Userid" : "hnshow",    //记录人
+        "RecTime" : "2015-05-08 15:02:15",    //记录时间
+        "TankTransFlag" : 1,    //是否地罐交接
+        "Remark" : "test",    //损溢原因分析
+        "StartV20" : "0",    //卸前数V20
+        "StartHeight" : 0.00,    //卸前油高
+        "StarTemperature" : 0。00,    //罐车卸前温度
+        "EndV20" : 0,    //卸后数V20
+        "EndHeight" : 0.00,    //卸后油高
+        "EndTemperature" : 0.00,    //罐车卸后温度
+        "DeliveryVol" : 0.00,    //入库量Vt
+        "DeliveryV20" : 0,    //入库量V20
+        "UnloadDiff" : 0,    //卸车差量
+        "DeliveryVariance" : 0,    //配送损溢量
+        "EscortPerson" : "",    //押运人
+    },    
+	"DeliveryReportList" :
+	[
+		{
+			"GsID" : "",
+            "GsShortName" : "",
+            "TankID" : "",
+            "StartTCVolume" : "0",
+            "StartHeight" : "0.0",
+            "StartTemperature" : "0.0",
+            "EndTCVolume" : "0",
+            "EndHeight" : "0.0",
+            "EndWater" : "0.0",
+            "EndTemperature" : "0.0",
+            "DeliveryVolume" : "0",
+            "DeliveryTCVolume" : "0",
+            "DeliveryDate" : "",
+            "StartDateTime" : "2015-05-08",
+            "EndDateTime" : "2015-05-08 13:27:00",            
+            "RecTime" : "2015-05-08 13:27:00",
+            "ManualFlag" : ""
+		},
+		...
+	]
+}
+ManualFlag 1 手动;其他 自动
+
+>> 油站最新进油报告查询
+API: ~/vrapi/Delivery/GasStationLatestDeliveryReport
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : "",
+	"DeliveryDate" : "2016-01-01",
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"DeliveryReportList" :
+	[
+		{
+			"GsID" : "",
+            "TankID" : "",
+            "DeliveryDate" : "",
+            "StartDateTime" : "",
+            "EndDateTime" : "",
+            "StartTCVolume" : "",
+            "StartHeight" : "",
+            "StartTemperature" : "",
+            "EndTCVolume" : "",
+            "EndHeight" : "",
+            "EndTemperature" : "",
+            "DeliveryTCVolume" : "",
+            "DeliveryVolume" : ""
+		},
+		...
+	]
+}
+
+>> 重新关联进油报告
+API: ~/vrapi/Delivery/ReassociationDeliveryReport
+请求格式(post):
+{
+	"SessionID" : "",
+	"TicketID" : "",
+	"DeliveryReportList" :
+	[
+		{
+			"GsID" : "",
+            "TankID" : "",
+            "DeliveryDate" : "2015-05-08",
+            "StartDateTime" : "2015-05-08 13:27:00"
+		},
+		...
+	]
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+>> 配送单更新
+API: ~/vrapi/Delivery/UpdateTicketDelivery
+请求格式(post):
+{
+	"SessionID" : "",
+    "TicketDelivery" :
+    {
+        "TicketID" : "",
+        "TicketDate" : "2015-05-08",    //开单日期
+        "DepotDensity" : 828.9000,    //发车标密
+        "RcvDensity" : 0.0000,    //实收标密
+        "OilDepot" : 2,    //发出库
+        "DepotPosition" : 150,    //发油鹤位
+        "DepotWeight" : 8000,    //流量计交接质量数
+        "DepotTemperature" : 18.80,    //发油温度        
+        "DepottcVolume" : 9642,    //流量计交接V20
+        "DepotVolume" : 9632,    //流量计交接Vt        
+        "DepottcVolumem" : 9642,    //人工计量原发V20
+        "DepotVolumem" : 9632,    //人工计量数Vt        
+        "RcvtcVolumem" : 9642,    //人工计量实收量V20     
+        "RcvVolumem" : 9642,    //人工实收量Vt        
+        "Escort" : 0,    //跟车与否
+        "EscortPerson" : "",    //押运人
+        "TankTransFlag" : 1,    //是否地罐交接
+        "RcvTemperature" : 18.80,    //实收罐车温度
+        "VehicleNumber" : "琼E01170",    //车牌号
+        "Carrier" : "石华",    //司机
+        "Remark" : "test",    //损溢原因分析
+    }
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+>> 配送单删除
+API: ~/vrapi/Delivery/DeleteTicketDelivery
+请求格式(post):
+{
+	"SessionID" : "",
+	"TicketID" : ""
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+>> 配送索赔单
+API: ~/vrapi/Delivery/TicketDeliveryClaim
+请求格式(post):
+{
+	"SessionID" : "",
+	"TicketID" : ""
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "TicketDeliveryClaim" :
+    {
+        "ShowHint" : true/false,    //是否显示提示
+        "TicketDate" : "2015-05-08",    //开单日期
+        "OtName" : "",    //品名规格
+        "VehicleNumber" : "",    //车牌号
+        "DepottcVolume" : 2,    //原发量
+        "DeliveryTCVolume" : 150,    //实收量
+        "ActualLoss" : 8000,    //实际损耗量
+        "ActualLossRate" : 18.80,    //实际损耗率        
+        "AllowWastage" : 9642,    //容许损耗率
+        "FixedLoss" : 9632,    //定额损耗量        
+        "OverLoss" : 9642,    //超耗量
+        "ShouldPayCount" : 9632,    //应赔付量
+        "GsID" : "",
+        "OtID" : "",
+        "TankID" : "",
+        "DeliveryRepType" : ""
+    }
+}
+
+>> 创建配送索赔单
+API: ~/vrapi/Delivery/CreateTicketDeliveryClaim
+请求格式(post):
+{
+	"SessionID" : "",
+	"TicketDate" : "2015-05-08",    //开单日期
+	"TankID" : "",
+    "DeliveryClaim" :
+    {
+        "GsId" : "",
+        "OtId" : "",
+        "TicketId" : "",
+        "ActualLoss" : 8000,    //实际损耗量
+        "ActualLossRate" : 18.80,    //实际损耗率
+        "FixedLoss" : 9632,    //定额损耗量
+        "OverLoss" : 9642,    //超耗量
+        "CompstMethod" : "",
+        "CompstVol" : "",
+        "CompstMoney" : "",
+        "Des" : "",    //备注
+    }
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+>> 配送单提取
+API: ~/vrapi/Delivery/TicketDeliveryExtract
+请求格式(post):
+{
+	"SessionID" : "",
+	"TicketNo" : ""
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"TicketDelivery" :
+    {
+        "OtID" : "",  //油品
+        "TicketDate" : "",
+        "Temperature" : "",
+        "Density" : "",
+        "OilWeight" : "",
+        "Volume" : "",  //流量计交接Vt
+        "VolumeTC" : "",  //流量计交接V20
+        "SpCode" : "",  //油库编码
+        "DpCode" : "",  //鹤位编号
+        "VehicleNumber" : ""
+    }
+}
+
+>> 配送单保存
+API: ~/vrapi/Delivery/TicketDeliverySave
+请求格式(post):
+{
+	"SessionID" : "",
+    "TicketDelivery" :
+    {
+        "Gsid" : "",   //
+        "TicketDate" : "",   //开单日期
+        "VehicleNumber" : "",   //罐车车牌号
+        "OilDepot" : "",   //发出库
+        "DepotWeight" : "",   //流量计交接质量(kg)
+        "DepotVolume" : "",   //流量计交接Vt(L)
+        "DepottcVolume" : "",   //流量计交接V20(L)
+        "DepotTemperature" : "",   //发油温度(℃)
+        "DepotDensity" : "",   //计重标密(kg/m³)
+        "DepotVolumem" : "",   //人工计量数Vt(L)
+        "DepottcVolumem" : "",   //人工计量原发V20(L)
+        "DepotPosition" : "",   //发油鹤位
+        "RcvTemperature" : "",   //实收罐车温度(℃)
+        "RcvVolumem" : "",   //人工计量实收量Vt(L)
+        "RcvtcVolumem" : "",   //人工计量实收V20(L)
+        "Escort" : "",   //是否跟车
+        "EscortPerson" : "",   //押运人
+        "Carrier" : "",   //司机
+        "Remark" : "",   //损溢原因分析
+        "TankTransFlag" : "",   //是否地罐交接
+        "SpSysID"" : "",   //进油单号
+    },
+    "DeliveryReportList" :
+	[
+		{
+			"GsID" : "",
+            "TankID" : "",
+            "DeliveryDate" : "",
+            "StartDateTime" : "",
+            "DeliveryVolume" : "",
+            "DeliveryTCVolume" : ""
+		},
+		...
+	]
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+>> 配送单V20计算
+API: ~/vrapi/Delivery/TicketDeliveryV20Calculate
+请求格式(post):
+{
+	"SessionID" : "",
+	"ProductID" : "",
+	"Temperature" : "",
+	"Volume" : ""
+}
+Temperature、Volume需要传入的是一个数字格式，前台做好验证
+productID：如果点击过提取，并且提取到进油单数据，用返回的otid，
+否则如果点击过提取进油报告或者损益预览刷新则用对应返回的productID；如果都没有传-1
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "VolumeTC" : ""
+}
+
+>> 油罐最新进油报告查询
+API: ~/vrapi/Delivery/LatestDeliveryReport
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : "",
+	"TankID" : ",",  //多个TankID用,分割
+	"ProductID" : "",   //如果提取到了进油单，则传返回的配送单OtID，否则传"-1"
+	"DeliveryDate" : "2016-01-01",
+    "TicketDelivery" :
+    {
+        "RcvVolumem" : "",  //人工计量实收量Vt
+        "RcvtcVolumem" : "",  //人工计量实收量V20
+        "DepotVolumem" : "",  //人工计量数Vt
+        "DepottcVolumem" : "",  //人工计量数V20
+        "DepotVolume" : "",  //流量计交接Vt
+        "DepottcVolume" : ""  //流量计交接V20
+    }
+}
+TicketDelivery 里面字段如果为空，不传该字段或者传0
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ProductID" : "",
+    "EnableUnloadingOil" : "",    //true、false：启用、禁用一车分卸按钮
+	"IsSave" : "",  //保存时判断是否有提示信息
+	"DeliveryReportList" :
+	[
+		{
+			"GsID" : "",
+            "GsShortName" : "",
+            "TankID" : "",
+            "DeliveryDate" : "",
+            "StartDateTime" : "",
+            "EndDateTime" : "",
+            "StartVolume" : "",
+            "StartTCVolume" : "",
+            "StartHeight" : "",
+            "StartTemperature" : "",
+            "EndVolume" : "",
+            "EndTCVolume" : "",
+            "EndHeight" : "",
+            "EndTemperature" : "",
+            "DeliveryVolume" : "",
+            "DeliveryTCVolume" : "",
+            "AdjReportFlagShow" : ""
+		},
+		...
+	],    
+	"VarianceOverview" :
+    {
+        "Message" : "关联的罐里油品不一致",   //如果Message为空，则返回VT、V20损益信息，否则返回错误信息
+        "Vt" :
+        {
+            "Var" : "",
+            "DeliverySum" : "",
+            "UnloadDiff" : "",
+            "TransVariance" : "",
+            "DepotDiff" : "",
+            "TicketVariance" : ""
+        },
+        "V20" :
+        {
+            "Var" : "",
+            "DeliverySum" : "",
+            "UnloadDiff" : "",
+            "TransVariance" : "",
+            "DepotDiff" : "",
+            "TicketVariance" : ""
+        }
+    }
+}
+油罐必须选，进油时间可有可无
+默认一车分卸不可点击
+
+>> 损益预览
+API: ~/vrapi/Delivery/VarianceOverview
+请求格式(post):
+{
+	"SessionID" : "",
+    "TicketDelivery" :
+    {
+        "RcvVolumem" : "",  //人工计量实收量Vt
+        "RcvtcVolumem" : "",  //人工计量实收量V20
+        "DepotVolumem" : "",  //人工计量数Vt
+        "DepottcVolumem" : "",  //人工计量数V20
+        "DepotVolume" : "",  //流量计交接Vt
+        "DepottcVolume" : ""  //流量计交接V20
+    },
+    "DeliveryReportList" :
+	[
+		{
+			"GsID" : "",
+            "TankID" : "",
+            "DeliveryVolume" : "",
+            "DeliveryTCVolume" : "",
+            "AdjReportFlagShow" : ""
+		},
+		...
+	]
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ProductID" : "",
+    "EnableUnloadingOil" : "",    //true、false：启用、禁用一车分卸按钮
+	"IsSave" : "",  //保存时判断是否有提示信息
+	"VarianceOverview" :
+    {
+        "Message" : "关联的罐里油品不一致",   //如果Message为空，则返回VT、V20损益信息，否则返回错误信息
+        "VT" :
+        {
+            "Var" : "",
+            "DeliverySum" : "",
+            "UnloadDiff" : "",
+            "TransVariance" : "",
+            "DepotDiff" : "",
+            "TicketVariance" : ""
+        },
+        "V20" :
+        {
+            "Var" : "",
+            "DeliverySum" : "",
+            "UnloadDiff" : "",
+            "TransVariance" : "",
+            "DepotDiff" : "",
+            "TicketVariance" : ""
+        }
+    }
+}
+
+>> 一车分卸查询所需基础数据
+API: ~/vrapi/Delivery/UnloadingOilMeta
+请求格式(post):
+{
+	"SessionID" : "",
+    "ProductID" : ""
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"StationList" :
+    [
+        {
+            "StationID" : "",
+            "DisplayName" : "",
+            "TankList" :
+            [
+                {
+                    "TankID" : "",
+                    "DisplayName" : ""
+                },
+                ...
+            ]
+        },
+        ...
+    ]
+}
+
+>> 一车分卸进油报告查询
+API: ~/vrapi/Delivery/UnloadingOilDeliveryReport
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : "",
+	"TankID" : ",",  //多个TankID用,分割
+	"BeginDate" : "2016-01-01",
+	"EndDate" : "2016-01-01"
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"DeliveryReportList" :
+	[
+		{
+			"GsID" : "",
+            "GsShortName" : "",
+            "TankID" : "",
+            "DeliveryDate" : "",
+            "StartDateTime" : "",
+            "EndDateTime" : "",
+            "StartVolume" : "",
+            "StartTCVolume" : "",
+            "StartHeight" : "",
+            "StartTemperature" : "",
+            "EndVolume" : "",
+            "EndTCVolume" : "",
+            "EndHeight" : "",
+            "EndTemperature" : "",
+            "DeliveryVolume" : "",
+            "DeliveryTCVolume" : "",
+            "AdjReportFlagShow" : ""
+		},
+		...
+	]
+}
+
+>> 手工进油报告
+API: ~/vrapi/Delivery/ManualDeliveryReport
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : "",
+	"DeliveryDate" : "2016-01-01"
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "TankList" :
+    [
+        {
+            "TankID" : "",
+            "DisplayName" : ""
+        },
+        ...
+    ],
+	"ManualDeliveryReportList" :
+	[
+		{
+            "GsID" : "",
+            "TankID" : "",
+            "StartTCVolume" : "",
+            "StartHeight" : "",
+            "StartWater" : "",
+            "StartTemperature" : "", 
+            "EndTCVolume" : "",
+            "EndHeight" : "",
+            "EndWater" : "",
+            "EndTemperature" : "", 
+            "DeliveryVolume" : "",
+            "DeliveryTCVolume" : "",
+            "DeliveryDate" : "",
+            "StartDateTime" : ""
+		},
+		...
+	],
+	"AutoDeliveryReportList" :  //按照TankID来获取需要的数据
+	[
+		{
+            "Message" : "",
+            "TankID" : "",
+            "StartDateTime" : "",
+            "EndDateTime" : "",
+            "StartWater" : "",
+            "EndWater" : "", 
+            "StartTemperature" : "",
+            "EndTemperature" : "",
+            "EnableStartDateTime" : "", //设置开始时间是否可编辑
+            "EnableEndDateTime" : "", //设置结束时间是否可编辑
+		},
+		...
+	]
+}
+
+>> 手工进油报告删除
+API: ~/vrapi/Delivery/ManualDeliveryReportDelete
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : "",
+	"TankID" : "",
+	"DeliveryDate" : "",
+	"StartDateTime" : ""
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "ManualDeliveryReportList" :
+	[
+		{
+            "GsID" : "",
+            "TankID" : "",
+            "StartTCVolume" : "",
+            "StartHeight" : "",
+            "StartWater" : "",
+            "StartTemperature" : "", 
+            "EndTCVolume" : "",
+            "EndHeight" : "",
+            "EndWater" : "",
+            "EndTemperature" : "", 
+            "DeliveryVolume" : "",
+            "DeliveryTCVolume" : "",
+            "DeliveryDate" : "",
+            "StartDateTime" : ""
+		},
+		...
+	],
+	"AutoDeliveryReportList" :  //按照TankID来获取需要的数据
+	[
+		{
+            "Message" : "",
+            "TankID" : "",
+            "StartDateTime" : "",
+            "EndDateTime" : "",
+            "StartWater" : "",
+            "EndWater" : "", 
+            "StartTemperature" : "",
+            "EndTemperature" : "",
+            "EnableStartDateTime" : "", //设置开始时间是否可编辑
+            "EnableEndDateTime" : "", //设置结束时间是否可编辑
+		},
+		...
+	]
+}
+
+>> 手工进油报告保存
+API: ~/vrapi/Delivery/ManualDeliveryReportSave
+请求格式(post):
+{
+	"SessionID" : "",
+	"IsUpdate" : true/false,
+	"DeliveryDate" : "",
+	"AutoDeliveryReport" :
+    {
+        "GsID" : "",
+        "TankID" : "",
+        "StartDateTime" : "",
+        "EndDateTime" : "",
+        "StartTCVolume" : "",   //卸前体积V20
+        "StartHeight" : "", //卸前油高
+        "StartWater" : "",
+        "StartTemperature" : "",
+        "EndTCVolume" : "",
+        "EndHeight" : "",
+        "EndWater" : "",
+        "EndTemperature" : "",
+        "DeliveryTCVolume" : "",    //进油量V20
+        "TicketId" : ""
+    }
+}
+如果单元格为空，则不传对应的字段
+卸前体积V20、卸后体积V20(L)、进油量V20必填
+IsUpdate=true时，不需要DeliveryDate，并且应答没有ManualDeliveryReportList、AutoDeliveryReportList，主要用在配送单详情中更新进油报告
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "ManualDeliveryReportList" :
+	[
+		{
+            "GsID" : "",
+            "TankID" : "",
+            "StartTCVolume" : "",
+            "StartHeight" : "",
+            "StartWater" : "",
+            "StartTemperature" : "", 
+            "EndTCVolume" : "",
+            "EndHeight" : "",
+            "EndWater" : "",
+            "EndTemperature" : "", 
+            "DeliveryVolume" : "",
+            "DeliveryTCVolume" : "",
+            "DeliveryDate" : "",
+            "StartDateTime" : ""
+		},
+		...
+	],
+	"AutoDeliveryReportList" :  //按照TankID来获取需要的数据
+	[
+		{
+            "Message" : "",
+            "TankID" : "",
+            "StartDateTime" : "",
+            "EndDateTime" : "",
+            "StartWater" : "",
+            "EndWater" : "", 
+            "StartTemperature" : "",
+            "EndTemperature" : "",
+            "EnableStartDateTime" : "", //设置开始时间是否可编辑
+            "EnableEndDateTime" : "", //设置结束时间是否可编辑
+		},
+		...
+	]
+}
+
+>> 进油报告查询
+API: ~/vrapi/Delivery/DeliveryReport
+请求格式(post):
+{
+	"SessionID" : "",
+	"LastRequestTime" : "",
+    "CompanyID" : "0",  //默认为0，查询用户公司下面所有油站
+	"StationID" : "0",   //默认为0，查询所有油站
+	"UserID" : "",
+	"BeginDate" : "2016-01-01",
+	"EndDate" : "2016-01-05",
+	"ProductID" : "",
+	"DeliveryRange" : "min,max",
+	"PageInfo" :
+	{
+		"RecordOffset" : "1",			// 请求的开始记录编号
+		"RequestCount" : "20"			// 请求记录数量
+	}
+}
+DeliveryRange 进油量，用,分割
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"PageInfo" :
+	{
+		"TotalCount" : "632",			// 只有请求中的RecordOffset=1时才有此字段
+		"RecordOffset" : "1",			// 应答中的开始记录编号
+		"ResponseCount" : "20"			// 应答中的记录数量
+	},
+	"DeliveryList" :
+	[
+		{
+			"StationID" : "",
+            "StationName" : "",
+            "TankNo" : "",
+            "Product" : "",
+            "DeliveryDate" : "",
+            "ReportDateTime" : "",
+            "BeginDate" : "",
+            "EndDate" : "",
+            "StartInventory" : "",
+            "EndInventory" : "",
+            "StartV20Inventory" : "",
+            "EndV20Inventory" : "",
+            "StartWaterHeight" : "",
+            "EndWaterHeight" : "",
+            "StartTemperature" : "",
+            "EndTemperature" : "",
+            "StartFuelHeight" : "",
+            "EndFuelHeight" : "",
+            "EndUllage" : "",
+            "DeliveryVolume" : "",
+            "DeliveryV20Volume" : "",
+            "TicketID" : "",
+            "AdjustFlag" : ""
+		}
+		...
+	]
+}
+浮层明细通过获取当条记录就可以获取到。

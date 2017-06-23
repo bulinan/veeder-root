@@ -1,0 +1,120 @@
+<div class="panel panel-station">
+    <div class="panel-body station-list"></div>
+    <div class="block-loading"></div>
+</div>
+<div class="panel panel-invoicing">
+    <div class="panel-heading clearfix">
+        <div class="panel-title pull-left"><i class="fa fa-sign-in"></i><span data-i18n="21018"></span><span class="intro"><span data-i18n="20004"></span></span></div>
+        <div class="panel-options pull-right">
+            <span class="text font01" id="inventory-updateTime"></span>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table" id="table-invoicing" width="100%">
+            <thead>
+                <tr class="group-column"><th colspan="4"></th><th><span data-i18n="10016"></span></th><th colspan="3"><span data-i18n="10017"></span></th><th colspan="3"><span data-i18n="10018"></span></th></tr>
+                <tr class="normal-column">
+                    <th><span data-i18n="10002"></span></th>
+                    <th class="even"><span data-i18n="10008"></span></th>
+                    <th><span data-i18n="10019"></span></th>
+                    <th class="even"><span data-i18n="10020"></span></th>
+                    <th><span data-i18n="10021"></span><i class="measure-volume">（L）</i></th>
+                    <th class="even"><span data-i18n="10022"></span><i class="measure-volume">（L）</i></th>
+                    <th><span data-i18n="10023"></span><i class="measure-volume">（L）</i></th>
+                    <th class="even"><span data-i18n="10024"></span><i class="measure-volume">（L）</i></th>
+                    <th><span data-i18n="10021"></span><i class="measure-volume">（L）</i></th>
+                    <th class="even"><span data-i18n="00004"></span><i class="measure-volume">（L）</i></th>
+                    <th><span data-i18n="10905"></span>(%)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="block-loading"></div>
+</div>
+<div class="panel panel-inventory">
+    <div class="panel-body">
+        <div class="bar-chart" id="station-inventory-chart"></div>
+        <div class="time-line clearfix">
+            <div class="prev pull-left">
+                <a href="javascript:;" class="week pull-left"><span data-i18n="02015"></span></a>
+                <a href="javascript:;" class="month pull-left"><span data-i18n="02016"></span></a>
+            </div>
+            <div class="show-month pull-left"></div>
+            <input type="hidden" name="firstOfPeriod">
+            <input type="hidden" name="lastOfPeriod">
+            <div class="next pull-right">
+                <a href="javascript:;" class="week pull-left"><span data-i18n="02017"></span></a>
+                <a href="javascript:;" class="month pull-left"><span data-i18n="02018"></span></a>
+            </div>
+        </div>
+        <div class="block-loading"></div>
+    </div>
+</div>
+<div class="template template-station-item">
+    <div class="item-inner">
+        <div class="item-heading clearfix">
+            <h2 class="pull-left"><span class="name" data-name="Product"></span><small data-name="TankLabel"></small></h2>
+            <!--<div class="select-box pull-right">-->
+            <div class="select-box select_operationBar select-callback pull-right" data-type="drop-down">
+                <div class="select-title"><span><span data-i18n="20001"></span></span><i class="fa fa-angle-down"></i></div>
+                <ul class="select-con"></ul>
+            </div>
+        </div>
+        <div class="item-chart">
+            <div class="item-chart-group">
+                <div class="item-chart-series style01"></div>
+                <div class="item-chart-series style02"></div>
+            </div>
+            <div class="tooltip water-tooltip"></div>
+            <div class="tooltip fuel-tooltip"></div>
+        </div>
+        <div class="tank-list"></div>
+        <!--<div class="item-box item-info">
+            <div class="item-title clearfix"><h3 class="pull-left"><span data-i18n="21007"></span></h3><i class="fa fa-angle-down"></i></div>
+            <ul class="item-con clearfix">
+                <li><span data-i18n="21008"></span><i class="measure-volume">（L）</i>：<span class="value" data-name="Ullage"></span></li>
+                <li><span data-i18n="21009"></span><i class="measure-temperature">（℃）</i>：<span class="value" data-name="Temperature"></span></li>
+                <li><span data-i18n="21010"></span><i class="measure-volume">（L）</i>：<span class="value" data-name="Inventory"></span></li>
+                <li><span data-i18n="10010"></span><i class="measure-height">（mm）</i>：<span class="value" data-name="FuelHeight"></span></li>
+                <li><span data-i18n="21012"></span><i class="measure-volume">（L）</i>：<span class="value" data-name="InventoryV20"></span></li>
+                <li><span data-i18n="10014"></span><i class="measure-height">（mm）</i>：<span class="value" data-name="WaterHeight"></span></li>
+                <li><span data-i18n="21011"></span><i class="measure-volume">（L）</i>：<span class="value" data-name="WaterVolume"></span></li>
+            </ul>
+        </div>-->
+        <!--暂时不需要卸油计划这种形式-->
+        <!--<div class="item-box item-plan">
+            <div class="item-title"><h3 class="pull-left"><span data-i18n="21013"></span></h3><i class="fa fa-angle-down"></i></div>
+            <ul class="item-con">
+                <li class="last">
+                    <strong><span data-i18n="21014"></span></strong>
+                    <div class="info">
+                        <p><span data-i18n="21015"></span>：<span class="value" data-name="LastDeliveryTime"></span></p>
+                        <p><span data-i18n="21017"></span>：<span class="value" data-name="LastDeliveryVolume"></span></p>
+                    </div>
+                </li>
+                <li class="plan">
+                    <strong><span data-i18n="21016"></span></strong>
+                    <div class="info">
+                        <p><span data-i18n="21015"></span>：<span class="value" data-name="PlanDeliveryTime"></span></p>
+                        <p><span data-i18n="21017"></span>：<span class="value" data-name="PlanDeliveryVolume"></span></p>
+                    </div>
+                </li>
+            </ul>
+        </div>-->
+    </div>
+</div>
+<!--<div class="modal modal-page" id="modal-innerPage">
+    <div class="modal-dialog">
+        <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        <div class="modal-body">
+            <div class="main-content"></div>
+        </div>
+    </div>
+</div>-->
+<script src="statics/js/stationIndex.js"></script>
+                
+
+
+
+

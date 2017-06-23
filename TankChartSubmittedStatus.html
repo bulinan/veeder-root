@@ -1,0 +1,135 @@
+<!--校罐状态/提交验收-->
+<div class="modal-tankStatus" id="tankChart-submittedChart">
+    <div class="modal-inner-header">
+        <div class="header-title">
+            <h4 class="pull-left"><span data-i18n="15002"></span>：<small><span data-i18n="15006"></span></small></h4>
+            <div class="header-nav pull-left">
+                <a href="javascript:;" class="isShow resume-calibration" id="btn-resumeCalibration"><span data-i18n="15046"></span></a>
+                <a href="javascript:;" data-confirm="15919" id="btn-cancelCalibration"><span data-i18n="15040"></span></a>
+                <a href="javascript:;" class="down-calibration" id="btn-downloadChart"><span data-i18n="20016"></span></a>
+            </div>
+            <h4 class="pull-left"><span data-i18n="20021"></span></h4>
+            <div class="header-nav pull-left">
+                <a href="javascript:;" class="detailTank-view"><span data-i18n="20021"></span></a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-inner-body modal-dialog">
+        <!--提交验收操作-->
+        <div class="submit-con clearfix">
+            <div class="form-group pull-left">
+                <label class="control-label"><span data-i18n="15010"></span>：</label>
+                <div class="form-control">
+                    <div class="select-box pull-left" id="verifyMethodList">
+                        <div class="select-title form-control-inner"><span></span><a href="javascript:;" class="icon"></a></div>
+                        <ul class="select-con"></ul>
+                    </div>
+                    <a href="javascript:;" class="btn btn-primary pull-left" id="btn-tankChartSubmitComplete"><span data-i18n="15007"></span></a><!--id="TankChartBir-get"-->
+                </div>
+            </div>
+            <!--<div class="form-group pull-left">
+                <label class="control-label"><span data-i18n="15011"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-date ui-datepicker-trigger form-control-inner pull-left" name="verifyDate">
+                </div>
+            </div>
+            <div class="form-group pull-left">
+                <label class="control-label"><span data-i18n="15012"></span>：</label>
+                <div class="form-control">
+                    <span class="pull-left" id="verifyPerson"></span>
+                    <a href="javascript:;" class="btn btn-primary pull-left"><span data-i18n="15007"></span></a>
+                </div>
+            </div>-->
+        </div>
+        <!--新旧罐表损益率比较-->
+        <div class="tank-check">
+            <div id="tankChartBir02-query-form">
+                <div class="form-group clearfix">
+                    <label class="control-label"><span data-i18n="15050"></span>：</label>
+                    <div class="form-control">
+                        <input type="text" class="input-date ui-datepicker-trigger form-control-inner pull-left" name="BeginDate" data-name="Date" data-title="10004" data-check="required date min">
+                        <span class="line pull-left"></span>
+                        <input type="text" class="input-date ui-datepicker-trigger form-control-inner pull-left" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                        <a href="javascript:;" class="btn btn-primary pull-left" id="TankChartBir-get02"><span data-i18n="09901"></span></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table-result" id="TankChartBirList02" style="display: none;">
+                <thead class="thead-border">
+                    <tr>
+                        <th rowspan="2"><span data-i18n="10049"></span></th>
+                        <th rowspan="2"><span data-i18n="10005"></span></th>
+                        <th rowspan="2" class="multi-line"><span data-i18n="10051"></span><br><i class="measure-volume">（L）</i></th>
+                        <th rowspan="2" class="multi-line"><span data-i18n="15017"></span><br><i class="measure-height">（mm）</i></th>
+                        <th rowspan="2" class="multi-line"><span data-i18n="15018"></span><br><i class="measure-height">（mm）</i></th>
+                        <th colspan="4"><span data-i18n="15019"></span></th>
+                        <th colspan="4"><span data-i18n="15005"></span></th>
+                    </tr>
+                    <tr>
+                        <th class="even"><span data-i18n="10050"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="15025"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="10904"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="10905"></span>（%）</th>
+                        <th class="even"><span data-i18n="10050"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="15025"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="10904"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="10905"></span>（%）</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <!--新旧罐表损溢率对比图-->
+        <section class="section-con">
+            <div id="tank-varianceRate-chart02"></div>
+            <div class="plotLine-text" id="plotLine-text07"></div>
+        </section>
+        <!--新旧罐表损溢高度对比图-->
+        <section class="section-con">
+            <div id="tank-avgHeight-chart02"></div>
+            <div class="plotLine-text" id="plotLine-text08"></div>
+        </section>
+        <!--新旧罐表圆滑度图形对比图-->
+        <section id="draw-tank-chart02" class="section-con"></section>
+        <!--进油范围-->
+        <section id="oil-range-chart03" class="section-con"></section>
+        <!--进油详情-->
+        <section class="section-con">
+            <div class="oil-detail-chart" id="oil-detail-chart03"></div>
+            <div class="plotLine-text" id="plotLine-text09"></div>
+        </section>
+        <div id="tankChartDataSuff">
+            <!--校罐数据充足率历史曲线-->
+            <section class="section-con">
+                <div id="tank-dataHistory-chart03"></div>
+                <div class="plotLine-text" id="plotLine-text10"></div>
+            </section>
+        </div>
+        <!--历史报警信息-->
+        <section class="alarm-history section-con">
+            <h5 class="section-title"><span data-i18n="15045"></span></h5>
+            <table class="table-result" id="historyAlarm03">
+                <thead>
+                    <tr>
+                        <th><span data-i18n="10059"></span></th>
+                        <th class="even"><span data-i18n="09803"></span></th>
+                        <th><span data-i18n="10011"></span></th>
+                        <th class="even"><span data-i18n="10013"></span></th>
+                        <th><span data-i18n="15026"></span></th>
+                        <th class="even"><span data-i18n="17012"></span></th>
+                        <th><span data-i18n="10058"></span></th>
+                        <th class="even"><span data-i18n="10057"></span></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+        <section class="remark-box section-con">
+            <h5 class="section-title"><span data-i18n="15039"></span></h5>
+            <textarea name="Remark"></textarea>
+        </section>
+        <div class="block-loading"></div>
+    </div>
+</div>
+<script src="statics/js/calibrationChartConfig.js"></script>
+<script src="statics/js/calibrationStatus.js"></script>

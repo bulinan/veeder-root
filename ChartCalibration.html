@@ -1,0 +1,156 @@
+<div class="station-title">
+    <h2><span data-i18n="15001"></span></h2>
+</div>
+<div class="station-con common-con calibration-box">
+    <div class="condition-list">
+        <div class="block-loading"></div>
+        <div class="type-form-group clearfix">
+            <div class="form-group init-hide clearfix" id="station-group">
+                <label><span data-i18n="10001"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-box" name="station">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label><span data-i18n="15016"></span>：</label>
+                <div class="form-control">
+                    <div class="select-box" id="CalibrationAlarmList">
+                        <div class="select-title" data-value=""><span></span><a href="javascript:;" class="icon"></a></div>
+                        <ul class="select-con"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label><span data-i18n="15002"></span>：</label>
+                <div class="form-control checkbox-list" id="CalibrationStatusList"></div>
+            </div>
+            <div class="btn-group pull-left">
+                <a href="javascript:;" class="btn btn-default" id="chartCalibration-query"><span data-i18n="09901"></span></a>
+            </div>
+        </div>
+        <div class="type-btn-group">
+            <a href="javascript:;" class="btn btn-primary btn-last" id="startCalibration"><span data-i18n="15070"></span></a>
+        </div>
+    </div>
+    <div class="record-box clearfix">
+        <a href="javascript:;" class="tab-trigger">
+            <span><span data-i18n="09009"></span></span>
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <div class="tab-cont">
+            <div class="pull-left">
+                <a href="javascript:;">10</a>
+                <a href="javascript:;">20</a>
+                <a href="javascript:;">50</a>
+                <a href="javascript:;">75</a>
+                <a href="javascript:;">100</a>
+            </div>
+            <div class="input pull-left">
+                <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+            </div>
+        </div>
+        <input type="hidden">
+    </div>
+    <div class="clear"></div>
+    <table class="table-result" id="calibrateTank" width="100%">
+        <thead>
+            <tr>
+                <th><span><span data-i18n="10001"></span></span></th>
+                <th class="even"><span><span data-i18n="10002"></span></span></th>
+                <th><span><span data-i18n="15009"></span></span></th>
+                <th class="even"><span><span data-i18n="15002"></span></span></th>
+                <th><span><span data-i18n="15010"></span></span></th>
+                <th class="even"><span><span data-i18n="15011"></span></span></th>
+                <th><span><span data-i18n="15012"></span></span></th>
+                <th class="even"><span><span data-i18n="10004"></span></span></th>
+                <th><span><span data-i18n="15013"></span></span></th>
+                <th class="even"><span data-i18n="15014"></span></th>
+                <th><span data-i18n="15015"></span></th>
+                <th class="even"><span><span data-i18n="15016"></span></span></th>
+                <th><span data-i18n="15073"></span></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<!--校罐报警查询-->
+<div class="modal modal-alarmChart">
+<div class="modal-dialog">
+    <div class="modal-header">
+        <h4 class="modal-title"><span data-i18n="15020"></span></h4>
+        <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+    </div>
+    <div class="modal-body">
+        <div class="main-content">
+            <table class="table-result">
+                <thead>
+                    <tr>
+                        <th><span data-i18n="10011"></span></th>
+                        <th class="even"><span data-i18n="09803"></span></th>
+                        <th><span data-i18n="10001"></span></th>
+                        <th class="even"><span data-i18n="10059"></span></th>
+                        <th><span data-i18n="10002"></span></th>
+                        <th class="even"><span data-i18n="15024"></span></th>
+                        <th><span data-i18n="17002"></span></th>
+                        <th class="even"><span data-i18n="15026"></span></th>
+                        <th><span data-i18n="17012"></span></th>
+                        <th class="even"><span data-i18n="10058"></span></th>
+                        <th><span data-i18n="09008"></span></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<!--校罐报警编辑-->
+<div class="modal modal-alarm" id="modal-calibrationAlarm-edit">
+    <div class="modal-dialog modal-dialog-md">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="17017"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <div id="calibrationAlarm-edit-form">
+                    <div class="form-item clearfix">
+                        <label class="control-label"><span data-i18n="10058"></span>：</label>
+                        <div class="form-con">
+                            <input type="text" name="UserName" class="form-inline" data-check="delete" disabled>
+                            <input type="hidden" name="AlarmID">
+                        </div>
+                    </div>
+                    <div class="form-item clearfix">
+                        <label class="control-label"><span data-i18n="17014"></span>：</label>
+                        <div class="form-con">
+                            <div class="select-box" id="processTypeList" data-select="ProcessType">
+                                <div class="select-title"><span></span><i class="fa fa-chevron-down"></i></div>
+                                <ul class="select-con"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item form-item-auto clearfix">
+                        <label class="control-label"><span data-i18n="17012"></span>：</label>
+                        <div class="form-con">
+                            <textarea class="textarea-box" name="Remark"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-item form-item-none clearfix">
+                        <label class="control-label text-hide"><span data-i18n="17016"></span></label>
+                        <div class="form-con">
+                            <label class="checkbox-inline"><input type="checkbox" name="AlarmState" data-check="checkbox"><span data-i18n="17015"></span></label>
+                        </div>
+                    </div>
+                    <div class="btn-group clearfix">
+                        <a href="javascript:;" class="btn btn-save btn-center" id="calibrationAlarm-edit-save"><span data-i18n="09903"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/calibrationStatus.js"></script>
+<script src="statics/js/calibration.js"></script>
+
+
+

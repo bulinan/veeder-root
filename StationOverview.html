@@ -1,0 +1,99 @@
+<script src="statics/js/vendor/handlebars-v4.0.5.js"></script>
+<div class="inner station">
+    <div class="col-lg-12">
+        <div class="inner-heading clearfix">
+            <div class="inner-title pull-left">
+                <h2><span data-i18n="00009"></span></h2>
+            </div>
+            <div class="inner-options pull-right">
+                <div class="btn-group clearfix">
+                    <a href="javascript:;" class="update" id="station-overview-update"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="station-con inner-filter clearfix">
+            <div class="form-group pull-left">
+                <div class="form-control form-control-only">
+                    <div class="select-box select_getStation select-callback" id="stationList">
+                        <div class="select-input">
+                            <input type="text" class="input-field" name="companyName-search" data-i18n-placeholder="21001">
+                            <a href="javascript:;" class="icon"></a>
+                        </div>
+                        <ul class="select-con"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group pull-left">
+                <a href="javascript:;" class="btn btn-default pull-left" id="company-query"><span data-i18n="09917"></span></a>
+                <a href="javascript:;" class="btn btn-primary pull-left" id="station-sort"><span data-i18n="21020"></span><i class="fa fa-sort"></i><i></i></a>
+            </div>
+        </div>
+        <ul class="station-overview clearfix"></ul>
+    </div>
+</div>
+<div id="page-loading"></div>
+<script id="tpl" type="text/x-handlebars-template">
+    {{#each StationList}}
+        <li class="station-item" id="{{this.StationID}}">
+            <div class="anchor-list">
+                <a name="{{this.StationID}}"></a>
+            </div>
+            <div class="panel">
+                <div class="panel-heading clearfix">
+                    <div class="panel-title pull-left">
+                        <a href="#/Station?sid={{this.StationID}}" class="station-name">{{this.StationName}}</a>
+                        <span class="icon-info-collapse"><i class="fa fa-angle-down"></i></span>
+                        <span class="line-status">
+                            {{#if this.Online}}
+                                <i class="online"></i><span data-i18n="21002"></span>
+                            {{else}}
+                                <i class="off-line"></i><span data-i18n="21003"></span>
+                            {{/if}}
+                        </span>
+                    </div>
+                    <div class="panel-options pull-right">
+                        <span class="text font01"><span data-i18n="21004"></span> {{this.UpdatedTime}}</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="station-info" data-open="false">
+                        <span class="identity"><em class="key"><i class="fa fa-info-circle"></i><span data-i18n="10112"></span>：</em><em class="value">{{this.StationID}}</em></span>
+                        <span class="mode"><em class="key"><i class="fa fa-gear"></i><span data-i18n="10113"></span>：</em><em class="value">{{this.TlgModeName}}</em></span>
+                        <span class="name"><em class="key"><i class="fa fa-user"></i><span data-i18n="10108"></span>：</em><em class="value">{{this.LinkMan}}</em></span>
+                        <span class="phone"><em class="key"><i class="fa fa-phone-square"></i><span data-i18n="10109"></span>：</em><em class="value">{{this.PhoneNum}}</em></span>
+                        <span class="address"><em class="key"><i class="fa fa-institution"></i><span data-i18n="10110"></span>：</em><em class="value">{{this.Address}}</em></span>
+                    </div>
+                    <div class="station-inner clearfix">
+                        <div class="status-list pull-left">
+                            <div class="status-title clearfix"><h3><span data-i18n="21005"></span></h3><a href="javascript:;" class="icon-list-collapse"><i class="fa fa-angle-down"></i></a></div>
+                            <ul class="status-con" data-open="false">
+                                {{#each TankStateList}}
+                                    {{#if this.StateValue}}
+                                        <li class="right"><span>{{this.StateKey}}：</span><i class="fa fa-check"></i></li>
+                                        {{else}}
+                                        <li class="wrong"><span>{{this.StateKey}}：</span><i class="fa fa-times"></i></li>
+                                    {{/if}}
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div class="tank-scroll owl-carousel pull-left">
+                            {{#each this.TankList}}
+                                <div class="item">
+                                    <div class="item-chart">
+                                        <div class="item-chart-group" style="height:{{calculateHeight this}};background:{{calculateStyle this.Product}}"></div>
+                                    </div>
+                                    <div class="item-chart-tooltip"><p><span data-i18n="10010"></span><i class="measure-height">(mm)</i>：{{keepDecimal this.FuelHeight}}</p></div>
+                                    <p class="item-title">{{this.TankLabel}}<small>({{this.Product}})</small></p>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/each}}
+</script>
+<script src="statics/js/stationOverview.js"></script>
+
+
+

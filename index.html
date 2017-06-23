@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>维德路特</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta name="format-detection" content="telephone=no"/>
+        <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link href="statics/css/font-awesome.min.css" rel="stylesheet">
+        <link href="statics/css/font-awesome-ie7.min.css" rel="stylesheet">
+        <link href="statics/css/jquery.jscrollpane.css" rel="stylesheet">
+        <link href="statics/css/owl.carousel.css" rel="stylesheet">
+        <link href="statics/css/dataTables/buttons.dataTables.css" rel="stylesheet">
+        <link href="statics/css/jquery.autocomplete.css" rel="stylesheet">
+        <link href="statics/css/reset.css" rel="stylesheet">
+        <link href="statics/css/base.css" rel="stylesheet">
+        <link href="statics/css/main.css" rel="stylesheet">
+        <link href="statics/css/media.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+          <script src="statics/js/vendor/html5.js"></script>
+          <script src="statics/js/vendor/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="index">
+            <div class="container clearfix">
+                <header class="header clearfix">
+                    <a href="javascript:;" class="logo pull-left"><img src="statics/img/logo_small.jpg"></a>
+                    <div class="header-name pull-left">
+                        <a href="javascript:;" id="modal-company" class="station-hide"><i class="fa fa-list"></i></a><span id="company-name"></span>
+                    </div>
+                    <a href="javascript:;" class="header-info station-hide pull-left"></a>
+                    <ul class="header-func pull-right">
+                        <li class="quick station-hide">
+                            <a href="javascript:;" id="modal-station">
+                                <i class="fa fa-map-signs"></i>
+                                <span data-i18n="00012"></span>
+                            </a>
+                        </li>
+                        <li class="warning clearfix">
+                            <span class="pull-left"><i class="fa fa-bell"></i><span data-i18n="00008"></span></span>
+                            <a href="" class="number pull-left" target="_blank"></a>
+                        </li>
+                        <li class="select-box common" data-type="drop-down">
+                            <!--<span><span data-i18n="00013"></span>，<em id="user-name"></em><i class="fa fa-angle-down"></i></span>-->
+                            <div class="select-title"><span><span data-i18n="00013"></span>，<em id="user-name"></em></span><i class="fa fa-angle-down"></i></div>
+                            <ul class="select-con">
+                                <li><a href="javascript:;" id="edit-pwd"><span data-i18n="04000"></span></a></li>
+                                <li><a href="javascript:;" class="logout"><span data-i18n="09918"></span></a></li>
+                            </ul>
+                        </li>
+                        <li class="common">
+                            <a href="javascript:;" class="help"><span data-i18n="09011"></span></a>
+                        </li>
+                    </ul>
+                </header>
+                <div class="sidebar-menu">
+                    <a href="javascript:;" class="logo" data-i18n-title="00000"></a>
+                    <ul class="main-menu">
+                        <li>
+                            <a href="#/CompanyDashboard" class="item dashboard" data-model="CompanyDashboard">
+                                <i class="fa fa-dashboard"></i>
+                                <span><span data-i18n="00001"></span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="item report" data-model="CompanyReport">
+                                <i class="fa fa-calendar"></i>
+                                <span><span data-i18n="00002"></span></span>
+                            </a>
+                            <div class="sub-menu">
+                                <a href="#/CompanyReport" data-model="CompanyReport" data-type="1"><span data-i18n="31001"></span></a>
+                                <a href="#/CompanyReport" data-model="CompanyReport" data-type="2"><span data-i18n="31002"></span></a>
+                                <a href="#/CompanyReport" data-model="CompanyReport" data-type="3"><span data-i18n="31003"></span></a>
+                                <a href="#/CompanyReport" data-model="CompanyReport" data-type="4"><span data-i18n="31004"></span></a>
+                                <a href="#/CompanyReport" data-model="CompanyReport" data-type="5"><span data-i18n="31005"></span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#/CompanyInventory" class="item stock" data-model="CompanyInventory">
+                                <i class="fa fa-inbox"></i>
+                                <span><span data-i18n="00003"></span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="item profit">
+                                <i class="fa fa-money"></i>
+                                <span><span data-i18n="00004"></span></span>
+                            </a>
+                            <div class="sub-menu">
+                                <a href="#/VarianceIndex" data-model="VarianceIndex"><span data-i18n="00010"></span></a>
+                                <a href="#/VarianceRank" data-model="VarianceRank"><span data-i18n="00011"></span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="item delivery">
+                                <i class="fa fa-bus"></i>
+                                <span><span data-i18n="00005"></span></span>
+                            </a>
+                            <div class="sub-menu">
+                                <a href="#/ActiveDelivery" data-model="ActiveDelivery"><span data-i18n="16001"></span></a>
+                                <a href="#/TicketDelivery" data-model="TicketDelivery"><span data-i18n="14050"></span></a>
+                                <a href="#/DepotPosition" data-model="DepotPosition"><span data-i18n="18011"></span></a>
+                                <a href="#/DepotPositionHistory" data-model="DepotPositionHistory"><span data-i18n="18016"></span></a>
+                            </div>
+                        </li>
+                        <!--<li><a href="javascript:;" class="item equipment">
+                                <i class="fa fa-cogs"></i>
+                                <span><span data-i18n="00006"></span></span>
+                        </li></a>-->
+                        <li>
+                            <a href="#/Alarm" class="item venture" data-model="Alarm">
+                                <i class="fa fa-bell"></i>
+                                <span><span data-i18n="00008"></span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/StationOverview" class="item view" data-model="StationOverview">
+                                <i></i>
+                                <span><span data-i18n="00009"></span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/Map" class="item map" data-model="Map">
+                                <i class="fa fa-map"></i>
+                                <span><span data-i18n="19001"></span></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <a href="javascript:;" class="sidebar-toggle"><i class="fa fa-angle-left"></i></a>
+                </div>
+                <div class="main-box">
+                    <div class="main-con clearfix"></div>
+                </div>
+                <footer class="footer">
+                    <p>©2001-<span class="curYear"></span><a href="http://www.veeder.com.cn/" target="_blank">Veeder-Root China</a><span class="version pull-right"></span></p>
+                </footer>
+                <div class="modal modal-company">
+                    <div class="modal-dialog">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><span data-i18n="00014"></span></h4>
+                            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+                        </div>
+                        <div class="modal-body">
+                            <div class="filter-box">
+                                <div class="search-box"><input type="text" name="company-search" class="input-con" data-i18n-placeholder="00017"></div>
+                            </div>
+                            <div class="main-content">
+                                <!--<div class="company-list"></div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal modal-station">
+                    <div class="modal-dialog modal-dialog-lg">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><span data-i18n="00012"></span></h4>
+                            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+                        </div>
+                        <div class="modal-body">
+                            <div class="filter-box clearfix">
+                                <!--<div class="select-box pull-left">
+                                    <div class="select-title"><span>中石油</span><i class="fa fa-chevron-down"></i></div>
+                                    <ul class="select-con">
+                                        <li>分公司1</li>
+                                        <li>分公司2</li>
+                                        <li>分公司3</li>
+                                    </ul>
+                                </div>-->
+                                <div class="search-box pull-left" id="search-keyword">
+                                    <input type="text" class="input-con" data-i18n-placeholder="00016">
+                                    <!--<button type="submit" class="submit"></button>-->
+                                </div>
+                            </div>
+                            <div class="main-content">
+                                <div class="letter-list">
+                                    <a href="javascript:;">A</a>
+                                    <a href="javascript:;">B</a>
+                                    <a href="javascript:;">C</a>
+                                    <a href="javascript:;">D</a>
+                                    <a href="javascript:;">E</a>
+                                    <a href="javascript:;">F</a>
+                                    <a href="javascript:;">G</a>
+                                    <a href="javascript:;">H</a>
+                                    <a href="javascript:;">I</a>
+                                    <a href="javascript:;">J</a>
+                                    <a href="javascript:;">K</a>
+                                    <a href="javascript:;">L</a>
+                                    <a href="javascript:;">M</a>
+                                    <a href="javascript:;">N</a>
+                                    <a href="javascript:;">O</a>
+                                    <a href="javascript:;">P</a>
+                                    <a href="javascript:;">Q</a>
+                                    <a href="javascript:;">R</a>
+                                    <a href="javascript:;">S</a>
+                                    <a href="javascript:;">T</a>
+                                    <a href="javascript:;">U</a>
+                                    <a href="javascript:;">V</a>
+                                    <a href="javascript:;">W</a>
+                                    <a href="javascript:;">X</a>
+                                    <a href="javascript:;">Y</a>
+                                    <a href="javascript:;">Z</a>
+                                </div>
+                                <div class="station-list">
+                                    <ul class="clearfix"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--修改密码-->
+                <div class="modal modal-pwd" id="modal-edit-pwd">
+                    <div class="modal-dialog modal-dialog-lg">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><span data-i18n="04000"></span></h4>
+                            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+                        </div>
+                        <div class="modal-body">
+                            <div class="main-content">
+                                <form>
+                                    <ul id="edit-pwd-form">
+                                        <li class="form-group clearfix">
+                                            <label class="control-label"><span data-i18n="04001"></span>：</label>
+                                            <div class="form-control">
+                                                <input type="password" name="OldPassword" class="input-box form-control-inner">
+                                            </div>
+                                        </li>
+                                        <li class="form-group clearfix">
+                                            <label class="control-label"><span data-i18n="04002"></span>：</label>
+                                            <div class="form-control">
+                                                <input type="password" name="NewPassword" class="input-box form-control-inner">
+                                            </div>
+                                        </li>
+                                        <li class="form-group clearfix">
+                                            <label class="control-label"><span data-i18n="04003"></span>：</label>
+                                            <div class="form-control">
+                                                <input type="password" name="RepeatNewPassword" class="input-box form-control-inner">
+                                            </div>
+                                        </li>
+                                        <li class="form-group btn-submit clearfix">
+                                            <input type="button" data-i18n-value="09910" class="btn btn-primary pull-left" id="btnSubmit">
+                                            <input type="reset" data-i18n-value="03009" class="btn btn-primary pull-left">
+                                            <a href="javascript:;" class="btn btn-cancel pull-left"><span data-i18n="09904"></span></a>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--弹窗公用样式-->
+                <div class="modal modal-page" id="modal-commonPage">
+                    <div class="modal-dialog">
+                         <div class="modal-header clearfix">
+                            <h4 class="modal-title"></h4>
+                            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+                        </div>
+                        <div class="modal-body">
+                            <div class="main-content"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal modal-page" id="modal-innerPage">
+                    <div class="modal-dialog">
+                         <div class="modal-header clearfix">
+                            <h4 class="modal-title"></h4>
+                            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+                        </div>
+                        <div class="modal-body">
+                            <div class="main-content"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="back-to-top">
+                    <a href="javascript:;"><!--<i class="fa fa-arrow-up"></i>-->返回顶部</a>
+                </div>
+                <div id="overlay"></div>
+            </div>
+        </div>
+        <script src="statics/js/vendor/jquery-1.8.3.min.js"></script>
+        <script src="statics/js/dataTables/jquery.dataTables.min.js"></script>
+        <script src="statics/js/dataTables/dataTables.buttons.js"></script>
+        <script src="statics/js/dataTables/buttons.html5.js"></script>
+         <script src="statics/js/dataTables/buttons.print.js"></script>
+        <script src="statics/js/dataTables/buttons.flash.min.js"></script>
+        <script src="statics/js/highcharts/highcharts.js"></script>
+        <script src="statics/js/highcharts/no-data-to-display.js"></script>
+        <script src="statics/js/highcharts/grouped-categories.js"></script>
+        <script src="statics/js/stateman/stateman.js"></script>
+        <script src="statics/js/vendor/jquery.jscrollpane.min.js"></script>
+        <script src="statics/js/vendor/jquery.mousewheel.js"></script>
+        <script src="statics/js/vendor/jquery.cookie.js"></script>
+        <script src="statics/js/datetimepicker/WdatePicker.js"></script>
+        <script src="statics/js/vendor/owl.carousel.min.js"></script>
+        <script src="statics/js/PapaParse/papaparse.js"></script>
+        <script src="statics/js/vendor/jquery.autocomplete.js"></script>
+        <script src="statics/js/vendor/md5.js"></script>
+        <script src="statics/js/language.js"></script>
+        <script src="statics/js/language/zh-CN.js"></script>
+        <script src="statics/js/language/en-US.js"></script>
+        <script src="statics/js/ajax.js"></script>
+        <script src="statics/js/base.js"></script>
+        <script src="statics/js/selectbox.js"></script>
+        <script src="statics/js/common.js"></script>
+        <script src="statics/js/index.js"></script>
+        <script src="statics/js/constantFile.js"></script>
+    </body>
+</html>
+
+

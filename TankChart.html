@@ -1,0 +1,328 @@
+<div class="station-title">
+    <h2><span data-i18n="25001"></span></h2>
+</div>
+<div class="station-con">
+    <div class="section-con">
+        <div class="section-title"><span data-i18n="25002"></span></div>
+    </div>
+    <table class="table-result" id="tankChart-summary" width="100%">
+        <thead>
+            <tr>
+                <th><span><span data-i18n="10002"></span></span></th>
+                <th class="even"><span><span data-i18n="10008"></span></span></th>
+                <th><span><span data-i18n="25003"></span></span></th>
+                <th class="even"><span><span data-i18n="25004"></span></span></th>
+                <th><span><span data-i18n="25005"></span></span></th>
+                <th class="even"><span><span data-i18n="25006"></span></span></th>
+                <th><span><span data-i18n="25007"></span></span></th>
+            </tr>
+        </thead>
+        <tbody><tr class="loading"><td colspan="7"><span data-i18n="10801"></span></td></tr></tbody>
+    </table>
+    <div class="section-con">
+        <div class="section-title"><span data-i18n="25008"></span></div>
+        <div class="condition-list clearfix" id="tankChart-history-form">
+            <div class="form-group clearfix">
+                <label><span data-i18n="10004"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-date ui-datepicker-trigger" name="StartDate" data-name="Date" data-title="10004" data-check="required date min">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label><span data-i18n="10005"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-date ui-datepicker-trigger" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label><span data-i18n="10026"></span>：</label>
+                <div class="form-control">
+                    <div class="select-box" id="tank-list" data-select="TankID">
+                        <div class="select-title"><span></span><a href="javascript:;" class="icon"></a></div>
+                        <ul class="select-con"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group pull-left">
+                <a href="javascript:;" class="btn btn-default" id="tankChart-history-query"><span data-i18n="09901"></span></a>
+            </div>
+        </div>
+    </div>
+    <table class="table-result" id="tankChart-history" width="100%" style="display: none;">
+        <thead>
+            <tr>
+                <th><span><span data-i18n="25003"></span></span></th>
+                <th class="even"><span><span data-i18n="25004"></span></span></th>
+                <th><span><span data-i18n="25009"></span></span></th>
+                <th class="even"><span><span data-i18n="25010"></span></span></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<!--手工录入罐表-->
+<!--情况一-->
+<div class="modal modal-manualChart" id="modal-manualChart-create">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="25011"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div id="manualChart-create-form">
+                <div class="main-header clearfix">
+                    <input type="hidden" name="TankID">
+                    <input type="hidden" name="ChartID">
+                    <div class="form-item">
+                        <label><span data-i18n="25003"></span>：</label>
+                        <div class="form-con">
+                            <div class="select-box select_chartTypeList select-callback" id="chartType-list">
+                                <div class="select-title"><span></span><i class="fa fa-chevron-down"></i></div>
+                                <ul class="select-con"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item" data-type="2">
+                        <label><span data-i18n="25012"></span><i class="measure-height">（mm）</i>：</label>
+                        <div class="form-con">
+                            <input type="text" class="input-box digital-control required-control tank-height" name="TankHeight" data-i18n-placeholder="25013" data-title="25012">
+                        </div>
+                    </div>
+                    <div class="form-item init-hide" data-type="4">
+                        <label><span data-i18n="10052"></span><i class="measure-height">（mm）</i>：</label>
+                        <div class="form-con">
+                            <input type="text" class="input-box digital-control required-control tank-diameter" name="Diameter" data-title="10052">
+                        </div>
+                    </div>
+                    <div class="form-item init-hide" data-type="4">
+                        <label><span data-i18n="25014"></span>：</label>
+                        <div class="form-con form-file">
+                            <input type="text" class="input-box pull-left" name="fileName" value="">
+                            <input type="submit" class="btn-upload pull-left" data-i18n-value="20012">
+                            <input type="file" class="upload-file" id="upload-file" data-i18n-title="20013">
+                        </div>
+                    </div>
+                    <div class="form-item init-hide" data-type="4"><a href="/Help\MultPtChartExample.zip" class="form-link" target="_blank"><span data-i18n="25015"></span></a></div>
+                    <div class="form-group init-hide pull-left" data-type="4"><a href="javascript:;" class="btn btn-default" id="tankChart-multiPointCreate"><span data-i18n="25006"></span></a></div>
+                </div>
+                <div class="main-content"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--20点-->
+<div class="template template-twentyPoint-tank">
+    <div class="form-list">
+        <ul class="clearfix">
+            <li class="form-group">
+                <label class="control-label">1：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume01" class="form-control-inner digital-control required-control" data-title="25021">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">2：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume02" class="form-control-inner digital-control required-control" data-title="25022">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">3：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume03" class="form-control-inner digital-control required-control" data-title="25023">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">4：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume04" class="form-control-inner digital-control required-control" data-title="25024">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">5：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume05" class="form-control-inner digital-control required-control" data-title="25025">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">6：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume06" class="form-control-inner digital-control required-control" data-title="25026">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">7：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume07" class="form-control-inner digital-control required-control" data-title="25027">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">8：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume08" class="form-control-inner digital-control required-control" data-title="25028">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">9：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume09" class="form-control-inner digital-control required-control" data-title="25029">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">10：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume10" class="form-control-inner digital-control required-control" data-title="25030">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">11：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume11" class="form-control-inner digital-control required-control" data-title="25031">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">12：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume12" class="form-control-inner digital-control required-control" data-title="25032">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">13：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume13" class="form-control-inner digital-control required-control" data-title="25033">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">14：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume14" class="form-control-inner digital-control required-control" data-title="25034">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">15：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume15" class="form-control-inner digital-control required-control" data-title="25035">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">16：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume16" class="form-control-inner digital-control required-control" data-title="25036">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">17：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume17" class="form-control-inner digital-control required-control" data-title="25037">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">18：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume18" class="form-control-inner digital-control required-control" data-title="25038">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">19：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume19" class="form-control-inner digital-control required-control" data-title="25039">
+                </div>
+            </li>
+            <li class="form-group">
+                <label class="control-label">20：</label>
+                <div class="form-control">
+                    <input type="text" name="tankVolume20" class="form-control-inner digital-control required-control" data-title="25040">
+                </div>
+            </li>
+        </ul>
+        <div class="form-group"><a href="javascript:;" class="btn btn-default" id="tankChart-twentyPointCreate"><span data-i18n="25006"></span></a></div>
+    </div>
+    <div class="modal-help"><p class="help-block"><span data-i18n="20014"></span></p></div>
+</div>
+<!--多点-->
+<div class="template template-multiPoint-tank">
+    <table class="table-result init-hide">
+        <thead>
+            <tr>
+                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<!--修正罐表-->
+<div class="modal modal-correctChart" id="modal-correctChart">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="25007"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <div class="section-con clearfix" id="correctChart-form">
+                    <div class="input-hidden init-hide">
+                        <input type="hidden" name="TankId">
+                        <input type="hidden" name="ChartId">
+                        <input type="hidden" name="TankChartType">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"><span data-i18n="25017"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" name="VolumeCorrection" class="input-box form-control-inner" data-title="25017">
+                        </div>
+                    </div>
+                    <div class="form-group"><p class=""><span class="must must-forward"><span data-i18n="20015"></span>：</span>-0.01<=<span data-i18n="25017"></span><=0.01</p></div>
+                    <div class="form-group">
+                        <a href="javascript:;" class="btn btn-default pull-left" id="tankChart-amendment"><span data-i18n="25018"></span></a>
+                        <a href="javascript:;" class="btn btn-default btn-disabled pull-left" id="tankChart-downLoad"><span data-i18n="20016"></span></a>
+                    </div>
+                </div>
+                <div class="section-con">
+                    <h5 class="section-title"><span data-i18n="25019"></span>：</h5>
+                    <table class="table-result" id="tankChart-beforeCorrect-table">
+                        <thead>
+                            <tr>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="section-con init-hide" id="section-afterCorrect">
+                    <h5 class="section-title"><span data-i18n="25020"></span>：</h5>
+                    <table class="table-result" id="tankChart-afterCorrect-table">
+                        <thead>
+                            <tr>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/tankChart.js"></script>
+
+
+
+

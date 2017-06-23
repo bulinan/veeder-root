@@ -1,0 +1,240 @@
+<div class="station-title">
+    <h2><span data-i18n="29001"></span></h2>
+</div>
+<div class="station-con common-con">
+    <div class="condition-list">
+        <div class="clearfix">
+            <div class="form-group">
+                <label><span data-i18n="29002"></span>：</label>
+                <div class="form-control clearfix">
+                    <label class="radio-inline"><input type="radio" name="detection-way" checked="checked" value="0"><span data-i18n="29003"></span></label>
+                    <label class="radio-inline"><input type="radio" name="detection-way" value="1"><span data-i18n="29004"></span></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label><span data-i18n="29005"></span>：</label>
+                <div class="form-control clearfix">
+                    <label class="radio-inline"><input type="radio" name="query-way" checked="checked" value="0"><span data-i18n="29006"></span></label>
+                    <label class="radio-inline"><input type="radio" name="query-way" value="1"><span data-i18n="29007"></span></label>
+                </div>
+            </div>
+            <div class="btn-group pull-left">
+                <a href="javascript:;" class="btn btn-default pull-left" id="nozzle-query"><span data-i18n="09901"></span></a>
+                <a href="javascript:;" class="btn btn-primary pull-left" id="modal-nozzle"><span data-i18n="09915"></span></a>
+            </div>
+        </div>
+        <div class="date-con clearfix" id="nozzle-query-form">
+            <!--<div class="form-group">
+                <label><span data-i18n="29008"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-date ui-datepicker-trigger pull-left" name="BeginDate" data-name="Date" data-title="10004" data-check="required date min">
+                    <span class="pull-left">&nbsp;&nbsp;<span data-i18n="10807"></span>&nbsp;&nbsp;</span>
+                    <input type="text" class="input-date ui-datepicker-trigger pull-left" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label><span data-i18n="10004"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-date ui-datepicker-trigger" name="BeginDate" data-name="Date" data-title="10004" data-check="required date min">
+                </div>
+            </div>
+            <div class="form-group">
+                <label><span data-i18n="10005"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-date ui-datepicker-trigger" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                </div> 
+            </div>
+        </div>
+        <div class="legend-demo">
+            <ul class="clearfix">
+                <li>
+                    <strong></strong>
+                </li>
+                <li>
+                    <h3><span data-i18n="29009"></span></h3>
+                    <p></p>
+                </li>
+                <li>
+                    <h3><span data-i18n="29010"></span></h3>
+                    <p></p>
+                </li>
+                <li>
+                    <h3><span data-i18n="29011"></span></h3>
+                    <p></p>
+                </li>
+                <li>
+                    <h3><span data-i18n="29012"></span></h3>
+                    <p></p>
+                </li>
+                <li class="last">
+                    <h3><span data-i18n="29013"></span></h3>
+                    <p class="clearfix">
+                        <span class="style01"><span data-i18n="20026"></span>+/-0.2%</span>
+                        <span class="style02"><span data-i18n="20026"></span>+/-0.3%</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="record-box nozzle-record-box clearfix">
+        <a href="javascript:;" class="tab-trigger">
+            <span><span data-i18n="09009"></span></span>
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <div class="tab-cont">
+            <div class="pull-left">
+                <a href="javascript:;">10</a>
+                <a href="javascript:;">20</a>
+                <a href="javascript:;">50</a>
+                <a href="javascript:;">75</a>
+                <a href="javascript:;">100</a>
+            </div>
+            <div class="input pull-left">
+                <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+            </div>
+        </div>
+        <input type="hidden">
+    </div>
+    <div class="clear"></div>
+    <table class="table-result" id="nozzleCheck01" width="100%">
+        <thead>
+            <tr>
+                <th><span data-i18n="09008"></span></th>
+                <th class="even"><span data-i18n="09006"></span></th>
+                <th><span><span data-i18n="10002"></span></span></th>
+                <th class="even"><span><span data-i18n="29014"></span></span></th>
+                <th><span><span data-i18n="10061"></span></span></th>
+                <th class="even"><span><span data-i18n="29015"></span></span></th>
+                <th><span><span data-i18n="10062"></span>（%）</span></th>
+                <th class="even"><span><span data-i18n="29016"></span>（%）</span></th>
+                <th><span><span data-i18n="29017"></span></span></th>
+                <th class="even"><span><span data-i18n="29018"></span></span></th>
+                <th><span><span data-i18n="29019"></span></span></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <table class="table-result" id="nozzleCheck02" width="100%">
+        <thead>
+            <tr>
+                <th><span data-i18n="09008"></span></th>
+                <th class="even"><span data-i18n="09006"></span></th>
+                <th><span><span data-i18n="10002"></span></span></th>
+                <th class="even"><span><span data-i18n="29014"></span></span></th>
+                <th><span><span data-i18n="29020"></span></span></th>
+                <th class="even"><span><span data-i18n="29021"></span></span></th>
+                <th><span><span data-i18n="29022"></span><i class="measure-volume">（L）</i></span></th>
+                <th class="even"><span><span data-i18n="29023"></span>（%）</span></th>
+                <th><span><span data-i18n="29018"></span></span></th>
+                <th class="even"><span><span data-i18n="29024"></span></span></th>
+                <th><span><span data-i18n="20006"></span></span></th>
+                <th class="even"><span><span data-i18n="29019"></span></span></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div class="modal modal-nozzle">
+    <div class="modal-dialog modal-dialog-md">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="29025"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <div class="form-item line-auto clearfix">
+                    <label class="control-label"><span data-i18n="29002"></span>：</label>
+                    <div class="form-con">
+                        <label class="radio-inline"><input type="radio" checked="checked" name="new-detection-way" value="0"><span data-i18n="29003"></span></label>
+                        <label class="radio-inline"><input type="radio" name="new-detection-way" value="1"><span data-i18n="29004"></span></label>
+                    </div>
+                </div>
+                <div class="form-item clearfix">
+                    <label class="control-label"><span data-i18n="29014"></span>：</label>
+                    <div class="form-con">
+                        <div class="select-box" id="NozzleList">
+                            <div class="select-title"><span></span><i class="fa fa-chevron-down"></i></div>
+                            <ul class="select-con"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item clearfix">
+                    <label class="control-label"><span data-i18n="10061"></span>：</label>
+                    <div class="form-con">
+                        <input type="text" class="input-date ui-datepicker-trigger" name="CheckDate">
+                    </div>
+                </div>
+                <div class="form-item clearfix">
+                    <label class="control-label"><span data-i18n="29019"></span>：</label>
+                    <div class="form-con">
+                        <div class="select-box" id="NozzleStatusList">
+                            <div class="select-title"><span></span><i class="fa fa-chevron-down"></i></div>
+                            <ul class="select-con"></ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="form-list" style="display: block;">
+                    <li class="form-item clearfix">
+                        <label class="control-label"><span data-i18n="29015"></span>：</label>
+                        <div class="form-con">
+                            <input type="text" class="input-date ui-datepicker-trigger" name="ExpireDate">
+                        </div>
+                    </li>
+                    <li class="form-item clearfix">
+                        <label class="control-label label-lines"><span data-i18n="10062"></span>：<br>（%） </label>
+                        <div class="form-con">
+                            <input type="text" class="input-box" name="Variance">
+                        </div>
+                    </li>
+                    <li class="form-item clearfix">
+                        <label class="control-label label-lines"><span data-i18n="29016"></span>：<br>（%） </label>
+                        <div class="form-con">
+                            <input type="text" class="input-box" name="RepeatVariance">
+                        </div>
+                    </li>
+                    <li class="form-item line-auto clearfix">
+                        <label class="control-label text-hide"><span data-i18n="29026"></span></label>
+                        <div class="form-con">
+                            <label class="checkbox-inline"><input type="checkbox" name="NozzleAdjusted"><span data-i18n="29017"></span></label>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="form-list">
+                    <li class="form-item clearfix">
+                        <label class="control-label"><span data-i18n="29021"></span>：</label>
+                        <div class="form-con">
+                            <input type="text" class="input-box" name="NozzleValue">
+                        </div>
+                    </li>
+                    <li class="form-item clearfix">
+                        <label class="control-label label-lines"><span data-i18n="29022"></span>：<br><i class="measure-volume">（L）</i> </label>
+                        <div class="form-con">
+                            <input type="text" class="input-box" name="StdContValue">
+                        </div>
+                    </li>
+                    <li class="form-item clearfix">
+                        <label class="control-label"><span data-i18n="29027"></span>：</label>
+                        <div class="form-con">
+                            <div class="select-box" id="MeasureMethodList">
+                                <div class="select-title"><span></span><i class="fa fa-chevron-down"></i></div>
+                                <ul class="select-con"></ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="form-item clearfix">
+                        <label class="control-label label-lines"><span data-i18n="20006"></span>：<br></label>
+                        <div class="form-con">
+                            <input type="text" class="input-box" name="MeasureRemark">
+                        </div>
+                    </li>
+                </ul>
+                <div class="btn-group clearfix">
+                    <a href="javascript:;" class="btn btn-save pull-left"><span data-i18n="09903"></span></a>
+                    <a href="javascript:;" class="btn btn-cancel pull-left"><span data-i18n="09904"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/nozzle.js"></script>
+

@@ -1,0 +1,93 @@
+﻿.sensor-nodata-block
+{    
+    height: 200px;
+    line-height: 200px;
+    color: #555;
+    font-size: 18px;
+    text-align: center;
+}
+#leak-sensor-overview-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+    #leak-sensor-overview-block .panel-heading {
+        border-radius: 4px;
+        background: #dedddd;
+    }
+
+.station-overview .sensor-overview-body {
+    font-size: 15px;
+    min-height: 150px;
+}
+
+.sensor-overview-left {
+    width: 30%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 40px 0px;
+}
+
+    .sensor-overview-left img {
+        width: 100px;
+    }
+
+.sensor-overview-right {
+    width: 70%;
+}
+
+    .sensor-overview-right ul {
+        margin-top: 30px;
+    }
+
+    .sensor-overview-right li:not(:last-child) {
+        border-bottom: 1px solid #dedddd;
+    }
+
+    .sensor-overview-right div {
+        float: left;
+        text-align: right;
+        line-height: 40px;
+    }
+
+    .sensor-overview-right .div-title {
+        width: 30%;
+        padding-right: 10px;
+        border-right: 1px solid #dedddd;
+    }
+
+    .sensor-overview-right .div-content {
+        width: 65%;
+    }
+
+.modal {
+    position: fixed;
+}
+
+.station .station-con .control-label {
+    width: 90px;
+}
+
+.leak-tab-sensor .leak-sensor-update-panel {
+    background: white;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+#leak-sensor-overview-page {
+    margin-top: 10px;
+}
+
+    #leak-sensor-overview-page .station-item {
+        width: 33%; 
+    }
+
+#sensor-list-update-time {
+    float: left;
+    line-height: 28px;
+    color: #666;
+    padding: 0px 10px;
+}

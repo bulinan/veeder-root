@@ -1,0 +1,196 @@
+<div class="station-title">
+    <h2><span data-i18n="30001"></span></h2>
+</div>
+<div class="station-con common-con">
+    <div class="condition-list clearfix" id="adjust-variance-query">
+        <div class="form-group">
+            <label><span data-i18n="10004"></span>：</label>
+            <div class="form-control">
+                <input type="text" class="input-date ui-datepicker-trigger" name="BeginDate" data-name="Date" data-title="10004" data-check="required date min">
+            </div>
+        </div>
+        <div class="form-group">
+            <label><span data-i18n="10005"></span>：</label>
+            <div class="form-control">
+                <input type="text" class="input-date ui-datepicker-trigger" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+            </div>
+        </div>
+        <div class="btn-group pull-left">
+            <a href="javascript:;" class="btn btn-default" id="variance-query"><span data-i18n="09901"></span></a>
+        </div>
+        <div class="btn-group pull-right">
+            <a href="javascript:;" class="btn btn-primary init-hide" id="variance-new"><span data-i18n="09915"></span></a>
+        </div>
+    </div>
+    <div class="record-box clearfix">
+        <a href="javascript:;" class="tab-trigger">
+            <span><span data-i18n="09009"></span></span>
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <div class="tab-cont">
+            <div class="pull-left">
+                <a href="javascript:;">10</a>
+                <a href="javascript:;">20</a>
+                <a href="javascript:;">50</a>
+                <a href="javascript:;">75</a>
+                <a href="javascript:;">100</a>
+            </div>
+            <div class="input pull-left">
+                <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+            </div>
+        </div>
+        <input type="hidden">
+    </div>
+    <div class="clear"></div>
+    <table class="table-result" id="adjustedVarianceTable"width="100%" >
+        <thead>
+            <tr>
+                <th><span data-i18n="09008"></span></th>
+                <th class="even"><span data-i18n="09911"></span></th>
+                <th><span data-i18n="09912"></span></th>
+                <th class="even"><span data-i18n="09006"></span></th>
+                <th><span><span data-i18n="30007"></span></span></th>
+                <th class="even"><span><span data-i18n="10002"></span></span></th>
+                <th><span><span data-i18n="10008"></span></span></th>
+                <th class="even"><span><span data-i18n="10012"></span></span></th>
+                <th><span><span data-i18n="30002"></span><i class="measure-volume">（L）</i></span></th>
+                <th class="even"><span><span data-i18n="30003"></span></span></th>
+                <th><span><span data-i18n="30004"></span></span></th>
+                <th class="even"><span><span data-i18n="10063"></span></span></th>
+                <th><span><span data-i18n="10046"></span></span></th>
+                <th class="even"><span><span data-i18n="10013"></span></span></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<!--添加调整损益-->
+<div class="modal modal-variance" id="modal-addVariance">
+    <div class="modal-dialog modal-dialog-lg">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="30005"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <ul class="main-content">
+                <li class="clearfix">
+                    <div class="form-item">
+                        <label class="control-label"><span data-i18n="10002"></span>：</label>
+                        <div class="form-con">
+                            <div class="select-box" id="tankList">
+                                <div class="select-title"><span></span><i class="fa fa-chevron-down"></i></div>
+                                <ul class="select-con"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item form-last">
+                        <label class="control-label" data-i18n-title="10012"><span class="must must-forward">*</span><span data-i18n="10012"></span>：</label>
+                        <div class="form-con">
+                            <input type="text" class="input-date ui-datetimepicker-trigger" name="VarianceTime">
+                        </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="form-item">
+                        <label class="control-label" data-i18n-title="30002"><span class="must must-forward">*</span><span data-i18n="30002"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-con">
+                            <input type="text" class="input-box input-variance digital-control" name="Variance">
+                        </div>
+                    </div>
+                    <div class="form-item form-last">
+                        <label class="control-label"><span data-i18n="30003"></span>：</label>
+                        <div class="form-con">
+                            <div class="select-box" id="varianceTypeList">
+                                <div class="select-title variance-type"><span></span><i class="fa fa-chevron-down"></i></div>
+                                <ul class="select-con"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="form-item form-last">
+                        <label class="control-label"><span data-i18n="30004"></span>：</label>
+                        <div class="form-con">
+                            <input type="text" class="input-box input-reason" name="VarianceReason">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group clearfix">
+                        <a href="javascript:;" class="btn btn-save pull-left"><span data-i18n="09903"></span></a>
+                        <a href="javascript:;" class="btn btn-cancel pull-left"><span data-i18n="09904"></span></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--修改调整损益-->
+<div class="modal modal-variance" id="modal-editVariance">
+    <div class="modal-dialog modal-dialog-lg">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="30006"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" name="Avid">
+            <input type="hidden" name="Gsid">
+            <ul class="main-content">
+                <li class="clearfix">
+                    <div class="form-item">
+                        <label class="control-label"><span data-i18n="10002"></span>：</label>
+                        <div class="form-con">
+                            <div class="select-box" id="tankList02">
+                                <div class="select-title"><span></span><i class="fa fa-chevron-down"></i></div>
+                                <ul class="select-con"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item form-last">
+                        <label class="control-label" data-i18n-title="10012"><span class="must must-forward">*</span><span data-i18n="10012"></span>：</label>
+                        <div class="form-con">
+                            <input type="text" class="input-date ui-datetimepicker-trigger" name="VarianceTime">
+                        </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="form-item">
+                        <label class="control-label" data-i18n-title="30002"><span class="must must-forward">*</span><span data-i18n="30002"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-con">
+                            <input type="text" class="input-box input-variance digital-control" name="Variance">
+                        </div>
+                    </div>
+                    <div class="form-item form-last">
+                        <label class="control-label"><span data-i18n="30003"></span>：</label>
+                        <div class="form-con">
+                            <div class="select-box" id="varianceTypeList02">
+                                <div class="select-title variance-type"><span></span><i class="fa fa-chevron-down"></i></div>
+                                <ul class="select-con"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="form-item form-last">
+                        <label class="control-label"><span data-i18n="30004"></span>：</label>
+                        <div class="form-con">
+                            <input type="text" class="input-box input-reason" name="VarianceReason">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group clearfix">
+                        <a href="javascript:;" class="btn btn-save pull-left"><span data-i18n="09903"></span></a>
+                        <a href="javascript:;" class="btn btn-cancel pull-left"><span data-i18n="09904"></span></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="statics/js/adjustedVariance.js"></script>
+
+
+
+
+

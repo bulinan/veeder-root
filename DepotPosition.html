@@ -1,0 +1,154 @@
+<div class="inner station">
+    <div class="col-lg-12">
+        <div class="station-title">
+            <h2><span data-i18n="18011"></span></h2>
+        </div>
+        <div class="station-con common-con condition-none">
+            <div class="condition-list">
+                <div class="btn-group btn-group-none clearfix">
+                    <a href="javascript:;" class="btn btn-default pull-left" id="depot-add"><span data-i18n="18002"></span></a>
+                </div>
+            </div>
+            <div class="record-box clearfix">
+                <a href="javascript:;" class="tab-trigger">
+                    <span><span data-i18n="09009"></span></span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <div class="tab-cont">
+                    <div class="pull-left">
+                        <a href="javascript:;">10</a>
+                        <a href="javascript:;">20</a>
+                        <a href="javascript:;">50</a>
+                        <a href="javascript:;">75</a>
+                        <a href="javascript:;">100</a>
+                    </div>
+                    <div class="input pull-left">
+                        <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+                    </div>
+                </div>
+                <input type="hidden">
+            </div>
+            <div class="clear"></div>
+            <table class="table-result" id="depotPosition" width="100%">
+                <thead>
+                    <tr>
+                        <th><span><span data-i18n="18003"></span></span></th>
+                        <th class="even"><span><span data-i18n="18004"></span></span></th>
+                        <th><span><span data-i18n="10008"></span></span></th>
+                        <th class="even"><span><span data-i18n="18005"></span></span></th>
+                        <th><span><span data-i18n="18006"></span></span></th>
+                        <th class="even"><span><span data-i18n="18007"></span></span></th>
+                        <th><span><span data-i18n="18008"></span>（%）</span></th>
+                        <th class="even"><span><span data-i18n="10062"></span>（%）</span></th>
+                        <th><span><span data-i18n="10061"></span></span></th>
+                        <th class="even"><span><span data-i18n="18009"></span></span></th>
+                        <th><span data-i18n="18010"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+                </tbody>
+            </table>
+            <div class="block-loading"></div>
+        </div>
+    </div>
+    <!--增加鹤位-->
+    <div class="modal modal-depot" id="modal-depotAdd">
+        <div class="modal-dialog modal-dialog-lg">
+            <div class="modal-header">
+                <h4 class="modal-title"><span data-i18n="18002"></span></h4>
+                <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="main-content">
+                    <div id="depot-add-form">
+                        <div class="form-item clearfix">
+                            <label class="control-label"><span data-i18n="18003"></span>：</label>
+                            <div class="form-con">
+                                <div class="select-box" id="OilDepotList" data-select="SupplierID">
+                                    <div class="select-title form-control-inner"><span></span><i class="fa fa-chevron-down"></i></div>
+                                    <ul class="select-con"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item clearfix">
+                            <label class="control-label"><span data-i18n="10008"></span>：</label>
+                            <div class="form-con">
+                                <div class="select-box" id="ProductList" data-select="OtID">
+                                    <div class="select-title form-control-inner"><span></span><i class="fa fa-chevron-down"></i></div>
+                                    <ul class="select-con"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item clearfix">
+                            <label class="control-label"><span data-i18n="18004"></span>：</label>
+                            <div class="form-con"><input type="text" class="input-box form-control-inner" name="dpDes" data-check="required" data-title="18004"><span class="must must-backward">*</span></div>
+                        </div>
+                        <div class="btn-group clearfix">
+                            <a href="javascript:;" class="btn btn-save pull-left" id="depot-add-save"><span data-i18n="09903"></span></a>
+                            <a href="javascript:;" class="btn btn-cancel pull-left"><span data-i18n="09904"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--鹤位管理-->
+    <div class="modal modal-depot" id="modal-depotManage">
+        <div class="modal-dialog modal-dialog-lg">
+            <div class="modal-header">
+                <h4 class="modal-title"><span data-i18n="18011"></span></h4>
+                <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="main-content">
+                    <div id="depot-manage-form">
+                        <div class="input-hidden init-hide"><input type="hidden" name="positionID" data-substitute="Positionid"></div>
+                        <div class="form-item clearfix">
+                            <label class="control-label"><span data-i18n="18005"></span>：</label>
+                            <div class="form-con"><input type="text" class="input-box form-control-inner" name="meterType" data-substitute="MeterType" data-check="required" data-title="18005"><span class="must must-backward">*</span></div>
+                        </div>
+                        <div class="form-item clearfix">
+                            <label class="control-label"><span data-i18n="18006"></span>：</label>
+                            <div class="form-con"><input type="text" class="input-box form-control-inner" name="meterModel" data-substitute="MeterModel" data-check="required" data-title="18006"><span class="must must-backward">*</span></div>
+                        </div>
+                        <div class="form-item clearfix">
+                            <label class="control-label"><span data-i18n="18007"></span>：</label>
+                            <div class="form-con"><input type="text" class="input-box form-control-inner" name="manufactureNum" data-substitute="ManufactureNum" data-check="required" data-title="18007"><span class="must must-backward">*</span></div>
+                        </div>
+                        <div class="form-item clearfix">
+                            <label class="control-label label-lines"><span data-i18n="18008"></span>：<br>（%）</label>
+                            <div class="form-con"><input type="text" class="input-box form-control-inner" name="accuracy" data-substitute="Accuracy" data-check="required regular" data-type="number" data-round="2" data-title="18008"><span class="must must-backward">*</span></div>
+                        </div>
+                        <div class="form-item clearfix">
+                            <label class="control-label label-lines"><span data-i18n="10062"></span>：<br>（%）</label>
+                            <div class="form-con"><input type="text" class="input-box form-control-inner" name="variant" data-substitute="Variant" data-check="required regular" data-type="number" data-round="2" data-title="10062"><span class="must must-backward">*</span></div>
+                        </div>
+                        <div class="form-item clearfix">
+                            <label class="control-label"><span data-i18n="10061"></span>：</label>
+                            <div class="form-con"><input type="text" class="input-date ui-datetimepicker-trigger form-control-inner" name="calibrationDate" data-substitute="CalibrationDate" data-check="required" data-title="10061"><span class="must must-backward">*</span></div>
+                        </div>
+                        <div class="form-item clearfix">
+                            <label class="control-label"><span data-i18n="18009"></span>：</label>
+                            <div class="form-con"><input type="text" class="input-box form-control-inner" name="certificateNum" data-substitute="CertificateNum" data-check="required" data-title="18009"><span class="must must-backward">*</span></div>
+                        </div>
+                        <div class="form-item clearfix">
+                            <label class="control-label"><span data-i18n="20006"></span>：</label>
+                            <div class="form-con"><input type="text" class="input-box form-control-inner" name="remark" data-substitute="Remark"></div>
+                        </div>
+                        <div class="btn-group clearfix">
+                            <a href="javascript:;" class="btn btn-save pull-left" id="depot-manage-save"><span data-i18n="09903"></span></a>
+                            <a href="javascript:;" class="btn btn-cancel pull-left"><span data-i18n="09904"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/depot.js"></script>
+
+
+
+
+

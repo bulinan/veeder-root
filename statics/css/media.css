@@ -1,0 +1,258 @@
+@media (max-width: 1800px){
+    .station .station-panel .col-info-2 .form-control-inner{
+        width: 458px;
+    }
+    .station .station-panel .form-btn-group .form-control-inner{
+        width: 370px;
+    }
+}
+@media (max-width: 1600px){
+    .col-lg-8{width: 64%;}
+    .col-lg-4{width: 36%;}
+    .index .panel-ranking{
+        padding-left: 30px;
+    }
+    .sidebar-menu .main-menu a{
+        padding: 15px 0; /*20px 0*/
+    }
+    .index .panel-warning .list a{
+        padding: 0 25px;
+    }
+    /*station*/
+    /*.station .station-nav a{
+        padding: 0 14px;  
+    }*/
+    .station .common-con .input-date{
+        width: 200px;
+    }
+    .station .panel-station .item-inner{
+        padding: 0 5px;
+    }
+    /*报警*/
+    .station .condition-list{
+        padding: 30px 20px 8px;
+    }
+    .station .condition-list .form-group{
+        margin-right: 10px;
+    }
+    .station .station-con .btn-group-inner{
+        margin-left: 10px;
+    }
+    .station .station-con .type-btn-group{
+        right: 20px;
+    }
+    /*delivery*/
+    .station .delivery-station-con .form-group{
+        margin-right: 25px;
+    }
+    .station .delivery-station-con .input-box, 
+    .station .delivery-station-con .select-title{
+        width: 280px;
+    }
+    .station .delivery-station-con .input-date{
+        width: 106px;
+    }
+    .station .delivery-station-con .form-ratio .input-box{
+        width: 75px;
+    }
+    .station .station-con .btn-export{
+        margin-left: 98px;
+    }
+    /*油枪*/
+    .station .legend-demo span{
+        width: 120px;
+    }
+    /*配送单输入*/
+    .station .station-panel .col-info-2 .control-label{
+        width: 30%;
+    }
+    .station .station-panel .col-info-2 .form-control{
+        width: 70%;
+    }
+    .station .station-panel .col-info-2 .form-control-inner{
+        width: 348px;
+    }
+    .station .station-panel .form-btn-group .form-control-inner{
+        width: 260px;
+    }
+    .station .station-panel .col-info-3 .control-label{
+        width: 48%;
+    }
+    .station .station-panel .col-info-3 .form-control{
+        width: 52%;
+    }
+}
+@media (max-width: 1400px){
+    .sidebar-menu .main-menu a{
+        padding: 8px 0; /*15px 0*/
+    }
+    /*index*/
+    .main-box .company-dashboard .tab-title a{
+        padding: 0 20px 15px;
+    }
+    .index .table-common em{
+        font-size: 40px;
+    }
+    .index .panel-inventory .stock-title-2 .select-title span{
+        font-size: 40px;
+    }
+    .index .panel-overview .stock-title-3 .select-title span{
+        font-size: 24px;
+    }
+    .index .table-common span{
+        font-size: 30px;
+    }
+    .main-box .panel-warning .count a{
+        font-size: 42px;
+    }
+    .index .panel-warning .list a{
+        padding: 0 18px;
+    }
+    .main-box .panel-warning .list span{
+        font-size: 26px;
+    }
+    .main-box table, .main-box .table{
+        font-size: 12px;
+    }
+    /*station*/
+    /*.station .station-nav a{
+        padding: 0 10px; 
+    }
+    .station .station-nav a.index{
+        padding: 0 15px 0 10px;
+    }
+    .station .station-nav-en a{
+        font-size: 12px;
+        padding: 0 8px;
+    }*/
+    .station .panel-station .item-heading h2{
+        font-size: 30px;
+    }
+    .station .panel-station .item-heading small{
+        font-size: 14px;
+    }
+    .station .panel-station .item-plan li{
+        font-size: 12px;
+    }
+    /*variance*/
+    .variance .rank-list .panel{
+        margin: 20px 10px 0;
+    }
+    .variance .rank-list td.last a{
+        padding-right: 20px;
+    }
+    /*报警*/
+    .station .station-con .input-box, 
+    .station .station-con .select-title,
+    .station .station-con .input-date{
+        width: 158px;
+    }
+    .station .historyInventory-box .input-date{
+        width: 138px;
+    }
+    .station .station-con .input-small-con{
+        width: 118px;
+    }   
+    .station .label-none .form-control .select-title{
+        width: 172px;
+    }
+    /*delivery*/
+    .station .delivery-station-con .form-group{
+        margin-right: 18px;
+    }
+    .station .delivery-station-con .input-box, 
+    .station .delivery-station-con .select-title{
+        width: 248px;
+    }
+    .station .delivery-station-con .input-date{
+        width: 95px;
+    }
+    .station .delivery-station-con .form-ratio .input-box{
+        width: 58px;
+    }
+    .station .delivery-station-con .line{
+        width: 20px;
+    }
+    /*油枪*/
+    .station .legend-demo li.last p{
+        margin-left: 12%;
+    }
+    .station .inner-filter .input-box{
+        width: 200px;
+    }
+    .company-inventory .item-chart-series{
+        font-size: 12px;
+    }
+    .station .panel-station .item-chart-group{
+        width: 160px;
+        height: 160px;
+    }
+    .station-overview .station-inner{
+        padding: 35px 3%;
+    }
+    .station-overview .status-list{
+        width: 30%;
+    }
+    .station-overview .tank-scroll{
+        width: 58%;
+    }
+    .station .station-con .btn-fixed{
+        width: 60px;
+    }
+    .station .shiftBir-box .type-form-group{
+        margin-right: 140px;
+    }
+    .station .shiftBir-box .input-date{
+        width: 108px;
+    }
+    .station .shiftBir-box .select-title{
+        width: 128px;
+    }
+}
+@media (max-width: 1280px){
+    /*.container{
+       overflow: auto;
+    }*/
+    /*.station .station-nav a{
+        padding: 0 9px;
+    }*/
+    /*油枪*/
+    .station .legend-demo li.last p{
+        margin-left: 10%;
+    }
+    .station-overview .item-chart{
+        width: 70px;
+        height: 70px;
+    }
+}
+@media (max-height: 640px){
+    .sidebar-menu .main-menu a{
+        font-size: 12px;
+        padding: 8px 0;
+    }
+     .sidebar-menu .main-menu i{
+        font-size: 20px;
+    }
+    .sidebar-menu .main-menu .view i{
+        background-size: 80% 80%;
+    }
+}
+@media (max-height: 540px){
+    .sidebar-menu .logo{
+        height: 70px;
+    }
+    .sidebar-menu .main-menu{
+        padding: 0;
+    }
+    .sidebar-menu .main-menu a{
+        padding: 5px 0;
+    }
+}
+@media (max-height: 480px){
+    .sidebar-menu .main-menu span{
+        margin-top: 2px;
+    }
+    .sidebar-menu .main-menu i{
+        font-size: 18px;
+    }
+}

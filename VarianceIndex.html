@@ -1,0 +1,126 @@
+<div class="inner variance">
+    <div class="col-lg-12 variance-detail">
+        <div class="inner-heading clearfix">
+            <div class="inner-title pull-left">
+                <h2 class="pull-left"><span data-i18n="00004"></span></h2>
+                <div class="inner-title-tab pull-left">
+                    <a href="javascript:;" data-name="OperationVariance" class="active"><span data-i18n="13011"></span></a>
+                    <a href="javascript:;" data-name="SalesVariance"><span data-i18n="13012"></span></a>
+                    <a href="javascript:;" data-name="DeliveryVariance"><span data-i18n="13013"></span></a>
+                </div>
+            </div>
+            <div class="inner-options pull-right">
+                <div class="btn-group clearfix">
+                    <a href="javascript:;" class="btn" data-name="VtVariance" data-type="Vt">VT</a>
+                    <a href="javascript:;" class="btn active" data-name="V20Variance" data-type="V20">V20</a>
+                    <a href="javascript:;" class="update"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="panel company-variance">
+            <div class="panel-heading clearfix">
+                <div class="panel-title pull-left">
+                    <div class="tab-year clearfix" id="tab-year">
+                        <a href="javascript:;" data-name="beforeLastYear"></a>
+                        <a href="javascript:;" data-name="lastYear"></a>
+                        <a href="javascript:;" data-name="year"></a>
+                    </div>
+                </div>
+                <div class="panel-options pull-right">
+                    <span class="text"></span>
+                    <!--暂时去掉-->
+                    <!--<a class="delete" href="javascript:;"><i class="fa fa-times-circle"></i><span data-i18n="09006"></span></a>-->
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="chart-con" >
+                    <div class="variance-rate-bar" id="variance-rate-bar"></div>
+                </div>
+                <div class="chart-con" id="variance-ratio-table">
+                    <div class="chart-heading">
+                        <h3 class="title"></h3>
+                        <h4 class="subtitle"></h4>
+                    </div>
+                    <div class="chart-body"></div>
+                    <!--动态生成table-->
+                </div>
+            </div>
+            <div class="block-loading"></div>
+        </div>
+        <div class="panel" id="sub-commpany-variance">
+            <div class="panel-heading">
+                <div class="panel-title" id="subcompany-query-form">
+                    <div class="form-group pull-left">
+                        <label><span data-i18n="10004"></span></label>
+                        <div class="form-control">
+                            <input type="text" class="input-date ui-datepicker-trigger" name="BeginDate" data-name="Date" data-title="10004" data-check="required date min">
+                        </div>
+                    </div>
+                    <div class="form-group pull-left">
+                        <label><span data-i18n="10005"></span></label>
+                        <div class="form-control">
+                            <input type="text" class="input-date ui-datepicker-trigger" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                        </div>
+                        <a href="javascript:;" class="btn pull-left"><span data-i18n="09901"></span></a>
+                    </div>
+                </div>
+                <!--<div class="panel-options pull-right">
+                    <a class="delete" href="javascript:;"><i class="fa fa-times-circle"></i><span data-i18n="09006"></span></a>
+                </div>-->
+            </div>
+            <div class="panel-body">
+                <div class="chart-con" id="product-variance-table">
+                    <div class="chart-heading">
+                        <h3 class="title"></h3>
+                        <h4 class="subtitle"></h4>
+                        <p class="date"></p>
+                    </div>
+                    <table class="table" width="100%">
+                        <thead>
+                            <tr><th class="first"><span data-i18n="10008"></span></th><th><span data-i18n="13014"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="13015"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="13016"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="13017"></span></th><th><span data-i18n="13018"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="13019"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="10904"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="10905"></span>(%)</th></tr>
+                        </thead>
+                        <tfoot class="tfoot">
+                            <tr><td><span data-i18n="10009"></span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        </tfoot>
+                    </table>
+                    <table class="table init-hide" width="100%">
+                        <thead>
+                            <tr><th class="first"><span data-i18n="10008"></span></th><th><span data-i18n="13020"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="13021"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="10904"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="10905"></span>(%)</th></tr>
+                        </thead>
+                        <tfoot class="tfoot">
+                            <tr><td><span data-i18n="10009"></span></td><td></td><td></td><td></td><td></td></tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="chart-con" id="sub-company-chart">
+                    <div class="block-center-wrap">
+                        <div class="select-box select_subCompany_change select-callback" id="companyList">
+                            <div class="select-title"><span><span data-i18n="10101"></span></span><i class="fa fa-angle-down"></i></div>
+                            <ul class="select-con"></ul>
+                        </div>
+                    </div>
+                    <div id="variance-subcompany-bar" class="variance-subcompany-bar"></div>
+                </div>
+                <div class="chart-con" id="sub-company-table">
+                    <div class="chart-heading">
+                        <h3 class="title"></h3>
+                        <h4 class="subtitle"></h4>
+                        <p class="date"></p>
+                    </div>
+                    <table class="table" width="100%">
+                        <thead>
+                            <tr><th><span data-i18n="10105"></span></th><th class="first"><span data-i18n="10008"></span></th><th><span data-i18n="13014"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="13015"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="13016"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="13017"></span></th><th><span data-i18n="13018"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="13019"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="10904"></span><i class="measure-volume">（L）</i> </th><th><span data-i18n="10905"></span>(%)</th></tr>
+                        </thead>
+                    </table>
+                    <table class="table init-hide" width="100%">
+                        <thead>
+                            <tr><th><span data-i18n="10105"></span></th><th class="first"><span data-i18n="10008"></span></th><th><span data-i18n="13020"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="13021"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="10904"></span><i class="measure-volume">（L）</i> </th><th><span data-i18n="10905"></span>(%)</th></tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="block-loading"></div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/variance.js"></script>

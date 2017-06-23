@@ -1,0 +1,177 @@
+<div class="station-title">
+    <h2><span data-i18n="23001"></span></h2>
+</div>
+<div class="station-con delivery-report-con">
+    <div class="condition-list" id="delivery-report-query">
+        <div class="block-loading"></div>
+        <div class="clearfix">
+            <div class="form-group form-date">
+                <label><span data-i18n="10004"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-date ui-datepicker-trigger pull-left" name="BeginDate" data-name="Date" data-title="10004" data-check="required date min">
+                </div>
+            </div>
+            <div class="form-group">
+                <label><span data-i18n="10005"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-date ui-datepicker-trigger pull-left" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                </div>
+            </div>
+            <div class="form-group">
+                <label><span data-i18n="10008"></span>：</label>
+                <div class="form-control">
+                    <div class="select-box" id="ProductList">
+                        <div class="select-title" data-value="" name="ProductID"><span><span data-i18n="09001"></span></span><a href="javascript:;" class="icon"></a></div>
+                        <ul class="select-con">
+                            <li data-value=""><span data-i18n="09001"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-ratio">
+                <label><span data-i18n="10027"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-box input-small-con" name="DeliveryFrom" data-check="number min" data-name="DeliveryRange" data-title="10027">&emsp;~&emsp;<input type="text" class="input-box input-small-con" name="DeliveryTo" data-name="DeliveryRange" data-check="number max" data-title="10027">
+                </div>
+                <div class="btn-group-inner">
+                    <a href="javascript:;" class="btn btn-default pull-left" id="report-query"><span data-i18n="09901"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="record-box clearfix">
+        <a href="javascript:;" class="tab-trigger">
+            <span><span data-i18n="09009"></span></span>
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <div class="tab-cont">
+            <div class="pull-left">
+                <a href="javascript:;">10</a>
+                <a href="javascript:;">20</a>
+                <a href="javascript:;">50</a>
+                <a href="javascript:;">75</a>
+                <a href="javascript:;">100</a>
+            </div>
+            <div class="input pull-left">
+                <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+            </div>
+        </div>
+        <input type="hidden">
+    </div>
+    <div class="clear"></div>
+    <table class="table-result table-result-common" width="100%" style="display: none;">
+        <thead>
+            <tr>
+                <th><span><span data-i18n="10001"></span></span></th>
+                <th class="even"><span><span data-i18n="10002"></span></span></th>
+                <th><span><span data-i18n="10008"></span></span></th>
+                <th class="even"><span><span data-i18n="23002"></span></span></th>
+                <th><span><span data-i18n="23003"></span></span></th>
+                <th class="even"><span><span data-i18n="10041"></span><i class="measure-volume">（L）</i></span></th>
+                <th><span><span data-i18n="10042"></span><i class="measure-volume">（L）</i></span></th>
+                <th class="even"><span><span data-i18n="23004"></span><i class="measure-volume">（L）</i></span></th>
+                <th><span><span data-i18n="10027"></span><i class="measure-volume">（L）</i></span></th>
+                <th class="even"><span><span data-i18n="23005"></span></span></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<!--进油报告详情页-->
+<div class="modal modal-ticket" id="modal-delivery-report-detail">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="23006"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <ul class="list list-col-2 clearfix" id="delivery-report-detail-list">
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="10001"></span>：</label>
+                        <div class="form-control" data-key="StationName"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="10026"></span>：</label>
+                        <div class="form-control" data-key="TankNo"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="10045"></span>：</label>
+                        <div class="form-control" data-key="DeliveryDate" data-type="date" data-format="YYYY-mm-dd"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="10046"></span>：</label>
+                        <div class="form-control" data-key="ReportDateTime" data-type="date"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="10004"></span>：</label>
+                        <div class="form-control" data-key="BeginDate" data-type="date"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="10005"></span>：</label>
+                        <div class="form-control" data-key="EndDate" data-type="date"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23007"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control" data-key="StartInventory" data-type="number"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23008"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control" data-key="EndInventory" data-type="number"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23009"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control" data-key="StartV20Inventory" data-type="number"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23010"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control" data-key="EndV20Inventory" data-type="number"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23011"></span><i class="measure-height">（mm）</i>：</label>
+                        <div class="form-control" data-key="StartWaterHeight" data-type="number" data-round="2"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23012"></span><i class="measure-height">（mm）</i>：</label>
+                        <div class="form-control" data-key="EndWaterHeight" data-type="number" data-round="2"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="10047"></span>（C）：</label>
+                        <div class="form-control" data-key="StartTemperature" data-type="number" data-round="2"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="10048"></span>（C）：</label>
+                        <div class="form-control" data-key="EndTemperature" data-type="number" data-round="2"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23013"></span><i class="measure-height">（mm）</i>：</label>
+                        <div class="form-control" data-key="StartFuelHeight" data-type="number" data-round="2"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23014"></span><i class="measure-height">（mm）</i>：</label>
+                        <div class="form-control" data-key="EndFuelHeight" data-type="number" data-round="2"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23015"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control" data-key="DeliveryVolume" data-type="number"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23016"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control" data-key="DeliveryV20Volume" data-type="number"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23017"></span>：</label>
+                        <div class="form-control" data-key="TicketID"></div>
+                    </li>
+                    <li class="form-group clearfix">
+                        <label class="control-label"><span data-i18n="23018"></span>：</label>
+                        <div class="form-control" data-key="AdjustFlag"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/report.js"></script>
+
+
+

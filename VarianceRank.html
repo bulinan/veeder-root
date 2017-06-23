@@ -1,0 +1,165 @@
+<div class="inner variance">
+    <div class="col-lg-12">
+        <div class="inner-heading clearfix">
+            <div class="inner-title pull-left">
+                <h2><span data-i18n="00011"></span></h2>
+            </div>
+            <div class="inner-options pull-right" id="variance-rank-form">
+                <div class="form-group pull-left">
+                    <label><span data-i18n="10004"></span></label>
+                    <div class="form-control">
+                        <input type="text" name="BeginDate" class="input-date ui-datepicker-trigger" data-curdate="first" data-name="Date" data-title="10004" data-check="required date min">
+                    </div>
+                </div>
+                <div class="form-group pull-left">
+                    <label><span data-i18n="10005"></span></label>
+                    <div class="form-control">
+                        <input type="text" name="EndDate" class="input-date ui-datepicker-trigger" data-curdate="last" data-name="Date" data-title="10005" data-check="required date max">
+                    </div>
+                </div>
+                <div class="form-group pull-left" id="product-list">
+                    <label><span data-i18n="10008"></span></label>
+                    <div class="form-control">
+                        <!--<div class="select-box select_product_change select-callback" data-select="ProductID">-->
+                        <div class="select-box" data-select="ProductID">
+                            <div class="select-title" data-value=""><span><span data-i18n="09001"></span></span><i class="fa fa-angle-down"></i></div>
+                            <ul class="select-con"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group pull-left clearfix">
+                    <a href="javascript:;" data-type="Vt" class="btn">VT</a>
+                    <a href="javascript:;" data-type="V20" class="btn active">V20</a>
+                    <a href="javascript:;" class="update"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                </div>
+            </div>
+        </div>
+        <ul class="rank-list clearfix">
+            <li class="rank-item">
+                <div class="panel panel-variance-rank" data-mark="OperationVariance">
+                    <div class="panel-heading panel-heading01">
+                        <div class="panel-title"><span><span data-i18n="13004"></span></span><span><i class="fa fa-sort"></i><i class="fa"></i></span></div>
+                        <!--<div class="panel-options pull-right">
+                            <div class="select-box pull-left">
+                                <div class="select-title"><span>分公司</span><i class="fa fa-angle-down"></i></div>
+                                <ul class="select-con">
+                                    <li>分公司1</li>
+                                    <li>分公司2</li>
+                                </ul>
+                            </div>
+                            <a class="setting" href="javascript:;"><i class="fa fa-gear"></i><span data-i18n="09907"></span></a>
+                            <a class="delete" href="javascript:;"><i class="fa fa-times-circle"></i><span data-i18n="09006"></span></a>
+                        </div>-->
+                        
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" width="100%" id="OperationVariance">
+                            <thead>
+                                <tr><th>序号</th><th>油站名</th><th>损溢量</th><th></th></tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="block-loading"></div>
+                </div>
+            </li>
+            <li class="rank-item">
+                <div class="panel panel-variance-rank" data-mark="SalesVariance">
+                    <div class="panel-heading panel-heading01">
+                        <div class="panel-title"><span><span data-i18n="13005"></span></span><span><i class="fa fa-sort"></i><i class="fa"></i></span></div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" width="100%" id="SalesVariance">
+                            <thead>
+                                <tr><th>序号</th><th>油站名</th><th>损溢量</th><th></th></tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="block-loading"></div>
+                </div>
+            </li>
+            <li class="rank-item">
+                <div class="panel panel-variance-rank" data-mark="DeliveryVariance">
+                    <div class="panel-heading panel-heading01">
+                        <div class="panel-title"><span><span data-i18n="13006"></span></span><span><i class="fa fa-sort"></i><i class="fa"></i></span></div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" width="100%" id="DeliveryVariance">
+                            <thead>
+                                <tr><th>序号</th><th>油站名</th><th>损溢量</th><th></th></tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="block-loading"></div>
+                </div>
+            </li>
+            <li class="rank-item">
+                <div class="panel panel-variance02-rank" data-mark="DriverVariance">
+                    <div class="panel-heading panel-heading01">
+                        <div class="panel-title"><span><span data-i18n="13007"></span></span><span><i class="fa fa-sort"></i><i class="fa"></i></span></div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" width="100%">
+                            <thead>
+                                <tr><th>序号</th><th>油站名</th><th>损溢量</th><th></th></tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="block-loading"></div>
+                </div>
+            </li>
+            <li class="rank-item">
+                <div class="panel panel-variance02-rank" data-mark="VehicleVariance">
+                    <div class="panel-heading panel-heading01">
+                        <div class="panel-title"><span><span data-i18n="13008"></span></span><span><i class="fa fa-sort"></i><i class="fa"></i></span></div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" width="100%">
+                            <thead>
+                                <tr><th>序号</th><th>油站名</th><th>损溢量</th><th></th></tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="block-loading"></div>
+                </div>
+            </li>
+            <li class="rank-item">
+                <div class="panel panel-variance02-rank" data-mark="TankVariance">
+                    <div class="panel-heading panel-heading01">
+                        <div class="panel-title"><span><span data-i18n="13009"></span></span><span><i class="fa fa-sort"></i><i class="fa"></i></span></div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" width="100%">
+                            <thead>
+                                <tr><th>序号</th><th>油站名</th><th>损溢量</th><th></th></tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="block-loading"></div>
+                </div>
+            </li>
+            <li class="rank-item">
+                <div class="panel panel-variance02-rank" data-mark="LittleDeliveryVariance">
+                    <div class="panel-heading panel-heading01">
+                        <div class="panel-title"><span><span data-i18n="13010"></span></span><span><i class="fa fa-sort"></i><i class="fa"></i></span></div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" width="100%">
+                            <thead>
+                                <tr><th>序号</th><th>油站名</th><th>损溢量</th><th></th></tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="block-loading"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="statics/js/varianceRank.js"></script>

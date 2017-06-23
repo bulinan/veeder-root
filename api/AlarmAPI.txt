@@ -1,0 +1,226 @@
+
+告警API
+
+1. 告警摘要信息
+API: ~/vrapi/Alarm/AlarmSummary
+请求格式(post):
+{
+	"SessionID" : "",
+	"LastRequestTime" : "78372",
+	"CompanyID" : "",
+	"UserID" : "",
+	"StationID" : "",
+	"Refresh" : true/false
+}
+CompanyID,UserID,StationID三者选其一
+Refresh 是否手动更新，没有需求不传该字段
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"UpdateTime" : "82382",
+	"AlarmCount" : "39",
+	"AlarmLevels" :
+	[
+		{
+			"ID" : "1",
+			"Level" : "Severe",
+			"Display" : "I18N name",
+			"Count" : "34"
+		},
+		{
+			"ID" : "1",
+			"Level" : "Normal",
+			"Display" : "I18N name",
+			"Count" : "34"
+		},
+		{
+			"ID" : "1",
+			"Level" : "Alert",
+			"Display" : "I18N name",
+			"Count" : "34"
+		}
+	],
+	"AlarmTypes" :
+	[
+		{
+			"ID" : "1",
+			"Type" : "Safety",
+			"Display" : "I18N name",
+			"Count" : "21"
+		},
+		{
+			"ID" : "1",
+			"Type" : "Delivery",
+			"Display" : "I18N name",
+			"Count" : "21"
+		},
+		{
+			"ID" : "1",
+			"Type" : "Variance",
+			"Display" : "I18N name",
+			"Count" : "21"
+		},
+		{
+			"ID" : "1",
+			"Type" : "Device",
+			"Display" : "I18N name",
+			"Count" : "21"
+		}
+	]
+}
+
+2. 告警查询所需基础数据
+API: ~/vrapi/Alarm/AlarmQueryMeta
+请求格式(post):
+{
+	"SessionID" : ""
+}
+
+应答200:
+{
+    "Result" : "Success",
+	"Description" : "",
+	"UpdateTime" : "82382",
+    "AlarmCategoryList" :
+    [
+        {
+            "AlarmCategory" : "1",
+            "DisplayName" : "库存报警",
+            "AlarmTypeList" :
+            [
+                {
+                    "AlarmCode" : "0008",
+                    "DisplayName" : "探棒高度无效"
+                },
+                ...
+            ]            
+        },
+        ...
+    ],
+    "AlarmLevelList" :
+    [
+        {
+            "AlarmLevel" : "0",
+            "DisplayName" : "底层报警"
+        },
+        ...
+    ],
+    "AlarmStateList" :
+    [
+        {
+            "AlarmState" : "0",
+            "DisplayName" : "激活"
+        },
+        ...
+    ],
+    "AlarmProcessTypeList" :
+    [
+        {
+            "AlarmProcessType" : "0",
+            "DisplayName" : "未指定"
+        },
+        ...
+    ]
+}
+
+3. 告警详细信息
+API: ~/vrapi/Alarm/AlarmList
+请求格式(post):
+{
+	"SessionID" : "",
+	"LastRequestTime" : "78372",
+    "CompanyID" : "0",  //默认为0，查询公司下面所有油站
+	"StationID" : "0",   //默认为0，查询所有油站
+	"UserID" : "",
+	"BeginDate" : "2016-01-01",
+	"EndDate" : "2016-01-05",
+	"AlarmCategory" : "",
+	"AlarmCode" : "",
+	"UserName" : "",
+	"AlarmState" : "",
+	"AlarmLevel" : "",
+	"AlarmProcessState" : "-1",    
+	"OnlyNotice" : "",  //0 unchecked,1 checked
+	"PageInfo" :
+	{
+		"RecordOffset" : "1",			// 请求的开始记录编号
+		"RequestCount" : "100"			// 请求记录数量
+	}
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"PageInfo" :
+	{
+		"TotalCount" : "632",			// 只有请求中的RecordOffset=1时才有此字段
+		"RecordOffset" : "1",			// 应答中的开始记录编号
+		"ResponseCount" : "100"			// 应答中的记录数量
+	},
+	"AlarmList" :
+	[
+		{
+			"AlarmNote" : "",
+			"AlarmCategoryDesc" : "",
+			"GsShortName" : "",
+			"DateTime" : "",
+			"DeviceID" : "",
+			"AlarmName" : "",
+			"AlarmStateDesc" : "",
+			"AlarmLevelDesc" : "",
+			"Remark" : "",
+			"UserName" : "",
+			"RedirectPage" : ""
+		}
+		...
+	]
+}
+
+4. 告警编辑基础数据
+API: ~/vrapi/Alarm/EditAlarmMeta
+请求格式(post):
+{
+	"SessionID" : "",
+	"TrackID" : "",
+	"AlarmID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"UpdateTime" : "82382",
+	"UserName" : "Admin",
+	"ProcessType" : 0,
+	"Remark" : "",
+	"RelieveEnable" : true/false,
+	"RelieveChecked" : true/false,
+	"AlarmProcessTypeList" :
+    [
+        {
+            "AlarmProcessType" : "0",
+            "DisplayName" : "未指定"
+        },
+        ...
+    ]
+}
+
+5. 告警编辑
+API: ~/vrapi/Alarm/EditAlarm
+请求格式(post):
+{
+	"SessionID" : "",
+	"AlarmID" : "",
+	"ProcessType" : "",
+	"AlarmState" : 1/0,
+	"Remark" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+}

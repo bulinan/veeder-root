@@ -1,0 +1,131 @@
+<div class="station-title">
+    <h2><span data-i18n="24001"></span></h2>
+</div>
+<div class="station-con shiftBir-box">
+    <!--进销存报告-->
+    <div class="panel panel-report">
+        <div class="panel-body">
+            <div class="condition-list">
+                <div class="block-loading"></div>
+                <div class="type-form-group clearfix" id="shiftBIR-report-form">
+                    <div class="form-group clearfix">
+                        <label><span data-i18n="10008"></span>：</label>
+                        <div class="form-control">
+                            <div class="select-box" id="product-list" data-select="ProductName">
+                                <div class="select-title"><span></span><a href="javascript:;" class="icon"></a></div>
+                                <ul class="select-con"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label><span data-i18n="10049"></span>：</label>
+                        <div class="form-control">
+                            <div class="select-box select_birType select-callback" id="birType-list" data-select="BIRType">
+                                <div class="select-title" data-value="1"><span><span data-i18n="24002"></span></span><a href="javascript:;" class="icon"></a></div>
+                                <ul class="select-con">
+                                    <li data-value="1"><span data-i18n="24002"></span></li>
+                                    <li data-value="2"><span data-i18n="24003"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label><span data-i18n="10004"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-date ui-datepicker-trigger pull-left" name="BeginDate" data-curdate="first" data-name="Date" data-title="10004" data-check="required date min">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label><span data-i18n="10005"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-date ui-datepicker-trigger pull-left" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                        </div>
+                        <div class="btn-group-inner">
+                            <a href="javascript:;" class="btn btn-default" id="shiftBir-query"><span data-i18n="09901"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="type-btn-group" id="typeBut">
+                    <a href="javascript:;" class="btn btn-hollow btn-fixed pull-left" data-type="Vt" data-name="VtBIR">VT</a>
+                    <a href="javascript:;" class="btn btn-default btn-fixed btn-last pull-left" data-type="V20" data-name="V20BIR">V20</a>
+                </div>
+            </div>
+            <div class="chart-con" style="display: none;">
+                <div class="chart-heading">
+                    <h3 class="title"><span data-i18n="24004"></span></h3>
+                    <h4 class="subtitle"></h4>
+                    <p class="date"></p>
+                </div>
+                <table class="table-result table-processing-show" id="shiftBIRReportTable">
+                    <thead>
+                        <tr>
+                            <th rowspan="2"><span data-i18n="10002"></span></th>
+                            <th rowspan="2"><span data-i18n="10008"></span></th>
+                            <th rowspan="2"><span data-i18n="10019"></span></th>
+                            <th rowspan="2"><span data-i18n="10020"></span></th>
+                            <th><span data-i18n="10050"></span></th>
+                            <th colspan="3"><span data-i18n="10017"></span></th>
+                            <th colspan="6"><span data-i18n="10018"></span></th>
+                        </tr>
+                        <tr>
+                            <th><span data-i18n="10021"></span><i class="measure-volume">（L）</i></th>
+                            <th><span data-i18n="10051"></span><i class="measure-volume">（L）</i></th>
+                            <th><span data-i18n="10022"></span><i class="measure-volume">（L）</i></th>
+                            <th><span data-i18n="10023"></span><i class="measure-volume">（L）</i></th>
+                            <th><span data-i18n="10024"></span><i class="measure-volume">（L）</i></th>
+                            <th><span data-i18n="10021"></span><i class="measure-volume">（L）</i></th>
+                            <th><span data-i18n="10014"></span><i class="measure-height">（mm）</i></th>
+                            <th><span data-i18n="10003"></span><i class="measure-temperature">（℃）</i></th>
+                            <th><span data-i18n="10904"></span><i class="measure-volume">（L）</i></th>
+                            <th><span data-i18n="10905"></span>（%）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="loading"><td colspan="7"><span data-i18n="10801"></span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--小时BIR-->
+    <div class="panel panel-hourlyBIR" style="display: none;">
+        <div class="panel-body">
+            <div class="chart-con chart-gap-con">
+                <div id="hourly-bir-chart"></div>
+            </div>
+            <div class="chart-con">
+                <div class="chart-heading">
+                    <h3 class="title"><span data-i18n="24005"></span></h3>
+                    <h4 class="subtitle"></h4>
+                    <p class="date"></p>
+                </div>
+                <table class="table-result">
+                    <thead>
+                        <tr>
+                            <th><span data-i18n="10002"></span></th>
+                            <th><span data-i18n="20005"></span></th>
+                            <th><span data-i18n="10004"></span></th>
+                            <th><span data-i18n="10005"></span></th>
+                            <th><span data-i18n="24006"></span></th>
+                            <th><span data-i18n="10051"></span></th>
+                            <th><span data-i18n="10022"></span></th>
+                            <th><span data-i18n="24007"></span></th>
+                            <th><span data-i18n="24008"></span></th>
+                            <th><span data-i18n="24009"></span></th>
+                            <th><span data-i18n="24010"></span></th>
+                            <th><span data-i18n="24011"></span></th>
+                            <th><span data-i18n="20006"></span></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/shiftBir.js"></script>
+
+
+
+
+
+

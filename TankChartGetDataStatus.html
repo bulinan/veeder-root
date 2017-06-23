@@ -1,0 +1,62 @@
+<!--校罐状态/数据采集-->
+<div class="modal-tankStatus" id="tankChart-getData">
+    <div class="modal-inner-header">
+        <div class="header-title">
+            <h4 class="pull-left"><span data-i18n="15002"></span>：<small><span data-i18n="15004"></span></small></h4>
+            <div class="header-nav pull-left">
+                <a href="javascript:;" id="btn-cancelCalibration"><span data-i18n="15040"></span></a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-inner-body modal-dialog">
+        <!--进油范围-->
+        <section id="oil-range-chart" class="section-con"></section>
+        <!--进油详情-->
+        <section class="section-con">
+            <div id="oil-detail-chart"></div>
+            <div class="plotLine-text" id="plotLine-text"></div>
+        </section>
+        <div id="tankChartDataSuff">
+            <!--校罐数据充足率-->
+            <section class="section-con">
+                <div id="tank-dataRate-chart"></div>
+                <table class="table-result" id="dataRate-table">
+                    <thead>
+                        <tr><th><span data-i18n="15041"></span></th><th><span data-i18n="15042"></span></th><th><span data-i18n="15043"></span></th><th><span data-i18n="15044"></span></th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+            <!--校罐数据充足率历史曲线-->
+            <section class="section-con">
+                <div id="tank-dataHistory-chart"></div>
+                <div class="plotLine-text" id="plotLine-text02"></div>
+            </section>
+        </div>
+        <!--历史报警信息-->
+        <section class="alarm-history section-con">
+            <h5 class="section-title"><span data-i18n="15045"></span></h5>
+            <table class="table-result" id="historyAlarm">
+                <thead>
+                    <tr>
+                        <th><span data-i18n="10059"></span></th>
+                        <th class="even"><span data-i18n="09803"></span></th>
+                        <th><span data-i18n="10011"></span></th>
+                        <th class="even"><span data-i18n="10013"></span></th>
+                        <th><span data-i18n="15026"></span></th>
+                        <th class="even"><span data-i18n="17012"></span></th>
+                        <th><span data-i18n="10058"></span></th>
+                        <th class="even"><span data-i18n="10057"></span></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+        <section class="remark-box section-con">
+            <h5 class="section-title"><span data-i18n="15039"></span></h5>
+            <textarea name="Remark"></textarea>
+        </section>
+        <div class="block-loading"></div>
+    </div>
+</div>
+<script src="statics/js/calibrationStatus.js"></script>

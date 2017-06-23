@@ -1,0 +1,2485 @@
+
+油站相关API
+
+1. 概况信息
+API: ~/vrapi/Station/Summary
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"StationID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"StationName" : "",
+	"Officer" : "abc",
+	"Telephone" : "010-92919238",
+	"Address" : "bbbdddeee",
+	"ActiveAlarmCount" : ""
+}
+
+>> 站级操作栏
+API: ~/vrapi/Station/StationMenu
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : "",
+	"LastRequestTime" : "2016-4-18 15:02:32"
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"UpdateTime" : "2016-4-18 15:06:32",
+	"ActionBarList" :
+	[
+		{
+			"URL" : "1",
+			"DisplayName" : "",
+			"PopupMethod" : "", //页面弹出方式（0.不弹出 1.当前页面 2.浮层 3.新页面）
+			"SN" : 1
+		},
+		...
+	]
+}
+
+2. 库存信息
+API: ~/vrapi/Station/CurrentInventory
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"StationID" : "",
+	"LastRequestTime" : "2016-4-18 15:02:32"
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"UpdateTime" : "2016-4-18 15:06:32",
+	"InventoryUpdateTime" : "2016-4-18 15:06:32",
+	"InventoryList" :
+	[
+		{
+			"TankNo" : "1",
+			"TankLabel" : "",
+			"Product" : "",
+			"Ullage" : "",
+			"Temperature" : "",
+			"FuelHeight" : "",
+			"Inventory" : "",
+			"InventoryV20" : "",
+			"WaterHeight" : "",
+			"WaterVolume" : "",
+			"LastDeliveryVolume" : "",
+			"LastDeliveryTime" : "",
+			"PlanDeliveryVolume" : "",
+			"PlanDeliveryTime" : ""
+		},
+		...
+	]
+	"OperationBarList" :
+	[
+		{
+			"DisplayName" : "",
+			"PopupMethod" : "",  //页面弹出方式（0.不弹出 1.当前页面 2.浮层 3.新页面）
+			"SN" : 1,  //排序
+            "TankUrlList" :
+            [
+                {
+                    "TankID" : "1",
+                    "URL" : "",
+                    "Error" : ""   //如果不为空，alert(Error)，不进行url的弹出
+                },
+                ...
+            ]
+		},
+		...
+	],
+    "CardList" :
+	[
+        {
+            "DisplayName" : "",
+			"AutoExpand" : "",  //是否折叠
+			"ColumnNumber" : "",    //每行显示几列
+			"SN" : "",  //排序
+			"Error" : "",   //如果不为空，直接展示Error，而不用展示下面TankList内容
+            "TankList" :
+            [
+                {
+                    "TankID" : 1,                
+                    "DisplayList" :
+                    [
+                        {
+                            "Name" : "1",
+                            "Value" : "1",
+                            "SN" : 1
+                        },
+                        ...
+                    ]
+                },
+                ...
+            ]
+        }
+	]
+}
+
+3. 昨日进销存
+API: ~/vrapi/Station/LatestBIR
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"StationID" : "",
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"BIRList" :
+	[
+		{
+			"TankNo" : "",
+			"Product" : "",
+			"BeginDate" : "",
+			"EndDate" : "",
+			"StartInventory" : "",
+			"DeliveredVolume" : "",
+			"AdjustedVariance" : "",
+			"SalesVolume" : "",
+			"CalculatedInventory" : "",
+			"EndInventory" : "",
+			"Variance" : "",
+			"VarianceRatio" : ""
+		},
+		...
+	]
+}
+
+4. 历史库存
+API: ~/vrapi/Station/HistoryInventory
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"StationID" : "",
+	"BeginDate" : "",
+	"EndDate" : "",
+	"Product" : "",
+    "UseHourlyInventory" : "0",
+	"PageInfo" :
+	{
+		"RecordOffset" : "1",			// 请求的开始记录编号
+		"RequestCount" : "100"			// 请求记录数量
+	}
+}
+UseHourlyInventory: 1:整点库存；0:非整点库存
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"PageInfo" :
+	{
+		"TotalCount" : "632",			// 只有请求中的RecordOffset=1时才有此字段
+		"RecordOffset" : "1",			// 应答中的开始记录编号
+		"ResponseCount" : "100"			// 应答中的记录数量
+	},
+	"HistoryInventory" :
+	[
+		{
+			"TankLabel" : "",
+			"ProductLabel" : "",
+			"InventoryList" :
+			[
+				{
+					"InventoryDate" : "",
+					"Inventory" : "",
+					"InventoryV20" : "",
+					"Ullage" : "",
+					"FuelHeight" : "",
+					"WaterHeight" : "",
+					"WaterVolume" : "",
+					"Temperature" : ""
+				}
+				...
+			]
+		}
+		...
+	]
+}
+
+5. 小时BIR
+API: ~/vrapi/Station/HourlyBIR
+请求格式(post):
+{
+	"SessionID" : "",    
+    "GsID" : 0,
+    "TankID" : 4,
+    "OpenDateTime" : "2015-04-19 02:02:00",   //统计开始时间
+    "CloseDateTime" : "2015-04-20 02:00:00",   //统计结束时间
+    "BIRType" : 1,
+    "CalcType" : "Vt,V20"
+}
+CalcType可以使用","分隔请求多种类型。
+BIRType：1代表日报，2代表班报
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"BIRList" :
+	{
+		"VtBIR" :
+        [
+            {
+                "TankID" : 4,
+                "Date" : "",   //日期
+                "OpenDateTime" : "02:02",   //开始时间
+                "CloseDateTime" : "02:00",   //结束时间
+                "PreProbeInventory" : 14354,   //期初库存
+                "Delivery" : 0,   //进油
+                "Sales" : 7627,   //销售
+                "CloProbeInventory" : 6705,   //期末库存
+                "BalancingVariance" : 0,   //平衡损溢
+                "AccumulatedVariance" : 6727,   //累计损溢
+                "OriginalVariance" : 0,   //原始损溢
+                "Remark" : -22    //备注
+            },
+            ...
+        ],
+        "V20BIR" :
+        [
+            {
+                与VtBIR相同的结构
+            }
+        ]
+        
+	}
+}
+
+>> 销售损溢
+API: ~/vrapi/Station/ShiftBIRReport
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : 321,
+	"ProductName" : "92#",
+    "BIRType" : 1,
+    "BeginDate" : "2015-04-18",
+    "EndDate" : "2015-04-20",
+    "CalcType" : "Vt,V20"
+}
+CalcType可以使用","分隔请求多种类型。
+BIRType：1代表日报，2代表班报
+ProductName:油品名称
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"params" :
+	{
+		"params" :
+        [
+            {
+                "name" : "aa",
+                "type" : "aa",
+                "necessary" : "aa",
+                "dscp" : "aa""
+            },
+            ...
+        ],
+        "V20BIR" :
+        [
+            {
+                与VtBIR相同的结构
+            }
+        ]
+        
+	}
+}
+OpenDateTime/CloseDateTime如果为0001-01-01 00:00:00，则显示空
+损益率 Variance/Sales，如果Sales为空显示--
+
+6. 测漏管理
+API: ~/vrapi/Station/LeakDetect
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : "",
+	"BeginDate" : "",
+	"EndDate" : "",
+	"PageInfo" :
+	{
+		"RecordOffset" : "1",			// 请求的开始记录编号
+		"RequestCount" : "20"			// 请求记录数量
+	}
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"PageInfo" :
+	{
+		"TotalCount" : "632",			// 只有请求中的RecordOffset=1时才有此字段
+		"RecordOffset" : "1",			// 应答中的开始记录编号
+		"ResponseCount" : "100"			// 应答中的记录数量
+	},
+	"LeakDetectList" :
+	[
+		{
+            "Gsid" : "",
+			"GsName" : "",
+            "Tankid" : "",
+            "TestRate" : "",
+            "Method" : "",
+            "TestStartTime" : "",
+            "Duration" : "",
+            "StartingVolume" : "",
+            "StartingTemp" : "",
+            "EndingTemp" : "",
+            "TestResultDesc" : "",
+            "EndingRate" : "",
+            "Changes" : ""
+		}
+		...
+	]
+}
+
+7. 开启测漏所需基础数据
+API: ~/vrapi/Station/StartLeakDetectMeta
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"TankList" :
+    [
+        {
+            "TankID" : "",
+            "DisplayName" : "",
+            "LeakMethod" : "",
+            [
+                {
+                    "LeakMethod" : "",
+                    "DisplayName" : ""
+                },
+                ...
+            ]
+            ...
+        },
+        ...
+    ]
+}
+
+8. 开启测漏
+API: ~/vrapi/Station/StartLeakDetect
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : "",
+	"TankID" : "",
+	"LeakMethod" : "",    
+	"LeakMethodDisplayName" : "",
+	"BeginDate" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+9. 油枪精度管理
+API: ~/vrapi/Station/NozzleCheck
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : "",
+	"NozzleID" : "",
+	"CheckType" : "",   //0 外部强检;1 内部自检
+	"QueryType" : "",   //0 最近两条;1 按时间区域
+	"BeginDate" : "",   //按时间区域查询时才需要传值
+	"EndDate" : "",
+	"PageInfo" :
+	{
+		"RecordOffset" : "1",			// 请求的开始记录编号
+		"RequestCount" : "20"			// 请求记录数量
+	}
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"PageInfo" :
+	{
+		"TotalCount" : "632",			// 只有请求中的RecordOffset=1时才有此字段
+		"RecordOffset" : "1",			// 应答中的开始记录编号
+		"ResponseCount" : "100"			// 应答中的记录数量
+	},
+    "NozzleList" :
+    [
+        {
+            "NozzleID" : "",
+            "DisplayName" : ""
+        },
+        ...
+    ],
+    "NozzleStatusList" :
+    [
+        {
+            "StatusID" : "",
+            "DisplayName" : ""
+        },
+        ...
+    ],
+    "MeasureMethodList" :
+    [
+        {
+            "MethodID" : "",
+            "DisplayName" : ""
+        },
+        ...
+    ],
+	"NozzleCheckList" :
+	{
+        "StationName" : "",
+        "NozzleTotalCount" : "",
+        "NozzleBelow2Count" : "",
+        "NozzleBelow3Count" : "",
+        "StopNozzleCount" : "",
+        "Detail" :
+        [
+            {
+                "Ncoid" : "",   //外部强检记录号
+                "Ncsid" : "",   //内部自检记录号
+                "TankId" : "",   //罐号
+                "Nozzleid" : "",   //油枪ID
+                "NozzleDesc" : "",   //油枪号
+                "CheckDate" : "2016-06-01",   //检定时间"、"自检时间
+                "ExpireDate" : "2016-06-01",   //有效时间
+                "Variance" : "",   //示值误差(%)
+                "RepeatVariance" : "",   //重复性(%)
+                "NozzleAdjusted" : "",   //油枪调整
+                "NozzleValue" : "",   //加油枪示值
+                "StdContValue" : "",   //标准量器示值(L)
+                "RelativeVar" : "",   //单次测量相对误差(%)
+                "Userid" : "",   //操作人
+                "MeasureMethod" : "",   //检定方法
+                "MeasureRemark" : "",   //备注
+                "NozzleStatus" : "",   //油枪状态
+            },
+            ...
+        ]
+	}
+}
+
+10. 油枪精度增删改
+API: ~/vrapi/Station/NozzleCheckEdit
+请求格式(post):
+{
+	"SessionID" : "",
+	"Operation" : "",   //Add、Delete、Update
+	"CheckType" : "",   //0 外部强检;1 内部自检
+    "Ncoid" : "",   //外部强检记录号
+    "Ncsid" : "",   //内部自检记录号
+    "Nozzleid" : "",   //油枪ID
+    "NozzleDesc" : "",   //油枪号
+    "CheckDate" : "",   //检定时间"、"自检时间
+    "ExpireDate" : "",   //有效时间
+    "Variance" : "",   //示值误差(%)
+    "RepeatVariance" : "",   //重复性(%)
+    "NozzleAdjusted" : "",   //油枪调整
+    "NozzleValue" : "",   //加油枪示值
+    "StdContValue" : "",   //标准量器示值(L)
+    "MeasureMethod" : "",   //检定方法
+    "MeasureRemark" : "",   //备注
+    "NozzleStatus" : ""   //油枪状态
+}
+Variance、RepeatVariance、NozzleValue、StdContValue：如果为空，传0或者不传这个字段
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+11. 罐表管理-油罐概览
+API: ~/vrapi/Station/TankChartSummary
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "TankList" :
+    [
+        {
+            "TankID" : "",
+            "DisplayName" : ""
+        },
+        ...
+    ],
+    "TankChartList" :    
+    [
+        {
+            "TankId": 1,
+            "OilName": "92#",
+            "TankChartType": 2,
+            "TankChartTypeDesc": "20点",
+            "ShowTime": "2015-06-24 09:55:20",
+            "ChartId": 21765,
+            "IsAmendment": true,
+            "IsDownLoad": true
+        },
+        ...
+    ],
+}
+IsDownLoad:true/false 是否显示创建罐表链接
+IsAmendment:true/false 是否显示修正罐表链接
+
+12. 罐表管理-油罐历史详情
+API: ~/vrapi/Station/HistoryTankChart
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : "",
+	"TankID" : "",
+	"StartDate" : "",
+	"EndDate" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "TankChartList" :    
+    [
+        {
+            "TankChartTypeDesc": "20点",
+            "ShowTime": "2015-06-24 09:55:20",
+            "ChartId": 21765,
+            "IsDownLoad": true
+        },
+        ...
+    ],
+}
+IsDownLoad:true/false 是否显示下发链接
+
+13. 罐表管理-查看罐表
+API: ~/vrapi/Station/ViewTankChart
+请求格式(post):
+{
+	"SessionID" : "",
+    "MethodType" : "",    //1：查看全罐表；2：查看具体的罐表
+	"ChartID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"Diameter" : "",    //直径(mm)
+    "ChartType" : "",    //类型
+    "Capacity" : "",    //容积(L)
+	"Tilt" : "",    //倾斜(mm)
+    "Offset" : "",    //偏移(mm)
+    "EndShape" : "",    //形状因子
+    "HeightVolPair" :    
+    [
+        {
+            "height1": "",
+            "volume1": "",
+            "height2": "",
+            "volume2": "",
+            "height3": "",
+            "volume3": "",
+            "height4": "",
+            "volume4": ""
+        },
+        ...
+    ]
+}
+MethodType=1，没有ChartType、Capacity、Tilt、Offset、EndShape
+MethodType=2，当没有HeightVolPair时，显示ChartType、Diameter、Capacity、Tilt、Offset、EndShape，否则显示ChartType、Diameter、HeightVolPair
+
+14. 罐表管理-二十点、多点罐表类型
+API: ~/vrapi/Station/TankChartType
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "ChartTypeList" :    
+    [
+        {
+            "ChartType": "",
+            "DisplayName": ""
+        },
+        ...
+    ],
+}
+
+15. 罐表管理-上传多点罐表
+API: ~/vrapi/Station/UploadMultiPointTankChart
+请求格式(post):
+{
+	"SessionID" : "",
+    "HeightVolPair" :    
+    [
+        {
+            "height": "",
+            "volume": ""
+        },
+        ...
+    ]
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"Diameter" : "",
+    "HeightVolPair" :    
+    [
+        {
+            "height1": "",
+            "volume1": "",
+            "height2": "",
+            "volume2": "",
+            "height3": "",
+            "volume3": "",
+            "height4": "",
+            "volume4": ""
+        },
+        ...
+    ]
+}
+
+16. 罐表管理-创建罐表
+API: ~/vrapi/Station/CreateTankChart
+请求格式(post):
+{
+	"SessionID" : "",
+    "MethodType" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "ChartType" : "",
+    "Diameter" : "",
+    "Volume" : "",
+    "HeightVolPair" :    
+    [
+        {
+            "height": "",
+            "volume": ""
+        },
+        ...
+    ]
+}
+MethodType:1 手工创建罐表;2 修正罐表后创建罐表
+MethodType=1 && ChartType为20点传Volume,用,分割20个值
+其他传HeightVolPair
+要求输入的必须为数字
+
+应答200:
+{
+	"Result" : "Success",
+	"ChartID" : "",
+	"Description" : ""
+}
+保存成功之后需要执行罐表下发的相关API
+
+17. 罐表管理-获取ATG指令
+API: ~/vrapi/Station/GetAtgOperation
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "ChartID" : "",
+    "ChartCalibrationID" : "",
+    "ModifiedValue" : "",
+    "ChartCalibrationID" : "",
+    "MethodType" : ""   //1/3/4/5/6/7/8 create/start/cancel/down/stop/password/TempratureCompensation
+}
+StationID/TankID 全需要
+ChartID MethodType=1
+ChartCalibrationID MethodType=4
+ModifiedValue MethodType=7/8
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "AtgOperation" :
+    [
+        {
+            "": ""
+        },
+        ...
+    ]
+}
+返回的AtgOperation在之后的调用中会一直用到
+
+18. 罐表管理-初始化ATG指令执行
+API: ~/vrapi/Station/InitAtgOperationExecution
+请求格式(post):
+{
+	"SessionID" : "",
+    "AtgOperation" :
+    [
+        {
+            "": ""
+        },
+        ...
+    ]
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "AtgOperation" :
+    [
+        {
+            "": ""
+        },
+        ...
+    ],
+	"FirstOpIndexToExec" : "",
+	"ExecutedOperation" : ""
+}
+输出ExecutedOperation
+
+19. 罐表管理-ATG操作指令回调事件
+API: ~/vrapi/Station/AtgOperationCallback
+请求格式(post):
+{
+	"SessionID" : "",
+    "MethodType" : "",
+    "CallbackType" : "",
+    "OpIndexToExec" : "",
+    "AtgOperation" :
+    [
+        {
+            "": ""
+        },
+        ...
+    ]
+}
+MethodType 1/2/3/4/5/6/7/8 create/start/cancel/down/stop/password/TempratureCompensation
+"CallbackType" //1/2/3/4: 1 OnBeforeAtgOpExecution;2 OnAtgOpExecuting;3 OnAtgOpComplete;4 OnAtgOpExecError;
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ErrorMessage" : "",
+    "AtgOperation" :
+    [
+        {
+            "": ""
+        },
+        ...
+    ]
+}
+
+20. 罐表管理-创建操作指令
+API: ~/vrapi/Station/CreateAndStartAtgOperation
+请求格式(post):
+{
+	"SessionID" : "",
+    "AtgOperation" :
+    {
+        "": ""
+    }
+}
+如果当前AtgOperation.IsResumeMode==true，不调用该API
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"CmdID" : ""
+}
+CmdID赋值给AtgOperation
+
+21. 罐表管理-查询操作指令的执行状态
+API: ~/vrapi/Station/GetAtgOperationExecutionState
+请求格式(post):
+{
+	"SessionID" : "",
+    "AtgOperation" :
+    {
+        "": ""
+    }
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ResultType" : "",
+	"ExecState" : ""
+}
+ResultType:Success 执行OnAtgOpComplete回执函数;Fail/NotExist/Timeout 输出Description，同时执行OnAtgOpExecError回执函数
+ExecState更新当前AtgOperation.ExecState
+
+22. 罐表管理-ATG操作执行完成
+API: ~/vrapi/Station/AtgOperationFinishEvent
+请求格式(post):
+{
+	"SessionID" : "",
+    "MethodType" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "ChartID" : "",
+    "IsDeleteNewChartWhenOpExecFail" : "",   //true/false
+    "AtgOperation" :
+    [
+        {
+            "": ""
+        },
+        ...
+    ],
+    "PreCheckResultStr" : "",
+    "Remark" : "",
+    "ChartCalibrationID" : "",
+    "VerifyMethod" : ""
+}
+MethodType 1/2/3/4/5/6/7/8 create/start/cancel/down/stop/password/TempratureCompensation
+AtgOperation 都需要
+StationID、TankID、ChartID、IsDeleteNewChartWhenOpExecFail MethodType=1
+StationID、TankID、PreCheckResultStr、Remark MethodType=3
+StationID、TankID、ChartCalibrationID MethodType=4
+StationID、TankID、VerifyMethod MethodType=6
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"IsExecSuccess" : "",   //true/false
+    "AtgOperation" :
+    [
+        {
+            "": ""
+        },
+        ...
+    ]
+}
+
+23. 罐表管理-修正罐表
+API: ~/vrapi/Station/TankChartAmendment
+请求格式(post):
+{
+	"SessionID" : "",
+    "ChartID" : "",
+    "VolumeCorrection" : ""
+}
+VolumeCorrection 修正值，-0.01<=修正值<=0.01
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"Diameter" : "",
+	"HeightVolPair" :    
+    [
+        {
+            "height1": "",
+            "volume1": "",
+            "height2": "",
+            "volume2": "",
+            "height3": "",
+            "volume3": "",
+            "height4": "",
+            "volume4": ""
+        },
+        ...
+    ],
+	"HeightVolPairForCreate" :    
+    [
+        {
+            "Height": 130,
+            "Volume": 341
+        },
+        ...
+    ]
+}
+修正前数据根据~/vrapi/Station/ViewTankChart这个API获取，type=2 的情况
+下发罐表只有点击生成罐表后才可点击
+下发罐表的操作和创建罐表类似，都需要先创建罐表，然后下发罐表。此处创建罐表调用API时MethodType=2
+
+24. 调整损溢所需基础数据
+API: ~/vrapi/Station/AdjustedVarianceMeta
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : ""
+}
+StationID 如果不是油站为0 ，否则为油站ID
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"TankList" :    
+    [
+        {
+            "TankID" : "",
+            "DisplayName" : ""
+        },
+        ...
+    ],
+	"VarianceTypeList" :    
+    [
+        {
+            "VarianceType" : "",
+            "DisplayName" : ""
+        },
+        ...
+    ],
+	"StateList" :    
+    [
+        {
+            "State" : "",
+            "DisplayName" : ""
+        },
+        ...
+    ]
+}
+只有油站才有TankList
+
+25. 调整损溢查询
+API: ~/vrapi/Station/AdjustedVariance
+请求格式(post):
+{
+	"SessionID" : "",
+    "CompanyID" : "0",  //默认为0，查询用户公司下面所有油站
+	"StationID" : "0",   //默认为0，查询所有油站
+	"UserID" : "",   //没有不传
+    "BeginDate" : "",
+    "EndDate" : "",
+	"PageInfo" :
+	{
+		"RecordOffset" : "1",			// 请求的开始记录编号
+		"RequestCount" : "20"			// 请求记录数量
+	}
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"PageInfo" :
+	{
+		"TotalCount" : "632",			// 只有请求中的RecordOffset=1时才有此字段
+		"RecordOffset" : "1",			// 应答中的开始记录编号
+		"ResponseCount" : "20"			// 应答中的记录数量
+	},
+	"AdjustedVarianceList" :    
+    [
+        {
+            "Avid": "",
+            "Gsid": "",
+            "GsName": "",
+            "Tankid": "",
+            "OtID": "",
+            "OtName": "",
+            "VarianceTime": "",
+            "Variance": "",
+            "VarType": "",
+            "VarName": "",
+            "VarReason": "",
+            "Userid": "",
+            "RecTime": "",
+            "State": "",
+            "EditEnable": true/false,
+            "ConfirmEnable": true/false,
+            "ReturnEnable": true/false,
+            "DeleteEnable": true/false
+        },
+        ...
+    ]
+}
+Variance显示保留一位小数
+
+26. 调整损溢修改
+API: ~/vrapi/Station/EditAdjustedVariance
+请求格式(post):
+{
+	"SessionID" : "",
+	"MethodType" : "",   //Add、Update、Confirm、Return、Delete
+	"AdjustedVariance" :
+    {
+        "Avid": "",
+        "Gsid": "",
+        "Tankid": "",
+        "OtID": "",
+        "VarianceTime": "",
+        "Variance": "",
+        "VarType": "",
+        "VarReason": "",
+        "Userid": "",
+        "RecTime": "",
+        "State": "",
+        "StateName": ""
+    }
+}
+Add:Gsid、Tankid、VarType、VarReason、Variance、VarianceTime
+Update:Avid、Gsid、Tankid、VarType、VarReason、Variance、VarianceTime
+Confirm、Return:Avid
+Delete:Avid、Gsid、Tankid、VarianceTime
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+27. 油库鹤位维护基础数据
+API: ~/vrapi/Station/DepotPositionMeta
+请求格式(post):
+{
+	"SessionID" : "",
+    "CompanyID" : "",
+    "UserID" : ""   //没有不传
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "OilDepotList"  :
+    [
+        {
+            "OilDepot" : "1",
+            "DisplayName" : "测试"
+        },
+        ...
+    ],    
+    "ProductList" :
+    [
+        {
+            "ProductID" : "1",
+            "DisplayName" : "92#"
+        },
+        ...
+    ]
+}
+
+28. 油库鹤位维护
+API: ~/vrapi/Station/DepotPosition
+请求格式(post):
+{
+	"SessionID" : "",
+    "CompanyID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "DepotPositionList" :
+    [
+        {
+            "positionID" : 148,
+            "spShortName" : "测试",
+            "dpDes" : "1",
+            "otShortName" : "0#",
+            "meterType" : "a",
+            "meterModel" : "a",
+            "manufactureNum" : "a",
+            "accuracy" : 1,
+            "variant" : 1,
+            "calibrationDate" : "2016-06-22 00:00:00",
+            "certificateNum" : "a",
+            "remark" : "test"
+        },
+        ...
+    ]
+}
+
+添加油库鹤位
+API:~/vrapi/Station/AddDepotPosition
+请求格式(post):
+{
+	"SessionID" : "",
+    "SupplierID" : "",
+	"OtID":1,
+	"dpDes":""
+}
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+油库鹤位管理
+API:~/vrapi/Station/DepotPositionManagement
+请求格式(post):
+{
+	"SessionID" : "",
+	"Positionid":1,
+    "Accuracy" : "",
+	"CertificateNum":1,
+	"ManufactureNum":"",
+	"MeterModel":"",
+	"MeterType":"",
+	"Remark":"",
+	"Variant":"",
+	"CalibrationDate":""
+}
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+油站鹤位历史查询[第首次加载调用]
+API:~/vrapi/Station/QueryLastDpCalibrationRecord
+请求格式(post):
+{
+	"SessionID" : "",
+	"CompanyID":1//公司ID  必传，不支持油站级，只支持公司级
+}
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+	"DepotPositionList":
+	 [	 {
+			   "spShortName":"93#",
+				"dpDes":"",
+				"otShortName":"",
+				"accuracy":"",
+				"calibrationDate":"",
+				"certificateNum":"",
+				"manufactureNum":"",
+				"meterModel":"",
+				"meterType":"",
+				"remark":"",
+				"variant":""
+			},
+		{……}
+	 ]	
+}
+
+油站鹤位历史查询[根据时间范围查询调用]
+API:~/vrapi/Station/QueryDpCalibrationRecord
+请求格式(post):
+{
+	"SessionID" : "",
+	"CompanyID":1,//必传，不支持油站级，只支持公司级
+    "BeginDate" : "",//必传
+    "EndDate" : ""//必传
+}
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+	"DepotPositionList":
+	 [	{
+			"spShortName":"93#",
+			[
+				"dpDes":"",
+				"otShortName":"",
+				"accuracy":"",
+				"calibrationDate":"",
+				"certificateNum":"",
+				"manufactureNum":"",
+				"meterModel":"",
+				"meterType":"",
+				"remark":"",
+				"variant":""
+			]
+		},
+		{……}
+	 ]	
+}
+
+
+
+>> 校罐管理所需基础数据
+API: ~/vrapi/Station/ChartCalibrationMeta
+请求格式(post):
+{
+	"SessionID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "CalibrationAlarmList"  :
+    [
+        {
+            "AlarmID" : "1",
+            "DisplayName" : "测试"
+        },
+        ...
+    ],    
+    "CalibrationStatusList" :
+    [
+        {
+            "StatusID" : "0",
+            "DisplayName" : "初始罐表"
+        },
+        ...
+    ],    
+    "VerifyMethodList" :
+    [
+        {
+            "MethodID" : "0",
+            "DisplayName" : "未指定"
+        },
+        ...
+    ]
+}
+校罐状态：默认选中前四个
+
+>> 校罐管理
+API: ~/vrapi/Station/ChartCalibration
+请求格式(post):
+{
+	"SessionID" : "",
+    "CompanyID" : "",
+    "StationID" : "",
+    "StationQueryText" : "",
+    "CalibrationAlarm" : "",
+    "CalibrationStatus" : ""    //,分割
+}
+如果是公司,StationID= -1 ；如果是油站，CompanyID= -1
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"EnableBatchStarting" : true/false,    //设置批量校罐是否可以点击
+    "ChartCalibrationList"  :
+    [
+        {
+            "CcID" : "150818093136001",
+            "GsID" : 90196,
+            "NewChartID" : 67403,
+            "CcStatus" : 5,
+            "VerifyMethod" : 0,
+            "GsShortName" : "AutoHuanDao",   //油站
+            "TankID" : 1,
+            "CCMethodName" : "液位仪校罐",   //校罐方式    
+            "VerifyTime" : "0001-01-01 00:00:00",   //验收时间
+            "VerifyPerson" : "",
+            "StartTime" : "2016-01-05 09:31:37",
+            "SubmitTime" : "0001-01-01 00:00:00",
+            "AlarmSeverity"  : 3,
+            "CcStatusDisplayName" : "初始罐表"
+        },
+        ...
+    ]
+}
+VerifyTime、StartTime、SubmitTime：如果时间为0001-01-01 00:00:00， 则显示N/A
+校罐状态、验收方法：分别根据CcStatus、VerifyMethod来显示CalibrationStatusList、VerifyMethodList的DisplayName
+CsStatus=0 时查看按钮不可编辑
+
+>> 通过校罐ID获取罐表ID
+API: ~/vrapi/Station/GetChartCalibrationChartId
+请求格式(post):
+{
+	"SessionID" : "",
+    "ChartCalibrationID" : "",
+    "MethodType" : ""   
+}
+MeterType=1 获取当前罐表ID
+MeterType=2 获取新罐表ID
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ChartID" : ""
+}
+
+>> 校罐报警查询
+API: ~/vrapi/Station/ChartCalibrationAlarm
+请求格式(post):
+{
+	"SessionID" : "",
+    "ChartCalibrationID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "ChartCalibrationAlarmList"  :
+    [
+        {
+            "AlarmDescription" : "离线时间2015-09-16 22:30:00",
+            "AlarmLevel" : "设备报警",
+            "GsShortName" : "AutoHuanDao",
+            "AlarmDateTime" : "2016-02-04 01:30:00",
+            "TankID" : 0,
+            "AlarmTypeName" : "液位仪离线",
+            "AlarmStateName" : "消除",
+            "AlarmSeverity" : "严重报警",
+            "AlarmRemark" : null,
+            "AlarmHandlePeople" : null,
+            "Alarmid" : 150011,
+            "TrackID" : 194069
+        },
+        ...
+    ]
+}
+
+>> 未开启校罐/验收完成/默认
+API: ~/vrapi/Station/TankChartFinishedStatus
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",    
+    "CalibrationMethodList" :
+    [
+        {
+            "MethodID" : "2",
+            "DisplayName" : "液位仪校罐",
+            "Message" : "不支持的校罐方式",
+            "Visible" : true/false,   
+            "TankList" :
+            [
+                {
+                    "TankID" : "1",
+                    "Message" : "开启中",
+                    "Enable" : true/false
+                },
+                ...
+            ],
+            "FailReason" :
+            [
+                "",
+                ""
+            ],
+            "UnmatchedCondition" :
+            [
+                "",
+                ""
+            ],
+            "AverageSalesList"  :
+            [
+                {
+                    "ID" : "1",
+                    "DisplayName" : "小于1000"
+                },
+                ...
+            ]
+        },
+        ...
+    ]
+}
+Visible=false 显示Message
+FailReason不为空，显示“上次校罐失败原因”下
+UnmatchedCondition不为空，显示在“由于以下条件不满足，部分油罐无法开启液位仪校罐”下，并且“ 校罐开启前置条件选择”不可编辑，否则不显示“由于以下条件不满足，无法开启液位仪校罐”
+
+>> 数据采集状态
+API: ~/vrapi/Station/TankChartGetDataStatus
+请求格式(post):
+{
+	"SessionID" : "",
+    "ChartCalibrationID" : "",
+    "StationID" : "",
+    "TankID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "OilInletRangeList" :
+    [
+        {
+            "Per" : "15",
+            "Num" : "1"
+        },
+        ...
+        {
+            "Per" : "100",
+            "Num" : "1"
+        }
+    ],
+    "DeliveryHeight" :
+    {
+        "Top" : "",
+        "Bottom" : "",
+        "DeliveryInfoList" :
+        [
+            {
+                "EndDateTime" : "15",
+                "StartHeight" : "1",    //进油前罐存
+                "EndHeight" : "1"   //进油
+            }
+        ]
+    },
+    "TankChartDataSuff" :
+    {
+        "IsShow" : true/false,
+        "ACDataSuffList" :
+        [
+            {
+                "CurSuff" : "15",
+                "ReqSuff" : "1",
+                "DaysLeft" : "1",
+                "ImproveAct" : "1"
+            }
+        ],
+        "ACDataSuffHistogramList" :
+        [
+            {
+                "BinMaxHeight" : "15",
+                "CountsInBin" : "1",
+                "HeightSrc" : "1"
+            }
+        ],
+        "ACDataSuffHistoryList" :
+        [
+            {
+                "ChartID" : "15",
+                "CurSuff" : "1",
+                "ReportDate" : "1"
+            }
+        ]
+    },
+    "ChartCalibrationAlarmList"  :
+    [
+        {
+            "AlarmDateTime" : "2016-02-04 01:30:00",
+            "AlarmTypeName" : "液位仪离线",
+            "AlarmDescription" : "离线时间2015-09-16 22:30:00",
+            "AlarmStateName" : "消除",
+            "AlarmSeverity" : "严重报警",
+            "AlarmRemark" : null,
+            "AlarmHandlePeople" : null,
+            "AlarmHandleDateTime" : "2015-09-16 22:30:00"
+        },
+        ...
+    ]
+}
+
+>> 新建罐表状态
+API: ~/vrapi/Station/TankChartNewChartStatus
+请求格式(post):
+{
+	"SessionID" : "",
+    "ChartCalibrationID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "NewChartID" : "",
+    "BeginDate" : "",
+    "EndDate" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"IsShowManualRecommend" : true/false,
+    "TankChartBirList" :
+    [
+        {
+            "ShowBirType" : "日报",
+            "CloseDateTime" : "2016-01-02 07:38:00",
+            "Delivery" : 0,
+            "Sales" : 8664.5,
+            "PreProbeHeight" : 1506,
+            "CloProbeHeight" : 977,
+            "PreProbeInventory" : 20053.8,
+            "CloProbeInventory" : 11383.9,
+            "Variance" : -5.4,
+            "VarianceRate" : -0.06,
+            "EvalBegInventory" : 19882.38,
+            "EvalEndInventory" : 11217.65,
+            "EvalVariance" : -0.23,
+            "EvalVarianceRate" : 0,    
+            "CloseShortDateTime" : "2016-01-02"
+        },
+        ...
+    ],
+    "OilInletRangeList" :
+    [
+        {
+            "Per" : "15",
+            "Num" : "1"
+        },
+        ...
+        {
+            "Per" : "100",
+            "Num" : "1"
+        }
+    ],
+    "DeliveryHeight" :
+    {
+        "Top" : "",
+        "Bottom" : "",
+        "DeliveryInfoList" :
+        [
+            {
+                "EndDateTime" : "15",
+                "StartHeight" : "1",
+                "EndHeight" : "1"
+            }
+        ]
+    },
+    "TankChartDataSuff" :
+    {
+        "IsShow" : true/false,
+        "ACDataSuffList" :
+        [
+            {
+                "CurSuff" : "15",
+                "ReqSuff" : "1",
+                "DaysLeft" : "1",
+                "ImproveAct" : "1"
+            }
+        ],
+        "ACDataSuffHistogramList" :
+        [
+            {
+                "BinMaxHeight" : "15",
+                "CountsInBin" : "1",
+                "HeightSrc" : "1"   //罐高百分比坐标显示
+            }
+        ],
+        "ACDataSuffHistoryList" :
+        [
+            {
+                "ChartID" : "15",
+                "CurSuff" : "1",
+                "ReportDate" : "1"
+            }
+        ]
+    },
+    "ChartCalibrationAlarmList"  :
+    [
+        {
+            "AlarmDateTime" : "2016-02-04 01:30:00",
+            "AlarmTypeName" : "液位仪离线",
+            "AlarmDescription" : "离线时间2015-09-16 22:30:00",
+            "AlarmStateName" : "消除",
+            "AlarmSeverity" : "严重报警",
+            "AlarmRemark" : null,
+            "AlarmHandlePeople" : null,
+            "AlarmHandleDateTime" : "2015-09-16 22:30:00"
+        },
+        ...
+    ]
+}
+IsShowManualRecommend 是否显示选择其他罐表、取消锁定罐表
+
+>> 新旧罐表损溢率
+API: ~/vrapi/Station/GetTankChartBir
+请求格式(post):
+{
+	"SessionID" : "",
+    "NewChartID" : "",
+    "BeginDate" : "",
+    "EndDate" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "TankChartBirList" :
+    [
+        {
+            "ShowBirType" : "日报",
+            "CloseDateTime" : "2016-01-02 07:38:00",
+            "Delivery" : 0,
+            "Sales" : 8664.5,
+            "PreProbeHeight" : 1506,
+            "CloProbeHeight" : 977,
+            "PreProbeInventory" : 20053.8,
+            "CloProbeInventory" : 11383.9,
+            "Variance" : -5.4,
+            "VarianceRate" : -0.06,
+            "EvalBegInventory" : 19882.38,
+            "EvalEndInventory" : 11217.65,
+            "EvalVariance" : -0.23,
+            "EvalVarianceRate" : 0,
+            "CloseShortDateTime" : "2016-01-02"
+        },
+        ...
+    ]
+}
+
+>> 提交验收
+API: ~/vrapi/Station/TankChartSubmit
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "Remark" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+>> 选择其他罐表
+API: ~/vrapi/Station/ManualRecommendTankChart
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "ChartID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ChartType" : "",
+	"Diameter" : "",
+	"HeightList" :
+    [
+        {
+            "Height": 35775
+        },
+        ...
+    ],
+    "HeightVolPair" :    
+    [
+        {
+            "height1": "",
+            "volume1": "",
+            "height2": "",
+            "volume2": "",
+            "height3": "",
+            "volume3": "",
+            "height4": "",
+            "volume4": ""
+        },
+        ...
+    ]
+}
+ChartType=2 Diameter、HeightVolPair
+ChartType=4 HeightVolPair
+
+>> 多点罐表转换20点罐表
+API: ~/vrapi/Station/ConvertMultiToTwentyPt
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "ChartID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ChartType" : "",
+	"Diameter" : "",
+	"HeightList" :
+     [
+        {
+            "Height": 35775
+        },
+        ...
+    ]
+}
+
+>> 锁定罐表
+API: ~/vrapi/Station/LockTankChart
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "ChartID" : "",
+    "Diameter" : "",
+    "Volume" : ""    
+}
+Volume 用,分割20个值
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+>> 取消锁定罐表
+API: ~/vrapi/Station/CancelManualRecommendTankChart
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+>> 提交验收状态
+API: ~/vrapi/Station/TankChartSubmittedStatus
+请求格式(post):
+{
+	"SessionID" : "",
+    "ChartCalibrationID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "NewChartID" : "",
+    "BeginDate" : "",
+    "EndDate" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"VerifyPerson" : "",
+	"ResumeCalibrationVisible" : true/false,
+	"DownloadEnable" : true/false,
+    "TankChartBirList" :
+    [
+        {
+            "ShowBirType" : "日报",
+            "CloseDateTime" : "2016-01-02 07:38:00",
+            "Delivery" : 0,
+            "Sales" : 8664.5,
+            "PreProbeHeight" : 1506,
+            "CloProbeHeight" : 977,
+            "PreProbeInventory" : 20053.8,
+            "CloProbeInventory" : 11383.9,
+            "Variance" : -5.4,
+            "VarianceRate" : -0.06,
+            "EvalBegInventory" : 19882.38,
+            "EvalEndInventory" : 11217.65,
+            "EvalVariance" : -0.23,
+            "EvalVarianceRate" : 0,    
+            "CloseShortDateTime" : "2016-01-02"
+        },
+        ...
+    ],
+    "OilInletRangeList" :
+    [
+        {
+            "Per" : "15",
+            "Num" : "1"
+        },
+        ...
+        {
+            "Per" : "100",
+            "Num" : "1"
+        }
+    ],
+    "DeliveryHeight" :
+    {
+        "Top" : "",
+        "Bottom" : "",
+        "DeliveryInfoList" :
+        [
+            {
+                "EndDateTime" : "15",
+                "StartHeight" : "1",
+                "EndHeight" : "1"
+            }
+        ]
+    },
+    "TankChartDataSuff" :
+    {
+        "IsShow" : true/false,
+        "ACDataSuffHistoryList" :
+        [
+            {
+                "ChartID" : "15",
+                "CurSuff" : "1",
+                "ReportDate" : "1"
+            }
+        ]
+    },
+    "ChartCalibrationAlarmList"  :
+    [
+        {
+            "AlarmDateTime" : "2016-02-04 01:30:00",
+            "AlarmTypeName" : "液位仪离线",
+            "AlarmDescription" : "离线时间2015-09-16 22:30:00",
+            "AlarmStateName" : "消除",
+            "AlarmSeverity" : "严重报警",
+            "AlarmRemark" : null,
+            "AlarmHandlePeople" : null,
+            "AlarmHandleDateTime" : "2015-09-16 22:30:00"
+        },
+        ...
+    ]
+}
+
+>> 新罐表是否下发到液位仪
+API: ~/vrapi/Station/IsNewChartDownloaded
+请求格式(post):
+{
+	"SessionID" : "",
+    "ChartCalibrationID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"IsNewChartDownloaded" : true/false
+}
+
+>> 批量开启校罐
+API: ~/vrapi/Station/StartCalibration
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",  //,分割
+    "PreCheckResult" : "",  //前置条件
+    "Remark" : ""   //备注
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "创建成功, 正在执行指令..."
+}
+
+>> 取消校罐
+API: ~/vrapi/Station/CancelCalibration
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "ChartCalibrationID" : ""  //CCID,
+    "CcStatus" : ""  //校罐状态
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "创建成功, 正在执行指令..."
+}
+
+>> 继续校罐
+API: ~/vrapi/Station/ResumeCalibration
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "ChartCalibrationID" : ""  //CCID,
+    "CcStatus" : ""  //校罐状态
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "创建成功, 正在执行指令..."
+}
+
+>> 停止校罐
+API: ~/vrapi/Station/StopCalibration
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "VerifyMethod" : "1"  //验收方法,
+    "CcStatus" : ""  //校罐状态
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "创建成功, 正在执行指令..."
+}
+
+>> 下发罐表
+API: ~/vrapi/Station/DownloadChart
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "ChartCalibrationID" : ""  //CCID
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "创建成功, 正在执行指令..."
+}
+
+>> 创建罐表（ATG指令）
+API: ~/vrapi/Station/CreateTankChartCmd
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "ChartID" : "",
+    "IsDeleteNewChartWhenFail" : ""  //指令失败后是否删除新罐表
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "创建成功, 正在执行指令..."
+}
+
+>> 获取校罐最新指令信息
+API: ~/vrapi/Station/GetLatestUdChartCmdState
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "AtgOperation" : ""
+}
+开启校罐 = 2,取消校 = 3,继续校罐 = 4,下载罐表 = 5,停止校罐 = 6
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "LatestCalCmdList"  :
+    [
+        {
+            "ItemId" : 84,
+            "StationId" : 90232,
+            "TankId" : 1,
+            "Operation" : 2,
+            "PrereqChkResult" : "",
+            "UserNote" : "aaa",
+            "CalId" : null,
+            "VerifyMethod" : null,
+            "UserId" : "admin",
+            "StartTime" : "2016-11-21 18:15:35",
+            "EndTime" : "2016-11-21 18:16:00",
+            "State" : 1,
+            "Result" : "",
+            "GrpId" : 385
+        },
+        ...
+    ]
+}
+
+>> 油罐参数
+API: ~/vrapi/Station/TankParam
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "TankParamList"  :
+    [
+        {
+            "Gsid" : 321,
+            "Tankid" : 1,
+            "ParamName" : "",
+            "ActiveValue" : "",
+            "OriginalValue" : "",
+            "RecTime" : "0001-01-01 00:00:00",
+            "Paramid" : 101,
+            "EditEnable" : true/false,
+            "ViewEnable" : true/false
+        },
+        ...
+    ]
+}
+EditEnable 修改连接是否可以点击
+ViewEnable 如果有该字段，则当前行的当前激活值那一列显示查看连接，true/false 表示该连接是否可以点击
+
+>> 油罐参数远程设置
+API: ~/vrapi/Station/TankParamSet
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "ParamID" : "",
+    "ModifiedValue" : ""
+}
+
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+}
+
+>> ATG设备参数管理
+API: ~/vrapi/Station/TankParamManagement
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ParamAlarm112" : 112,
+	"TankParamAlarmDefaultRecNum" : 10,
+    "TankParamInfoList"  :
+    [
+        {
+            "GsId" : 1,
+            "TankId" : 1,
+            "TStatus" : "",
+            "AlarmTime" : "",
+            "ProcessTime" : "",
+            "ProcessUser" : "",
+            "AlarmStatus" : 1,
+            "OilChange"  :
+            {
+                "Message" : "",
+                "ProductName" : 1,
+                "ParamID" : ""
+            }
+        }
+        ...
+    ],    
+    "TankParamAlarmList"  :
+    [
+        {
+            "AlarmId" : 321,
+            "TankId" : 1,
+            "AlarmTime" : 101,
+            "ParamName" : "",
+            "ValueFrom" : "",
+            "ValueTo" : "",
+            "Paramid" : 1,
+            "ResumeEnable" : true/false,
+            "RecognizeEnable" : true/false,
+            "ViewVisible" : true/false
+        },
+        ...
+    ]
+}
+ViewVisible=true 旧值、新值显示为查看链接
+
+>> 油罐参数查询
+API: ~/vrapi/Station/TankParamView
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "MethodType" : "",
+	"BeginDate" : "",
+	"EndDate" : ""
+}
+MethodType 1/2 参数详情/历史查询
+BeginDate/EndDate MethodType=2才需要
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "TankParamList"  :
+    [
+        {
+            "Gsid" : 321,
+            "Tankid" : 1,
+            "ParamName" : "",
+            "ActiveValue" : "",
+            "OriginalValue" : "",
+            "RecTime" : "0001-01-01 00:00:00",
+            "ViewVisible" : true/false
+        },
+        ...
+    ],
+    "TankParamTraceList"  :
+    [
+        {
+            "Gsid" : 321,
+            "Tankid" : 1,
+            "ParamName" : "",
+            "ValueFrom" : "",
+            "ValueTo" : "",
+            "RecTime" : "0001-01-01 00:00:00",
+            "ViewVisible" : true/false
+        },
+        ...
+    ]
+}
+ViewVisible 是否显示查看链接
+MethodType 1:TankParamList 2:TankParamTraceList
+
+>> 油罐参数报警信息刷新
+API: ~/vrapi/Station/TankParamAlarmRefresh
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "RecordNumber" : "",
+	"PageInfo" :
+	{
+		"RecordOffset" : "1",			// 请求的开始记录编号
+		"RequestCount" : "100"			// 请求记录数量
+	}
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ParamAlarm112" : 112,
+	"PageInfo" :
+	{
+		"TotalCount" : "632",			// 只有请求中的RecordOffset=1时才有此字段
+		"RecordOffset" : "1",			// 应答中的开始记录编号
+		"ResponseCount" : "100"			// 应答中的记录数量
+	},
+    "TankParamAlarmList"  :
+    [
+        {
+            "AlarmId" : 321,
+            "TankId" : 1,
+            "AlarmTime" : 101,
+            "ParamName" : "",
+            "ValueFrom" : "",
+            "ValueTo" : "",
+            "Paramid" : 1,
+            "ResumeEnable" : true/false,
+            "RecognizeEnable" : true/false,
+            "ViewVisible" : true/false
+        },
+        ...
+    ]
+}
+
+>> 油罐参数报警信息恢复、认可
+API: ~/vrapi/Station/TankParamAlarmEdit
+请求格式(post):
+{
+	"SessionID" : "",
+    "StationID" : "",
+    "TankID" : "",
+    "AlarmID" : "",
+    "ParamID" : "",
+    "OldValue" : "",
+    "MethodType" : ""   1/2 恢复、认可
+}
+MethodType=1 都需要
+MethodType=2 AlarmID
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"IsEliminateSuccess" : true/false
+}
+IsEliminateSuccess MethodType=2 时返回，根据true/false判断成功/失败。
+
+>> 主动配送所需基础数据
+API: ~/vrapi/Station/ActiveDeliveryMeta
+请求格式(post):
+{
+	"SessionID" : "",
+	"CompanyID" : "",
+    "StationID" : ""
+}
+CompanyID/StationID 二选一
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"DeliveryDemandStatusList" :
+	[
+		{
+			"StatusID" : "",
+			"DisplayName" : ""
+		}
+		...
+	]
+}
+
+>> 主动配送
+API: ~/vrapi/Station/ActiveDelivery
+请求格式(post):
+{
+	"SessionID" : "",
+	"CompanyID" : "",
+    "StationID" : "",
+    "DeliveryDemandStatus" : "",    //,分割
+    "BeginDate" : "",
+	"EndDate" : "",
+    "AlarmID" : ""
+}
+CompanyID/StationID 二选一
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ActiveDeliveryList" :
+	[
+		{
+            "GsShortName" : "望京(Wangjing)",
+            "TankID" : 1,
+            "OtName" : "92#无铅汽油",
+            "StatusName" : "已配送",
+            "DemandVol" : 0,
+            "CurVolume" : 15285.688,
+            "CurUllage" : 13514.312,
+            "LastDeliveryTime" : "2015-10-21 21:15:00",
+            "LastDeliveryVol" : 10686.2,
+            "LinkVisible" : true/false,
+            "Status" : 4,
+            "RID" : 3137,
+            "LinkText" : 4,
+            "Volume" : 10686,
+            "ApplyVisible" : true/false,
+            "ApproveVisible" : true/false
+		}
+		...
+	]
+}
+ApplyVisible=true 显示需要配送DIV
+ApproveVisible=true 显示请求配送DIV
+
+>> 主动配送状态更改（提交配送、批准配送、拒绝配送）
+API: ~/vrapi/Station/ActiveDeliveryStatusChange
+请求格式(post):
+{
+	"SessionID" : "",
+	"RID" : "",
+    "Status" : "",
+    "Volume" : 123,
+    "MethodType" : ""
+}
+MethodType 1/2/3 提交/批准/拒绝
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : ""
+    "IsUpdateSuccess" : true/false
+}
+
+油站一览
+API: ~/vrapi/Station/StationOverview
+请求格式(post):
+{
+	"SessionID" : "",
+    "CompanyID" : ""//必填
+}
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"StationList":[
+		{
+			"StationID":""
+			"StationName":"",
+			"Online":"",//false-离线，true-在线
+			"UpdatedTime":"",
+			"LinkMan":"",
+			"PhoneNum":"",
+			"Address":"",		
+			"TankStateList":[
+					{
+						"StateKey":"报警状态",
+						"StateValue":false  //false 表示没有报警   true表示有报警
+					},
+					{
+						"StateKey":"测漏状态",
+						"StateValue":true //false 表示没有测漏   true表示有测漏
+					}
+					……
+				]
+			"TankList":[
+				{
+					"TankNo" : "1",
+					"TankLabel" : "",
+					"Product" : "",
+					"Diameter": 2483.4,
+					"FuelHeight": "289.49"					
+				},
+				……
+			]			
+		},
+		……
+	]
+}
+
+
+
+获取新旧罐表圆滑度图形数据
+//说明 图例上对应显示的是 新罐表  旧罐表，图标数据用的是 DrawTankChartData下的
+API: ~/vrapi/Station/GetNewAndOldChartDrawTankChartData
+请求格式(post):
+{
+	"SessionID" : "",
+    "ccId" : ""//必填
+} 
+应答200:
+{
+  "Result": "Success",
+  "Description": "",
+  "TankChartShowLegend": [{"chartId":18428,"chartLegend":"新罐表"},{"chartId":17120,"chartLegend":"旧罐表"}],
+  "DrawTankChartData": {
+	"legend": [18428,17120],
+	"xAxis": [],
+	"series": [{
+		"chartId": "18428",
+		"data": []
+	},
+	{
+		"chartId": "17120",
+		"data": []
+	}]
+}
+}
+
+获取罐表圆滑度图形数据
+API: ~/vrapi/Station/GetDrawTankChartData
+请求格式(post):
+{
+	"SessionID" : "",    
+    "chartIds":[18428,17120]//必填
+} 
+应答200:
+{
+  "Result": "Success",
+  "Description": "",
+  "DrawTankChartData": {
+	"legend": [18428,17120],
+	"xAxis": [],
+	"series": [{
+		"chartId": 18428,
+		"data": []
+	},
+	{
+		"chartId": 17120,
+		"data": []
+	}]
+}
+}
+
+动态测漏每个罐的状态查询
+API: ~/vrapi/Station/SelectCSLDState
+请求格式(post):
+{
+	"SessionID" : "",    
+    "StationID":321
+} 
+应答200:
+{
+  "CSLDState": "[{\"StationID\":321,\"TankID\":1,\"EnableFlag\":1},……]",
+  "Result": "Success",
+  "Description": ""
+}
+
+
+开启动态测漏
+API: ~/vrapi/Station/StartCSLDLeakTest
+请求格式(post):
+{
+	"SessionID" : "",    
+    "StationID":321,
+	"tankId":1
+	"StartDate":""开启时间
+} 
+应答200:
+{
+  "Result": "Starting",
+  "Description": "开启动态测漏命令执行中……！"				
+}
+
+停止动态测漏
+API: ~/vrapi/Station/StopCSLDLeakTest
+请求格式(post):
+{
+	"SessionID" : "",    
+    "StationID":321,
+	"TankId":1
+} 
+应答200:
+{
+  "Result": "Success",
+  "Description": "停止动态测漏成功"				
+}
+
+动态测漏查询SelectCSLDReport
+API: ~/vrapi/Station/SelectCSLDReport
+请求格式(post):
+{
+	"SessionID" : "",    
+    "StationID":321,
+	"tankIdList":"1,2,3",//必填
+	"BeginDate":""开始时间
+	"EndDate":结束时间
+} 
+应答200:
+{
+  "Result": "Success",
+  "Description": "",
+  "CSLDReport": "{\"CSLDLeakRateReportDatas\":[{\"GsId\":321,\"TankId\":1,
+												\"CompensatedLeakRates\":[{\"Item1\":0.0,\"Item2\":\"2016-09-07T14:41:00\"},……],
+												\"SevenPerAvgs\":[{\"Item1\":0.0,\"Item2\":\"2016-09-08T09:22:00\"},……],
+												\"FourteenPerAvgs\":[{\"Item1\":0.0,\"Item2\":\"2016-09-09T06:26:00\"},……]}……],
+				 \"CSLDRateTestTableDatas\":[{\"GsId\":321,\"TankId\":1,\"LeakTestType\":\"动态测漏\",\"LeakTestMethod\":\"CLSD\",\"EvaluationTime\":\"2016-09-12T09:38:00\",\"Status\":\"测漏通过\",\"CompensatedLeakRate\":0.0,\"TestHours\":72.71},……}]}
+				
+}
+
+
+传感器概览查询SelectSensorOverview
+API: ~/vrapi/Station/SelectSensorOverview
+请求格式(post):
+{
+	"SessionID" : "",    
+    "StationID":321
+} 
+应答200:
+{
+  "SensorOverview": "[{\"DeviceTypeId\":3,\"SensorLable\":\"Liquid Sensor1\",\"StatusId\":2,\"Status\":\"Fuel Alarm\",\"Model\":\"Interceptor Sensor\",\"Category\":\"STP Sump\",\"RecTime\":\"2016-10-20 09:54:03\"}]",
+  "Result": "Success",
+  "Description": ""
+}
+
+

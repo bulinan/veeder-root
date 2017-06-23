@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>维德路特 - 登录</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta name="format-detection" content="telephone=no"/>
+        <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link href="statics/css/font-awesome.min.css" rel="stylesheet">
+        <link href="statics/css/jquery.jscrollpane.css" rel="stylesheet">
+        <link href="statics/css/reset.css" rel="stylesheet">
+        <link href="statics/css/base.css" rel="stylesheet">
+        <link href="statics/css/member.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+          <script src="statics/js/vendor/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="member">
+            <div class="member-box">
+                <img src="statics/img/member_bg.png">
+                <div class="member-con clearfix">
+                    <div class="action pull-right">
+                        <div class="select-box select_lan select-callback pull-left" data-open="false">
+                            <div class="select-title select-language"><img src="statics/img/icon_cn.png"><span></span></div>
+                            <ul class="select-con">
+                                <!--<li data-value="Chinese">中文</li>
+                                <li data-value="English">English</li>-->
+                            </ul>
+                        </div>
+                        <em>|</em>
+                        <div class="code-con pull-left">
+                            <span class="app" data-i18n-current="03004"></span>
+                            <span class="code">
+                                <img src="statics/img/qrcode.png" data-i18n-alt="03005">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="member-header">
+                        <a href="javascript:;" class="logo"><img src="statics/img/logo.png"></a>
+                        <p class="title" data-i18n-current="03000"></p>
+                        <p class="subtitle">Inform.Web</p>
+                    </div>
+                    <form class="form">
+                        <div class="form-group clearfix">
+                            <label class="pull-left" data-i18n-current="03006"></label>
+                            <input type="text" class="input-box" id="username" name="username" value="admin">
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="pull-left" data-i18n-current="03007"></label>
+                            <input type="password" class="input-box" id="password" name="password" value="admin">
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="pull-left" data-i18n-current="03010"></label>
+                            <div class="select-box pull-left" id="system-units" data-open="false">
+                                <div class="select-title"><span></span><i class="fa fa-angle-down"></i></div>
+                                <ul class="select-con select-left-con"></ul>
+                            </div>
+                        </div>
+                        <div class="form-group form-submit clearfix">
+                            <input type="button" id="submitBut" data-i18n-value="03008" class="input-submit">
+                            <input type="reset" id="resetBut" data-i18n-value="03009" class="input-reset">
+                        </div>
+                    </form>
+                    <div class="block-loading"></div>
+                </div>
+            </div>
+        </div>
+        <script src="statics/js/vendor/jquery-1.8.3.min.js"></script>
+        <script src="statics/js/vendor/jquery.cookie.js"></script>
+        <script src="statics/js/vendor/md5.js"></script>
+        <script src="statics/js/language.js"></script>
+        <script src="statics/js/language/zh-CN.js"></script>
+        <script src="statics/js/language/en-US.js"></script>
+		<script src="statics/js/ajax.js"></script>
+        <script src="statics/js/base.js"></script>
+        <script src="statics/js/selectBox.js"></script>
+        <script src="statics/js/constantFile.js"></script>
+		<script src="statics/js/login.js"></script>
+    </body>
+</html>
+
+

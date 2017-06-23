@@ -1,0 +1,110 @@
+<div class="station-title">
+    <h2><span data-i18n="16001"></span></h2>
+</div>
+<div class="station-con common-con">
+	<div class="condition-list clearfix" id="active-delivery-query">
+        <div class="block-loading"></div>
+	    <div class="form-group form-date clearfix">
+	        <label><span data-i18n="10004"></span>：</label>
+	        <div class="form-control">
+	            <input type="text" class="input-date ui-datepicker-trigger pull-left" name="BeginDate" data-name="Date" data-title="10004" data-check="required date min">
+	        </div>
+	    </div>
+        <div class="form-group form-date clearfix">
+	        <label><span data-i18n="10005"></span>：</label>
+	        <div class="form-control">
+	            <input type="text" class="input-date ui-datepicker-trigger pull-left" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+	        </div>
+	    </div>
+	    <div class="form-group">
+	        <label><span data-i18n="16002"></span>：</label>
+	        <div class="form-control checkbox-list" id="DeliveryDemandStatusList"></div>
+	    </div>
+        <div class="btn-group pull-left">
+	        <a href="javascript:;" class="btn btn-default" id="activeDelivery-query"><span data-i18n="09901"></span></a>
+	    </div>
+	</div>
+    <div class="record-box clearfix">
+        <a href="javascript:;" class="tab-trigger">
+            <span><span data-i18n="09009"></span></span>
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <div class="tab-cont">
+            <div class="pull-left">
+                <a href="javascript:;">10</a>
+                <a href="javascript:;">20</a>
+                <a href="javascript:;">50</a>
+                <a href="javascript:;">75</a>
+                <a href="javascript:;">100</a>
+            </div>
+            <div class="input pull-left">
+                <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+            </div>
+        </div>
+        <input type="hidden">
+    </div>
+    <div class="clear"></div>
+    <table class="table-result" id="activeQueryTable" width="100%">
+        <thead>
+            <tr>
+                <th><span><span data-i18n="10001"></span></span></th>
+                <th class="even"><span><span data-i18n="10026"></span></span></th>
+                <th><span><span data-i18n="10008"></span></span></th>
+                <th class="even"><span><span data-i18n="16002"></span></span></th>
+                <th><span><span data-i18n="16003"></span><i class="measure-volume">（L）</i></span></th>
+                <th class="even"><span><span data-i18n="11002"></span><i class="measure-volume">（L）</i></span></th>
+                <th><span><span data-i18n="16004"></span><i class="measure-volume">（L）</i></span></th>
+                <th class="even"><span><span data-i18n="16005"></span></span></th>
+                <th><span><span data-i18n="16006"></span><i class="measure-volume">（L）</i></span></th>
+                <th class="even"><span data-i18n="20001"></span></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<!-- ------编辑------- -->
+<div class="modal modal-activeDelivery" id="active-delivery-edit">
+    <div class="modal-dialog modal-dialog-md" data-status="apply">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="16002"></span>：<span class="linktext"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <div class="form-item clearfix">
+                    <label class="control-label"><span data-i18n="16007"></span><i class="measure-volume">（L）</i>：</label>
+                    <div class="form-con">
+                        <input type="text" class="input-box" name="Volume" data-check="required number int" data-title="16007">
+                    </div>
+                </div>
+                <div class="btn-group clearfix">
+                    <a href="javascript:;" class="btn btn-save pull-left"><span data-i18n="09903"></span></a>
+                    <a href="javascript:;" class="btn btn-cancel pull-left"><span data-i18n="09904"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-dialog modal-dialog-md" data-status="approve">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="16002"></span>：<span class="linktext"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <div class="form-item clearfix">
+                    <label class="control-label"><span data-i18n="16007"></span><i class="measure-volume">（L）</i>：</label>
+                    <div class="form-con">
+                        <input type="text" class="input-box" name="Volume" data-check="required number int" data-title="16007">
+                    </div>
+                </div>
+                <div class="btn-group clearfix">
+                    <a href="javascript:;" class="btn btn-save pull-left"><span data-i18n="09913"></span></a>
+                    <a href="javascript:;" class="btn btn-default pull-left"><span data-i18n="09914"></span></a>
+                    <a href="javascript:;" class="btn btn-cancel pull-left"><span data-i18n="09904"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/station.js" ></script>
+<script src="statics/js/activedelivery.js"></script>

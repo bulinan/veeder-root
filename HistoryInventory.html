@@ -1,0 +1,97 @@
+<div class="station-title">
+    <h2><span data-i18n="22001"></span></h2>
+</div>
+<div class="station-con common-con historyInventory-box">
+    <div class="condition-list clearfix" id="history-inventory-form">
+        <div class="block-loading"></div>
+        <div class="type-form-group clearfix">
+            <div class="form-group clearfix">
+                <label><span data-i18n="10004"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-date ui-datepicker-trigger" name="BeginDate" data-name="Date" data-curdate="week" data-title="10004" data-check="required date min">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label><span data-i18n="10005"></span>：</label>
+                <div class="form-control">
+                    <input type="text" class="input-date ui-datepicker-trigger" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label><span data-i18n="10008"></span>：</label>
+                <div class="form-control">
+                    <div class="select-box" id="productList" data-select="Product">
+                        <div class="select-title" data-value=""><span><span data-i18n="20003"></span></span><a href="javascript:;" class="icon"></a></div>
+                        <ul class="select-con">
+                            <li data-value=""><span data-i18n="20003"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="checkbox-inline"><input type="checkbox" name="UseHourlyInventory" data-check="checkbox" checked><span data-i18n="22002"></span></label>
+            </div>
+            <div class="btn-group pull-left">
+                <a href="javascript:;" class="btn btn-default" id="history-query"><span data-i18n="09901"></span></a>
+            </div>
+        </div>
+        <div class="type-btn-group">
+            <a href="javascript:;" class="btn btn-primary pull-right" id="inventory-chart"><span data-i18n="22003"></span></a>
+        </div>
+    </div>
+    <div class="record-box clearfix">
+        <a href="javascript:;" class="tab-trigger">
+            <span><span data-i18n="09009"></span></span>
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <div class="tab-cont">
+            <div class="pull-left">
+                <a href="javascript:;">10</a>
+                <a href="javascript:;">20</a>
+                <a href="javascript:;">50</a>
+                <a href="javascript:;">75</a>
+                <a href="javascript:;">100</a>
+            </div>
+            <div class="input pull-left">
+                <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+            </div>
+        </div>
+        <input type="hidden">
+    </div>
+    <div class="clear"></div>
+    <table class="table-result" id="historyHnventory" width="100%" style="display: none;">
+        <thead>
+            <tr>
+                <th><span><span data-i18n="10026"></span></span></th>
+                <th class="even"><span><span data-i18n="10008"></span></span></th>
+                <th><span><span data-i18n="10012"></span></span></th>
+                <th class="even"><span><span data-i18n="10007"></span></span></th>
+                <th><span><span data-i18n="22004"></span></span></th>
+                <th class="even"><span><span data-i18n="10025"></span></span></th>
+                <th><span><span data-i18n="10010"></span></span></th>
+                <th class="even"><span><span data-i18n="10014"></span></span></th>
+                <th><span><span data-i18n="10015"></span></span></th>
+                <th class="even"><span><span data-i18n="10003"></span></span></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<!--库存曲线-->
+<div class="modal modal-inventory" id="modal-inventory">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="22003"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <div class="modal-loading"></div>
+                <div class="chart-con" id="history-inventory-chart"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/history.js"></script>
+
+

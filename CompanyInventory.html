@@ -1,0 +1,69 @@
+<div class="inner company-inventory">
+    <div class="col-lg-12">
+        <div class="inner-heading clearfix">
+            <div class="inner-title pull-left">
+                <h2><span data-i18n="00003"></span></h2>
+            </div>
+            <div class="inner-options pull-right">
+                <div class="btn-group clearfix">
+                    <a href="javascript:;" class="btn" data-type="Vt">VT</a>
+                    <a href="javascript:;" class="btn active" data-type="V20">V20</a>
+                    <a href="javascript:;" class="update"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+                </div>
+            </div>
+        </div>
+        <!--库存摘要-->
+        <div class="panel panel-summary">
+            <ul class="panel-body clearfix"></ul>
+            <div class="block-loading"></div>
+        </div>
+        <!--库存明细-->
+        <div class="panel panel-inventory">
+            <div class="panel-body">
+                <div id="company-inventory-chart" class="line-chart"></div>
+            </div>
+            <div class="block-loading"></div>
+        </div>
+        <!--油站实时库存-->
+        <div class="panel panel-stationInventory">
+            <div class="panel-body">
+                <div class="chart-con">
+                    <div class="chart-heading">
+                        <h3 class="title"></h3>
+                    </div>
+                    <div class="chart-body">
+                        <div class="selector clearfix">
+                            <div class="form-group pull-left">
+                                <label><span data-i18n="12001"></span>：</label>
+                                <div class="form-control">
+                                    <label class="radio-inline"><input type="radio" name="sort-field" checked="checked" value="SumVolume"><span data-i18n="12002"></span></label>
+                                    <label class="radio-inline"><input type="radio" name="sort-field" value="SumUllage"><span data-i18n="12003"></span></label>
+                                </div>
+                            </div>
+                            <div class="form-group pull-left">
+                                <label><span data-i18n="12004"></span>：</label>
+                                <div class="form-control">
+                                    <label class="radio-inline"><input type="radio" name="sort-way" checked="checked" value="desc"><span data-i18n="12005"></span></label>
+                                    <label class="radio-inline"><input type="radio" name="sort-way" value="asc"><span data-i18n="12006"></span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<table class="table">
+                            <thead></thead>
+                        </table>-->
+                    </div>
+                </div>
+            </div>
+            <div class="block-loading"></div>
+        </div>
+    </div>
+    <div class="template template-item-chart">
+        <div class="item-chart-group">
+            <div class="item-chart-series item-chart-ullage"></div>
+            <div class="item-chart-series item-chart-inventory"></div>
+        </div>
+        <div class="item-chart-tooltip"></div>
+        <div class="item-chart-name"></div>
+    </div>
+</div>
+<script src="statics/js/inventory.js"></script>

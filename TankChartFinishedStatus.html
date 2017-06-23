@@ -1,0 +1,116 @@
+<!--校罐状态/初始罐表-->
+<div class="modal-tankStatus" id="tankChart-finishedChart">
+    <div class="modal-inner-header">
+        <div class="header-title">
+            <h4 class="pull-left"><span data-i18n="15002"></span>：<small><span data-i18n="15003"></span></small></h4>
+        </div>
+    </div>
+    <div class="modal-inner-body modal-dialog">
+        <div class="method-box">
+            <div class="form-group clearfix">
+                <label class="control-label"><span data-i18n="15029"></span>：</label>
+                <div class="form-control">
+                    <div class="select-box select_calibrationMethodList select-callback" id="calibrationMethodList">
+                        <div class="select-title form-control-inner"><span></span><a href="javascript:;" class="icon"></a></div>
+                        <ul class="select-con"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tank-list init-hide" id="tankList">
+            <div class="form-group clearfix">
+                <label><span data-i18n="14029"></span>：</label>
+                <div class="form-control checkbox-list"></div>
+            </div>
+        </div>
+        <section class="section-con reason-box init-hide" id="FailReason">
+            <h5 class="section-title"><span data-i18n="15071"></span></h5>
+        </section>
+        <section class="section-con message-box init-hide" id="UnmatchedCondition">
+            <h5 class="section-title"><span data-i18n="15030"></span></h5>
+        </section>
+        <section class="section-con form-list init-hide">
+            <h5 class="section-title"><span data-i18n="15031"></span><small>（<span data-i18n="15072"></span>）</small></h5>
+            <ul class="form-list-2 clearfix">
+                <li class="form-group" id="ddlSale">
+                    <label class="control-label"><span data-i18n="15032"></span><i class="measure-volume">（L）</i>：</label>
+                    <div class="form-control">
+                        <div class="select-box" id="averageSalesList">
+                            <div class="select-title form-control-inner"><span></span><a href="javascript:;" class="icon"></a></div>
+                            <ul class="select-con"></ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="form-group" id="ddlBusiness">
+                    <label class="control-label"><span data-i18n="15033"></span>：</label>
+                    <div class="form-control">
+                        <div class="select-box">
+                            <div class="select-title form-control-inner" data-value="0"><span><span data-i18n="09003"></span></span><a href="javascript:;" class="icon"></a></div>
+                            <ul class="select-con">
+                                <li data-value="0"><span data-i18n="09003"></span></li>
+                                <li data-value="1"><span data-i18n="09002"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="form-group" id="ddlObstruct">
+                    <label class="control-label"><span data-i18n="15034"></span>：</label>
+                    <div class="form-control">
+                        <div class="select-box">
+                            <div class="select-title form-control-inner" data-value="0"><span><span data-i18n="09003"></span></span><a href="javascript:;" class="icon"></a></div>
+                            <ul class="select-con">
+                                <li data-value="0"><span data-i18n="09003"></span></li>
+                                <li data-value="1"><span data-i18n="09002"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="form-group" id="ddlATG">
+                    <label class="control-label"><span data-i18n="15035"></span>：</label>
+                    <div class="form-control">
+                        <div class="select-box">
+                            <div class="select-title form-control-inner" data-value="0"><span><span data-i18n="09003"></span></span><a href="javascript:;" class="icon"></a></div>
+                            <ul class="select-con">
+                                <li data-value="0"><span data-i18n="09003"></span></li>
+                                <li data-value="1"><span data-i18n="09002"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="form-group" id="ddlFloat">
+                    <label class="control-label"><span data-i18n="15036"></span>：</label>
+                    <div class="form-control">
+                        <div class="select-box">
+                            <div class="select-title form-control-inner" data-value="0"><span><span data-i18n="09003"></span></span><a href="javascript:;" class="icon"></a></div>
+                            <ul class="select-con">
+                                <li data-value="0"><span data-i18n="09003"></span></li>
+                                <li data-value="1"><span data-i18n="09002"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="form-group" id="ddlMINI">
+                    <label class="control-label"><span data-i18n="15037"></span>：</label>
+                    <div class="form-control">
+                        <div class="select-box">
+                            <div class="select-title form-control-inner" data-value="0"><span><span data-i18n="09003"></span></span><a href="javascript:;" class="icon"></a></div>
+                            <ul class="select-con">
+                                <li data-value="0"><span data-i18n="09003"></span></li>
+                                <li data-value="1"><span data-i18n="09002"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="remark-box section-con init-hide">
+            <h5 class="section-title"><span data-i18n="15039"></span></h5>
+            <textarea name="Remark"></textarea>
+        </section>
+        <div class="form-group btn-submit init-hide"><a href="javascript:;" class="btn btn-primary" id="btn-startCalibration"><span data-i18n="15074"></span></a></div>
+        <!--Visible false 显示以下内容-->
+        <div class="message-show"></div>
+        <div class="block-loading"></div>
+    </div>
+</div>
+<script src="statics/js/calibrationStatus.js"></script>

@@ -1,0 +1,202 @@
+
+公共API
+
+0. 读取所支持的语言和度量衡配置信息
+API: ~/vrapi/Common/Culture
+{
+}
+应答：
+{
+	"Result" : "Success",
+	"Description" : "",
+	"Cultures" :
+	[
+		{
+			"ID" : "English",
+			"Display" : "English",
+			"Unit1ID" : "Metric",
+			"Unit1Display" : "Metric",
+			"Unit2ID" : "US",
+			"Unit2Display" : "US"
+		},
+		{
+			"ID" : "Chinese",
+			"Display" : "中文",
+			"Unit1ID" : "Metric",
+			"Unit1Display" : "公制",
+			"Unit2ID" : "US",
+			"Unit2Display" : "美制"
+		}
+	]
+}
+
+1. 登录
+API: ~/vrapi/Common/Login
+请求格式(post):
+{
+	"User" : "abc",
+	"Password" : "bbc",
+	"Language" : "Chinese",
+	"Unit" : "Metric"
+}
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"SessionID" : "xx9399abc",
+	"DisplayName" : "Admin",
+	"RedirectPage" : "some/where",
+	"CompanyID" : "Admin",
+	"StationID" : "Admin"
+}
+如果公司级别，传CompanyID；如果油站级别，传StationID，两者二选一
+
+2. 页面显示资源请求 - 用于国际化
+API: ~/vrapi/Common/PageResource
+请求格式(post):
+{
+	"SessionID" : "xx9399abc",
+	"PageName" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	//格式由JC补充
+}
+
+3. 页面权限请求
+说明: 用户根据权限设定，有些页面的链接可能是无权访问的。所以需要请求服务器获得许可的链接信息。
+API: ~/vrapi/Common/PageAuthority
+请求格式(post):
+{
+	"SessionID" : "xx9399abc",
+	"PageName" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ElementID1" : "Hide/Read/Full",
+	"ElementID2" : "Hide/Read/Full",
+	...
+}
+列出页面中元素的访问级别：hide表示隐藏此元素；read表示可以读，不可以点击链接；full表示可以完整访问此元素。
+包含局部访问权限限制的页面在开始加载元素前，发送此请求，并根据响应修改响应元素属性。
+
+4. 输入数据规范
+说明: 对于需要输入数据的页面，需要请求服务端对数据输入格式的限定。
+API: ~/vrapi/Common/InputValidation
+请求格式(post):
+{
+	"SessionID" : "xx9399abc",
+	"PageName" : ""
+}
+
+应答200:
+{
+}
+
+5. 度量衡单位文本信息
+说明：由于需要支持国际化，所以度量衡的文本信息需要根据用户设置来显示。所以每个页面在一开始就需要发出这个请求，然后替换本页面的度量衡单位文字信息
+API: ~/vrapi/Common/MeasureText
+请求格式(post):
+{
+	"SessionID" : "xx9399abc",
+}
+SessionID如果出现则必须验证其有效性；如果不出现则从ASP.NET的session信息中提取，并验证有效性。
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"Height" : "mm/inch/毫米/英寸/...",
+	"Volume" : "L/Gl/升/加仑/...",
+	"Temperature" : "℃/℉"
+}
+成功的应答需要根据Session所处的语言和度量衡环境返回相应的字符串。对于温度，鉴于符号的简单通用性，就只根据度量衡选项返回℃或℉即可。
+
+6. 公用的错误应答消息
+{
+	"FailReason" : ""
+}
+
+7. 地图可见区域油站列表
+说明：通过地图可见区域左上角和右下角经纬度来获取可见区域内所有油站列表
+API: ~/vrapi/Common/MapVisibleStation
+请求格式(post):
+{
+	"SessionID" : "",
+    "TopLeftPosition" : "Latitude,Longitude",
+    "BottomRightPosition" : "Latitude,Longitude"
+}
+TopLeft、BottomRight分别表示地图可见区域左上角和右下角的纬度、经度、按照,分割（纬度在前，若南纬西经值前加-）。
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"StationList" :
+    [
+        {
+            "StationID" : "111",
+            "DisplayName" : "望京加油站",
+            "Latitude" : "39.9789380000",
+            "Longitude" : "116.4977940000",
+            "Status" : "1"
+        },
+        ...
+    ]
+
+}
+
+7. 油品下拉列表
+API: ~/vrapi/Common/ProductList
+请求格式(post):
+{
+	"SessionID" : "",
+    "CompanyID" : "0",  //默认为0，查询用户公司下面所有油站
+	"StationID" : "0",   //默认为0，查询所有油站
+	"UserID" : ""
+}
+获取全部油品只需传SessionID，其他都不用传
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ProductList" :
+    [
+        {
+            "ProductID" : "1",
+            "DisplayName" : "92#",
+            "Color" : "#F6F6F6"
+        },
+        ...
+    ]
+}
+
+8. 油罐下拉列表
+API: ~/vrapi/Common/TankList
+请求格式(post):
+{
+	"SessionID" : "",
+	"StationID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"TankList" :
+    [
+        {
+            "TankID" : "1",
+            "DisplayName" : "92#"
+        },
+        ...
+    ]
+}

@@ -1,0 +1,504 @@
+<div class="station-title">
+    <h2><span data-i18n="14002"></span></h2>
+</div>
+<div class="station-con station-panel">
+    <div class="panel panel-inputbox">
+        <div class="panel-heading">
+            <div class="panel-title"><i class="fa fa-calendar-o"></i><span data-i18n="14003"></span></div>
+        </div>
+        <div class="panel-body">
+            <div class="col-info-2">
+                <div class="block-loading"></div>
+                <ul>
+                    <li class="clearfix">
+                        <div class="form-group form-btn-group">
+                            <label class="control-label"><span data-i18n="14004"></span>：</label>
+                            <div class="form-control">
+                                <input type="text" class="input-box form-control-inner pull-left" name="TicketNo">
+                                <a href="javascript:;" class="btn btn-default pull-left" id="extract-ticket"><span data-i18n="14012"></span></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"><span data-i18n="10008"></span>：</label>
+                            <div class="form-control">
+                                <div class="select-box" id="productList">
+                                    <div class="select-title form-control-inner" data-value=""><span></span><a href="javascript:;" class="icon"></a></div>
+                                    <ul class="select-con"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="form-group form-ratio">
+                            <label class="control-label" data-i18n-title="14005"><span class="must must-forward">*</span><span data-i18n="14005"></span>：</label>
+                            <div class="form-control">
+                                <input type="text" class="input-date form-control-inner ui-datepicker-trigger" name="TicketDate" data-control="auto">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" data-i18n-title="14006"><span class="must must-forward">*</span><span data-i18n="14006"></span><i class="measure-temperature">（℃）</i>：</label>
+                            <div class="form-control">
+                                <input type="text" class="input-box digital-control form-control-inner" name="DepotTemperature" data-control="auto">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="form-group">
+                            <label class="control-label"><span data-i18n="14007"></span>：</label>
+                            <div class="form-control">
+                                <input type="text" class="input-box form-control-inner" name="VehicleNumber" data-control="auto">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" data-i18n-title="14008"><span data-i18n="14008"></span>（㎏/㎡）：</label>
+                            <div class="form-control">
+                                <input type="text" class="input-box digital-control form-control-inner" name="Density" data-control="auto">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="form-group">
+                            <label class="control-label"><span data-i18n="14009"></span>：</label>
+                            <div class="form-control">
+                                <div class="select-box select_oilDepot select-callback" id="OilDepotList" data-control="auto">
+                                    <div class="select-title form-control-inner" data-value=""><span><span data-i18n="09001"></span></span><a href="javascript:;" class="icon"></a></div>
+                                    <ul class="select-con">
+                                        <li data-value=""><span data-i18n="09001"></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" data-i18n-title="14010"><span data-i18n="14010"></span>（㎏）：</label>
+                            <div class="form-control">
+                                <input type="text" class="input-box digital-control form-control-inner" name="OilWeight" data-control="auto">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="form-group">
+                            <label class="control-label"><span data-i18n="14011"></span>：</label>
+                            <div class="form-control">
+                                <div class="select-box" id="CraneList" data-control="auto">
+                                    <div class="select-title form-control-inner" data-value=""><span><span data-i18n="09001"></span></span><a href="javascript:;" class="icon"></a></div>
+                                    <ul class="select-con">
+                                        <li data-value=""><span data-i18n="09001"></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label text-hide">按钮组</label>
+                            <div class="form-control">
+                                <div class="btn-group clearfix">
+                                    <a href="javascript:;" class="btn btn-default pull-left" id="calculateV20"><i class="fa fa-calculator"></i><span data-i18n="14013"></span></a>
+                                    <a href="javascript:;" class="afresh pull-left" id="afreshCalculateV20"><span data-i18n="14014"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <ul class="col-info-3">
+                <li class="clearfix">
+                    <div class="form-group">
+                        <label class="control-label" data-i18n-title="14015"><span class="must must-forward">*</span><span data-i18n="14015"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box digital-control form-control-inner" name="DepotVolume" data-control="auto">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" data-i18n-title="14016"><span class="must must-forward">*</span><span data-i18n="14016"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box digital-control form-control-inner" name="DepottcVolume" data-control="auto">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"><span data-i18n="14017"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box form-control-inner" name="EscortPerson">
+                        </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="form-group">
+                        <label class="control-label" data-i18n-title="14018"><span data-i18n="14018"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box digital-control form-control-inner" name="RcvVolumem">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" data-i18n-title="14019"><span data-i18n="14019"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box digital-control form-control-inner" name="RcvtcVolumem">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"><span data-i18n="14020"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box form-control-inner" name="Carrier">
+                        </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="form-group">
+                        <label class="control-label" data-i18n-title="14021"><span data-i18n="14021"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box digital-control form-control-inner" name="DepotVolumem">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" data-i18n-title="14022"><span data-i18n="14022"></span><i class="measure-volume">（L）</i>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box digital-control form-control-inner" name="DepottcVolumem">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"><span data-i18n="14023"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box form-control-inner" name="Remark">
+                        </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="form-group">
+                        <label class="control-label" data-i18n-title="14024"><span data-i18n="14024"></span><i class="measure-temperature">（℃）</i>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-box digital-control form-control-inner" name="RcvTemperature">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"><span data-i18n="14025"></span>：</label>
+                        <div class="form-control">
+                            <div class="form-control-inner inline-list-lg">
+                                <label class="radio-inline"><input type="radio" checked="checked" name="TankTransFlag" value="1"><span data-i18n="09002"></span></label>
+                                <label class="radio-inline"><input type="radio" name="TankTransFlag" value="0"><span data-i18n="09003"></span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"><span data-i18n="14026"></span>：</label>
+                        <div class="form-control">
+                            <div class="form-control-inner inline-list-lg">
+                                <label class="radio-inline"><input type="radio" checked="checked" name="Escort" value="1"><span data-i18n="09002"></span></label>
+                                <label class="radio-inline"><input type="radio" name="Escort" value="0"><span data-i18n="09003"></span></label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <div class="panel-title"><i class="fa fa-paste"></i><span data-i18n="14027"></span></div>
+        </div>
+        <div class="panel-body">
+            <div class="block-loading"></div>
+            <div class="operate-area">
+                <p class="help-block"><span class="must must-forward"><span data-i18n="09004"></span>：</span><span data-i18n="14028"></span></p>
+                <div class="form-group clearfix">
+                    <label class="control-label"><span class="must must-forward">*</span><span data-i18n="14029"></span>：</label>
+                    <div class="form-control">
+                        <div class="form-control-inner inline-list-lg clearfix" id="tank-list"></div>
+                    </div>
+                    <p class="auto-delivery tipColor pull-left"><span data-i18n="14921"></span></p>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="control-label">
+                        <label class="checkbox-inline"><input type="checkbox" name="DeliveryDateFlag"><span data-i18n="14030"></span></label>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" class="input-date form-control-inner ui-datepicker-trigger pull-left" name="DeliveryDate" disabled>
+                        <a href="javascript:;" class="btn btn-default pull-left" id="extract-report"><span data-i18n="14031"></span></a>
+                        <a href="javascript:;" class="btn btn-default pull-left" id="modal-manualReport"><span data-i18n="14032"></span></a>
+                        <a href="javascript:;" class="btn btn-default btn-disabled pull-left" id="modal-oilReport"><span data-i18n="14033"></span></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table" id="DeliveryReportList" width="100%">
+                <thead>
+                    <tr>
+                        <th><span data-i18n="09005"></span></th>
+                        <th><span data-i18n="10001"></span></th>
+                        <th><span data-i18n="10002"></span></th>
+                        <th><span data-i18n="10045"></span></th>
+                        <th><span data-i18n="10004"></span></th>
+                        <th><span data-i18n="10005"></span></th>
+                        <th><span data-i18n="10029"></span><i class="measure-volume">（L）</i></th>
+                        <th><span data-i18n="10031"></span><i class="measure-volume">（L）</i></th>
+                        <th><span data-i18n="10033"></span>（㎜）</th>
+                        <th><span data-i18n="10035"></span><i class="measure-temperature">（℃）</i></th>
+                        <th><span data-i18n="10030"></span><i class="measure-volume">（L）</i></th>
+                        <th><span data-i18n="10032"></span><i class="measure-volume">（L）</i></th>
+                        <th><span data-i18n="10034"></span>（㎜）</th>
+                        <th><span data-i18n="10036"></span><i class="measure-temperature">（℃）</i></th>
+                        <th><span data-i18n="10037"></span><i class="measure-volume">（L）</i></th>
+                        <th><span data-i18n="10038"></span><i class="measure-volume">（L）</i></th>
+                        <th><span data-i18n="14034"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td><td>团北</td><td>3</td><td>2014-05-17</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <div class="panel-title"><i class="fa fa-lightbulb-o"></i><span data-i18n="14036"></span><a href="javascript:;" class="heading-btn" id="variance-update"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a></div>
+        </div>
+        <div class="panel-body">
+            <div class="tips"><span data-i18n="14043"></span></div>
+            <table class="table" id="VarianceOverview" width="100%">
+                <thead>
+                    <tr>
+                        <th><span data-i18n="14037"></span></th><th><span data-i18n="14038"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="14039"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="14040"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="14041"></span><i class="measure-volume">（L）</i></th><th><span data-i18n="14042"></span><i class="measure-volume">（L）</i></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="btn-group btn-submit clearfix">
+        <a href="javascript:;" class="btn btn-default pull-right" id="ticketDelivery-save"><span data-i18n="09903"></span></a>
+    </div>
+</div>
+<div class="modal modal-manualReport">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="14032"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <table class="table-result">
+                    <thead>
+                        <tr>
+                            <th><span data-i18n="09006"></span></th>
+                            <th class="even"><span data-i18n="10002"></span></th>
+                            <th class="multi-line"><span data-i18n="10031"></span><br><i class="measure-volume">（L）</i></th>
+                            <th class="even multi-line"><span data-i18n="10033"></span><br><i class="measure-height">（mm）</i></th>
+                            <th class="multi-line"><span data-i18n="10039"></span><br><i class="measure-height">（mm）</i></th>
+                            <th class="even multi-line"><span data-i18n="10035"></span><br><i class="measure-temperature">（℃）</i></th>
+                            <th class="multi-line"><span data-i18n="10032"></span><br><i class="measure-volume">（L）</i></th>
+                            <th class="even multi-line"><span data-i18n="10034"></span><br><i class="measure-height">（mm）</i></th>
+                            <th class="multi-line"><span data-i18n="10040"></span><br><i class="measure-height">（mm）</i></th>
+                            <th class="even multi-line"><span data-i18n="10036"></span><br><i class="measure-temperature">（℃）</i></th>
+                            <th class="multi-line"><span data-i18n="10027"></span><br><i class="measure-volume">（L）</i></th>
+                            <th class="even multi-line"><span data-i18n="10028"></span><br><i class="measure-volume">（L）</i></th>
+                            <th><span data-i18n="10045"></span></th>
+                            <th class="even"><span data-i18n="10004"></span></th>
+                        </tr>
+                    </thead>
+                </table>
+                <ul class="form-list" id="manualReport-form">
+                    <li class="msg-tip" id="prompt-message-show"><p></p></li>
+                    <li class="clearfix">
+                        <div class="form-item">
+                            <label class="control-label"><span data-i18n="10002"></span>：</label>
+                            <div class="form-con">
+                                <div class="select-box select_autoReport select-callback" id="TankList" data-select="TankID">
+                                    <div class="select-title form-control-inner"><span></span><i class="fa fa-chevron-down"></i></div>
+                                    <ul class="select-con"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="form-item">
+                            <label class="control-label"><span class="must must-forward">*</span><span data-i18n="10004"></span>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-date ui-dateminutespicker-trigger form-control-inner" name="StartDateTime" data-name="Date" data-title="10004" data-check="required date min" data-alert="inner">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="control-label"><span class="must must-forward">*</span><span data-i18n="10005"></span>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-date ui-dateminutespicker-trigger form-control-inner" name="EndDateTime" data-name="Date" data-title="10005" data-check="required date max" data-alert="inner">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="form-item">
+                            <label class="control-label"><span data-i18n="10041"></span><i class="measure-volume">（L）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" disabled>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="control-label"><span data-i18n="10042"></span><i class="measure-volume">（L）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" disabled>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="form-item">
+                            <label class="control-label"><span class="must must-forward">*</span><span data-i18n="10043"></span><i class="measure-volume">（L）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" name="StartTCVolume" data-check="required number" data-title="10043" data-alert="inner">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="control-label"><span class="must must-forward">*</span><span data-i18n="10044"></span><i class="measure-volume">（L）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" name="EndTCVolume" data-check="required number" data-title="10044" data-alert="inner">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="form-item">
+                            <label class="control-label"><span data-i18n="10035"></span><i class="measure-temperature">（℃）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" name="StartTemperature" data-check="number" data-title="10035" data-alert="inner">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="control-label"><span data-i18n="10036"></span><i class="measure-temperature">（℃）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" name="EndTemperature" data-check="number" data-title="10036" data-alert="inner">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="form-item">
+                            <label class="control-label"><span class="must must-forward">*</span><span data-i18n="10039"></span><i class="measure-height">（mm）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" name="StartWater" data-check="required number" data-title="10039" data-alert="inner">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="control-label"><span class="must must-forward">*</span><span data-i18n="10040"></span><i class="measure-height">（mm）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" name="EndWater" data-check="required number" data-title="10040" data-alert="inner">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="form-item">
+                            <label class="control-label"><span data-i18n="10033"></span><i class="measure-height">（mm）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" name="StartHeight" data-check="number" data-title="10033" data-alert="inner">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="control-label"><span data-i18n="10034"></span><i class="measure-height">（mm）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" name="EndHeight" data-check="number" data-title="10034" data-alert="inner">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="form-item">
+                            <label class="control-label"><span data-i18n="10027"></span><i class="measure-volume">（L）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" disabled>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="control-label"><span class="must must-forward">*</span><span data-i18n="10028"></span><i class="measure-volume">（L）</i>：</label>
+                            <div class="form-con">
+                                <input type="text" class="input-box form-control-inner" name="DeliveryTCVolume" data-check="required number" data-title="10028" data-alert="inner">
+                                <a href="javascript:;" class="calculate" id="calculate-TCVolume"><span data-i18n="14013"></span></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="btn-group clearfix">
+                    <a href="javascript:;" class="btn btn-primary pull-left" id="manualReport-save"><span data-i18n="14044"></span></a>
+                    <a href="javascript:;" class="btn btn-cancel pull-left"><span data-i18n="09904"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-oilReport">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="14033"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <p class="help-block"><span data-i18n="09004"></span>：<span data-i18n="14028"></span></p>
+                <div id="oil-report-form">
+                    <div class="select-list clearfix">
+                        <div class="form-item pull-left">
+                            <label class="control-label"><span data-i18n="14035"></span>：</label>
+                            <div class="form-con">
+                                <div class="select-box select_tankList select-callback" id="stationList" data-select="StationID">
+                                    <div class="select-title form-control-inner"><span></span><i class="fa fa-chevron-down"></i></div>
+                                    <ul class="select-con"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item pull-left">
+                            <label class="control-label"><span data-i18n="14045"></span>：</label>
+                            <div class="form-con" id="modal-tank-list"></div>
+                        </div>
+                    </div>
+                    <div class="form-item date-box clearfix">
+                        <label class="control-label"><span data-i18n="14005"></span>：</label>
+                        <div class="form-con">
+                            <input type="text" class="input-date ui-datepicker-trigger form-control-inner pull-left" name="BeginDate" data-name="Date" data-title="10004" data-check="required date min">
+                            <span class="pull-left">&nbsp;&nbsp;<span data-i18n="09007"></span>&nbsp;&nbsp;</span>
+                            <input type="text" class="input-date ui-datepicker-trigger form-control-inner pull-left" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                            <div class="btn-group pull-left">
+                                <a href="javascript:;" class="btn btn-primary" id="extract-unloadingOilReport"><span data-i18n="14031"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table-result">
+                    <thead>
+                        <tr>
+                            <th><span data-i18n="09005"></span></th>
+                            <th class="even"><span data-i18n="10001"></span></th>
+                            <th><span data-i18n="10002"></span></th>
+                            <th class="even"><span data-i18n="10045"></span></th>
+                            <th><span data-i18n="10004"></span></th>
+                            <th class="even"><span data-i18n="10005"></span></th>
+                            <th class="multi-line"><span data-i18n="10029"></span><br><i class="measure-volume">（L）</i></th>
+                            <th class="even multi-line"><span data-i18n="10031"></span><br><i class="measure-volume">（L）</i></th>
+                            <th class="multi-line"><span data-i18n="10033"></span><br><i class="measure-height">（mm）</i></th>
+                            <th class="even multi-line"><span data-i18n="10035"></span><br><i class="measure-temperature">（℃）</i></th>
+                            <th class="multi-line"><span data-i18n="10030"></span><br><i class="measure-volume">（L）</i></th>
+                            <th class="even multi-line"><span data-i18n="10032"></span><br><i class="measure-volume">（L）</i></th>
+                            <th class="multi-line"><span data-i18n="10034"></span><br><i class="measure-height">（mm）</i></th>
+                            <th class="even multi-line"><span data-i18n="10036"></span><br><i class="measure-temperature">（℃）</i></th>
+                            <th class="multi-line"><span data-i18n="10037"></span><br><i class="measure-volume">（L）</i></th>
+                            <th class="even multi-line"><span data-i18n="10038"></span><br><i class="measure-volume">（L）</i></th>
+                            <th><span data-i18n="14034"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="btn-group btn-submit clearfix">
+                    <a href="javascript:;" class="btn btn-save pull-right" id="unloadingOil-save"><span data-i18n="09903"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="template template-overview-table">
+    <table>
+        <tbody>
+            <tr data-type="VT">
+                <td data-name="Var"></td><td data-name="DeliverySum"></td><td data-name="UnloadDiff"></td><td data-name="TransVariance"></td><td data-name="DepotDiff"></td><td data-name="TicketVariance"></td>
+            </tr>
+            <tr data-type="V20">
+                <td data-name="Var"></td><td data-name="DeliverySum"></td><td data-name="UnloadDiff"></td><td data-name="TransVariance"></td><td data-name="DepotDiff"></td><td data-name="TicketVariance"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="statics/js/ticket.js"></script>
+
+
+
+
+
+

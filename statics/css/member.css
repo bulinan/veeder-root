@@ -1,0 +1,166 @@
+.member{
+    width: 100%;
+    min-width: 800px;
+}
+.member .block-loading{
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 17%;
+    left: 0;
+    width: 100%;
+    background: #fff url(../img/loading.gif) no-repeat center center;
+    opacity: .4;
+    filter: alpha(opacity=40);
+    z-index: 98;
+}
+.member .member-box{
+    position: relative;
+    width: 774px;
+    margin: 11.3% auto 0;
+}
+.member .member-con{
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.member .member-con .action{
+    font-size: 12px;
+    padding: 15px 30px 0 0;/*padding: 25px 30px 10px 0;*/
+}
+.member .member-con .action .select-language{
+    color: #0099cc;
+    height: 16px;
+    cursor: pointer;
+}
+.member .member-con .select-language img{
+    display: inline;
+    width: 22px;
+    height: 13px;
+    margin-right: 8px;
+}
+.member .member-con .action .select-con li{
+    color: #666;
+    font-size: 12px;
+    border-bottom: 1px solid #ddd;
+    background-color: #eee;
+}
+.member .member-con .code-con span{
+    display: block;
+}
+.member .member-con .action em{
+    display: block;
+    float: left;
+    color: #c6c6c6;
+    font-size: 12px;
+    font-style: normal;
+    padding: 0 15px;
+}
+.member .member-con .code-con{
+    position: relative;
+}
+.member .member-con .code-con .app{
+    color: #474747;
+    padding-left: 15px;
+    background: url(../img/icon_mobile.png) no-repeat left center;
+}
+.member .member-con .code-con .code{
+    display: none;
+    position: absolute;
+    top: 16px;
+    right: 0;
+}
+.member .member-con .code-con:hover .code{
+    display: block;
+}
+.member .member-header{
+    color: #474747;
+    text-align: center;
+}
+.member .member-header .logo{
+    display: block;
+    width: 156px;
+    margin: 0 auto;
+}
+.member .member-header .logo img{ 
+    width:100px;
+    height:100px;
+}
+.member .member-header .title{
+    font-size: 32px;
+    padding-top: 5px;
+}
+.member .member-header .subtitle{
+    font-size: 10px;
+}
+.member .member-con .form{
+    width: 340px;
+    padding-top: 15px;/*35px*/
+    margin: 0 auto;
+}
+.member .member-con .form-group{
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    margin-bottom: 11px;
+    border: 1px solid #d3d3d3;
+}
+.member .member-con .form-group label{
+    color: #666;
+    font-size: 14px;
+    width: 92px;
+    text-align: center;
+    border-right: 1px solid #d3d3d3;
+}
+.member .member-con .form-group .input-box{
+    color: #666;
+    font-size: 16px;
+    width: 226px;
+    padding-left: 20px;
+    border: 0;
+}
+.member .member-con .form-group .select-title{
+    color: #666;
+    font-size: 16px;
+    width: 206px;
+    height: 46px;
+    line-height: 46px;
+    padding: 0 20px;
+}
+.member .member-con .form-group .select-con{
+    top: 47px;
+    left: -1px;
+    font-size: 16px;
+    width: 100%;
+    border-color: #d3d3d3;
+}
+.member .form-group .select-title .fa{
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font-size: 24px;
+}
+.member .member-con .form-submit{
+    margin: 20px 0 0;/*28px 0 0*/
+    border: 0;
+}
+.member .member-con .form-submit input{
+    float: left;
+    font-size: 16px;
+    width: 50%;
+    height: 46px;
+    line-height: 46px;
+    border: 0;
+    cursor: pointer;
+}
+.member .member-con .input-submit{
+    color: #fff;
+    background: #418cf1;
+}
+.member .member-con .form-submit .input-reset{
+    color: #333;
+    border: 1px solid #d0d2d4;
+    background: #fff;
+}

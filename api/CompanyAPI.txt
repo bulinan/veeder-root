@@ -1,0 +1,726 @@
+
+公司相关的API
+
+1. 读取页面结构信息
+API: ~/vrapi/Company/ReadHomePageStruct
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"LastRequestTime" : "2016-03-10 11:21:11",
+}
+
+应答:
+{
+	需要JC协助定义，由首页元素需要的信息决定
+}
+
+2. 修改页面结构信息
+API: ~/vrapi/Company/SaveHomePageStruct
+请求格式:
+{
+}
+
+应答:
+{
+	
+}
+
+3. 读取下属油站摘要信息
+API: ~/vrapi/Company/Summary
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"LastRequestTime" : "2016-03-10 11:21:11",
+	"CompanyID" : ""
+}
+SessionID是登录后从服务端返回的会话标识，会在除登录之外的所有API中出现。字符串格式。
+LastRequestTime是上次从服务器请求组织结构的时间，0表示取全部结构信息。第一次登录时需要使用0，得到服务器响应后，会得到一个时间，下次请求时使用更新时间后只返回增量结果。
+CompanyID表示所请求的公司ID。
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"UpdateTime" : "2016-03-10 11:21:11",
+	"CompanyName" : "abcd",
+	"TotalStation" : "342",
+	"OnlineStation" : "231",
+	"OfflineStation" : "111"
+}
+
+4. 读取下属油站列表
+API: ~/vrapi/Company/StationList
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"LastRequestTime" : "2016-03-10 11:21:11",
+	"CompanyID" : ""
+}
+参数同接口~/vrapi/Company/Summary
+
+应答:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"UpdateTime" : "2016-03-10 11:21:11",
+	"CompanyList" ：
+	[
+		{
+			"OrgId" : 3,
+			"OrgName" : "维德路特中国",
+			"Children" :
+            [
+                {
+                    "OrgId" : 3,
+                    "OrgName" : "维德路特中国",
+                    "Children" :[]
+                },
+                ...
+            ]
+		}
+	],
+	"StationList" :
+	[
+		{
+			"StationID" : "9239",
+			"GroupID" : "A/B/C...",
+			"DisplayName" : ""
+			"CompanyID" : "2"
+		},
+		...
+	]
+}
+
+4. 告警摘要信息
+见AlarmAPI
+
+5. 公司总体损益信息
+API: ~/vrapi/Company/TotalVariance
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"VarianceType" : "1/2/3",
+	"CalcType" : "Vt/V20",
+	"CalcInterval" : "Month",
+	"BeginDate" : "2016-01-01",//必填
+	"EndDate" : "2016-12-31"//必填
+}
+VarianceType定义1表示运营损益、2表示销售损益，3表示配送损益，可以同时请求集中损益，使用","分隔请求类型。
+CalcType可以使用","分隔请求多种类型。
+BeginDate和EndDate定义一个查询时间闭区间，并根据CalcInterval选择的周期生成多条记录。
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ProductList" :
+	[
+		{ "ID" : "1", "Name" : "90#" },
+		{ "ID" : "2", "Name" : "92#" },
+		{ "ID" : "3", "Name" : "0#" }
+	],
+	
+	"VtVariance" :
+	{
+		"SubsetRatio" :
+		[
+			{
+				"Identify" : "OperationVariance",
+				"DisplayText" : "运行损益率VT",
+				"Ratio" : "0.9%"
+			},
+			{
+				"Identify" : "SalesVariance",
+				"DisplayText" : "销售损益率VT",
+				"Ratio" : "-0.6%"
+			},
+			{
+				"Identify" : "DeliveryVariance",
+				"DisplayText" : "配送损益率VT",
+				"Ratio" : "1.1%"
+			},
+		],
+		"OperationVariance" :
+		[
+			{
+				"CalcInterval" : "Month",
+				"BeginDate" : "2015-3-1",
+				"Variance" : "-4",
+				"SalesOrDepot":"3",
+				"Ratio":"0.3%",
+				"ProductID" : "1"
+			},
+			...
+		],
+		"SalesVariance" :
+		[
+			类似的结构
+		],
+		"DeliveryVariance" :
+		[
+			类似的结构
+		],
+	},
+	"V20Variance" :
+	{
+		与VtVariance相同的结构
+	}
+}
+
+6. 下属机构损益
+API: ~/vrapi/Company/SubCompanyVariance
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"VarianceType" : "1/2/3",
+	"CalcType" : "Vt/V20",
+	"CalcInterval" : "Month",
+	"BeginDate" : "2016-01-01",//必填
+	"EndDate" : "2016-12-31"//必填
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ProductList" :
+	[
+		{ "ID" : "1", "Name" : "90#" },
+		{ "ID" : "2", "Name" : "92#" },
+		{ "ID" : "3", "Name" : "0#" }
+	],
+	"CompanyList" :
+	[
+		{
+			"CompanyID" : "",
+			"CompanyName" : "",
+			"OrgType" : "", //1 油站 2 公司
+			"VtVariance" :
+			{
+				"SubsetRatio" :
+				[
+					{
+						"Identify" : "OperationVariance",
+						"DisplayText" : "运行损益率VT",
+						"Ratio" : "0.9%"
+					},
+					{
+						"Identify" : "SalesVariance",
+						"DisplayText" : "销售损益率VT",
+						"Ratio" : "-0.6%"
+					},
+					{
+						"Identify" : "DeliveryVariance",
+						"DisplayText" : "配送损益率VT",
+						"Ratio" : "1.1%"
+					},
+				],
+				"OperationVariance" :
+				[
+					{						
+						"CalcInterval" : "Month",
+						"BeginDate" : "2015-3-1",
+						"Variance" : "-4",
+						"SalesOrDepot":"3",
+						"Ratio":"0.3%",
+						"ProductID" : "1"
+					},
+					...
+				],
+				"SalesVariance" :
+				[
+					类似的结构
+				],
+				"DeliveryVariance" :
+				[
+					类似的结构
+				],
+			},
+			"V20Variance" :
+			{
+				与VtVariance相同的结构
+			}
+		}
+	]
+}
+
+7. 配送摘要
+API: ~/vrapi/Company/DeliverySummary
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"BeginDate" : "",
+	"EndDate" : ""
+}
+时间可能不需要
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"TodayPlanned" : "",
+	"TodayFinished" : "",
+	"TodayInProgress" : "",
+	"UnfinishedToday" : "",
+	"MonthPlanned" : "",
+	"MonthErrorDelivery" : "",
+	"YesterdayPlannedVolume" : "",
+	"YesterdayDeliveredVolume" : "",
+	"TodayPlannedVolume" : "",
+	"TodayDeliveredVolume" : ""
+}
+
+6. 设备摘要
+API: ~/vrapi/Company/DeviceSummary
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"TotalStation" : "",
+	"OnlineStation" : "",
+	"CalibrateTank" : "",
+	"Started" : "",
+	"DataCollecting" : "",
+	"NewCharts" : "",
+	"Accepted" : "",
+	"LeakDetectTank" : "",
+	"ReportedTank" : ""
+}
+
+7. 库存摘要
+API: ~/vrapi/Company/InventorySummary
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"BeginDate" : "",
+	"EndDate" : "",
+    "CalcType" : "Vt,V20"
+}
+CalcType可以使用","分隔请求多种类型。
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "VtInventory" :
+    [
+        "ProductList" :
+        [
+            { "ID" : "1", "Name" : "90#", "Inventory" : "93929", "Sales" : "9399", "Ullage" : "93929" },
+            { "ID" : "2", "Name" : "92#", "Inventory" : "93929", "Sales" : "9399", "Ullage" : "93929" },
+            { "ID" : "3", "Name" : "0#", "Inventory" : "93929", "Sales" : "9399", "Ullage" : "93929" }
+        ],
+        "TotalInventory" : "",
+        "TotalSales" : "",
+        "TotalUllage" : 123
+    ],
+	"V20Inventory" :
+    [
+    ]
+}
+
+>> 库存明细
+API: ~/vrapi/Company/Inventory
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"BeginDate" : "",
+	"EndDate" : "",
+    "CalcType" : "Vt,V20"
+}
+CalcType可以使用","分隔请求多种类型。
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"VtInventoryList" :
+	[
+		{
+			"InventoryDate" : "",
+			"Inventory" : "",
+			"ProductID" : ""
+		},
+		{
+			"InventoryDate" : "",
+			"Inventory" : "",
+			"ProductID" : ""
+		},
+		...
+	],
+	"V20InventoryList" :
+	[
+	]
+}
+
+>> 油站实时库存
+API: ~/vrapi/Company/StationRealTimeInventory
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"StationID" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"InventoryList" :
+	[
+		{
+            "CompanyId" : 8,
+            "CompanyShortName" : "中化石油",
+            "GsId" : 90035,
+            "GsShortName" : "安达南环路",
+            "UpdateTime" : "2015-12-28 18:54:00",
+            "TankId" : 1,
+            "OtShortName" : "0#",
+            "CurVolume" : 14039,    //存油量(Vt)
+            "CurUllage" : 35643,    //安全空容量
+            "CurTcVolume" : 14232,    //存油量(V20)
+            "SumUllage" : 112988.679,   //总空容
+            "SumVolume" : 69814.325,    //总库存
+            "SumTcVolume" : 71017.957
+		},
+		...
+	]
+}
+安全总库存(Vt)=存油量(Vt)+安全空容量
+
+8. 损益排行
+API: ~/vrapi/Company/VarianceRank
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"ProductID" : "",   //全部不传
+	"BeginDate" : "",
+	"EndDate" : "",
+	"CalcInterval" : "Month",
+	"CalcType" : "Vt/V20"
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"VtVarianceList" :
+	[
+		{
+			"CompanyID" : "1",
+			"CompanyName" : "Station1",
+            "OrgType" : "", //1 油站 2 公司
+			"SalesVariance" : "",
+			"DeliveryVariance" : "",
+			"OperationVariance" : "",
+		},
+		{
+			"CompanyID" : "1",
+			"CompanyName" : "Station2",
+            "OrgType" : "", //1 油站 2 公司
+			"SalesVariance" : "",
+			"DeliveryVariance" : "",
+			"OperationVariance" : "",
+		},
+		...
+	],
+	"V20VarianceList" :
+	[
+		...同样的结构
+	]
+}
+
+9. 报警排行
+API: ~/vrapi/Company/AlarmRank
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"AlarmList" :
+	[
+		{
+			"CompanyID" : "",
+			"CompanyName" : "",
+			"AlarmLevelCount" :
+            [
+                {
+                    "AlarmLevelId" : "",
+                    "AlarmCount" : ""
+                },
+                ...
+            ]
+		}
+		...
+	],
+	"AlarmLevelList" :
+	[
+		{
+			"AlarmLevelId" : 3,
+			"DisplayName" : "严重报警"
+		}
+		...
+	]
+}
+
+10. 司机、车辆、发油鹤位、小量进油损益率排行
+API: ~/vrapi/Company/DeliveryVarianceRank
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"ProductID" : "",   //全部不传
+	"VarianceType" : "1,2,3,4",
+	"CalcType" : "Vt,V20",
+	"CalcInterval" : "Month",
+	"BeginDate" : "2016-03-01",
+	"EndDate" : "2016-03-31"
+}
+VarianceType定义1表示司机损益率排行、2表示车辆损益率排行，3表示发油鹤位损益率排行，4表示小量进油排行，可以同时请求集中损益，使用","分隔请求类型。
+CalcType可以使用","分隔请求多种类型。
+BeginDate和EndDate定义一个查询时间闭区间，并根据CalcInterval选择的周期生成多条记录。
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"ProductList" :
+	[
+		{ "ID" : "1", "Name" : "90#" },
+		{ "ID" : "2", "Name" : "92#" },
+		{ "ID" : "3", "Name" : "0#" }
+	],
+	
+	"VtVariance" :
+	{
+		"SubsetRatio" :
+		[
+			{
+				"Identify" : "DriverVariance",
+				"DisplayText" : "司机损益率排行",
+			},
+			{
+				"Identify" : "VehicleVariance",
+				"DisplayText" : "车辆损益率排行",
+			},
+			{
+				"Identify" : "TankVariance",
+				"DisplayText" : "发油鹤位损益率排行",
+			},
+			{
+				"Identify" : "LittleDeliveryVariance",
+				"DisplayText" : "小量进油损益率排行",
+			}
+		],
+		"DriverVariance" :
+		[
+			{
+				"ID" : "1",			
+				"DisplayText" : "任健",
+				"Ratio" : "0.9%"
+			},
+			{
+				"ID" : "2",	
+				"DisplayText" : "张三",
+				"Ratio" : "-0.6%"
+			},
+			……
+		],
+		"VehicleVariance" :
+		[
+			{
+				"ID" : "1",	
+				"DisplayText" : "京F28828[一汽重卡]",
+				"Ratio" : "-0.6%"
+			},
+			...
+		],
+		"TankVariance" :
+		[
+			类似的结构
+		],
+		"LittleDeliveryVariance" :
+		[
+			类似的结构
+		],
+	},
+	"V20Variance" :
+	{
+		与VtVariance相同的结构
+	}
+}
+11. 各油品损益统计
+API: ~/vrapi/Company/ProductVariance
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"StationID" : "",
+	"VarianceType" : "1/2/3",
+	"CalcType" : "Vt/V20",
+	"BeginDate" : "2016-03-01",
+	"EndDate" : "2016-03-31"
+}
+VarianceType定义1表示运营损益、2表示销售损益，3表示配送损益，可以同时请求集中损益，使用","分隔请求类型。
+CalcType可以使用","分隔请求多种类型。
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"VtVariance" :
+	{
+		"OperationVariance" :
+		[
+			{
+				"ProductID" : "1",
+				"StartInventory" : "41499",
+				"Delivery" : "41499",
+				"EndInventory" : "41499",
+				"Adjustment" : "41499",
+				"VtVolume" : "41499",
+				"V20Volume" : "41499",
+				"Variance" : "123",
+				"VarianceRatio" : "12.12"
+			},
+			...
+		],
+		"SalesVariance" :
+		[
+			{
+				"ProductID" : "1",
+				"StartInventory" : "41499",
+				"Delivery" : "41499",
+				"EndInventory" : "41499",
+				"Adjustment" : "41499",
+				"VtVolume" : "41499",
+				"V20Volume" : "41499",
+				"Variance" : "123",
+				"VarianceRatio" : "12.12"
+			},
+			...
+		],
+		"DeliveryVariance" :
+		[
+			{
+				"ProductID" : "1",
+				"DepotVolume" : "41499",
+				"RcvVolume" : "41499",
+				"Variance" : "123",
+				"VarianceRatio" : "12.12"
+			},
+			...
+		]
+	},
+	"V20Variance" :
+	{
+		与VtVariance相同的结构
+	}
+}
+12. 下属机构损益报表
+API: ~/vrapi/Company/SubCompanyVarianceReport
+请求格式(post):
+{
+	"SessionID" : "ksasi3939",
+	"CompanyID" : "",
+	"VarianceType" : "1/2/3",
+	"CalcType" : "Vt/V20",
+	"BeginDate" : "",
+	"EndDate" : ""
+}
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+	"CompanyList" :
+	[
+		{
+			"CompanyID" : "",
+			"CompanyName" : "",
+            "OrgType" : "", //1 油站 2 公司
+			"VtVariance" :
+            {
+                "OperationVariance" :
+                [
+                    {
+                        "ProductID" : "1",
+                        "StartInventory" : "41499",
+                        "Delivery" : "41499",
+                        "EndInventory" : "41499",
+                        "Adjustment" : "41499",
+                        "VtVolume" : "41499",
+                        "V20Volume" : "41499",
+                        "Variance" : "123",
+                        "VarianceRatio" : "12.12"
+                    },
+                    ...
+                ],
+                "SalesVariance" :
+                [
+                    {
+                        "ProductID" : "1",
+                        "StartInventory" : "41499",
+                        "Delivery" : "41499",
+                        "EndInventory" : "41499",
+                        "Adjustment" : "41499",
+                        "VtVolume" : "41499",
+                        "V20Volume" : "41499",
+                        "Variance" : "123",
+                        "VarianceRatio" : "12.12"
+                    },
+                    ...
+                ],
+                "DeliveryVariance" :
+                [
+                    {
+                        "ProductID" : "1",
+                        "DepotVolume" : "41499",
+                        "RcvVolume" : "41499",
+                        "Variance" : "123",
+                        "VarianceRatio" : "12.12"
+                    },
+                    ...
+                ]
+            },
+            "V20Variance" :
+            {
+                与VtVariance相同的结构
+            }
+		}
+	]
+}
+
+>> 公司报表
+API: ~/vrapi/Company/GetCompanyReportUrl
+请求格式(post):
+{
+	"SessionID" : "",
+	"CompanyID" : 321,
+	"ReportType" : "1"
+}
+1 损耗率一览表；2 加权平均温度；3 损耗剔温表；4 回罐油统计；5 加油机强检提醒
+
+应答200:
+{
+	"Result" : "Success",
+	"Description" : "",
+    "ReportUrl" : "http://localhost:8075/WebReport/ReportServer?reportlet=NozzleOfficialCheck.cpt&__bypagesize__=false&userId=467&selOrgType=2&selOrgId=10001&selOrgName=[4e2d][56fd][77f3][6cb9][5e7f][897f][7701][516c][53f8]"
+}

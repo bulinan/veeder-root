@@ -1,0 +1,247 @@
+﻿<link href="statics/css/style.css" rel="stylesheet">﻿
+ <div class="station-title">
+    <h2><span data-i18n="26001"></span></h2>
+</div>
+<div class="panel panel-heading clearfix leak-panel-header" style="margin-top:10px">
+    <div class="panel-title pull-left"><!--<span data-i18n="26001"></span>--></div>
+    <div class="panel-options pull-right">
+        <a href="#javascript:;" class="text" id="static-leak-link"><span data-i18n="26022"></span></a>
+        <a href="#javascript:;" class="text" id="dynamic-leak-link"><span data-i18n="26021"></span></a>
+        <a href="#javascript:;" class="text" id="sensor-leak-link"><span data-i18n="26033"></span> </a>
+
+    </div>
+</div>
+
+<div class="panel" id="CSLD-SLD-page" style="margin-top:0">
+    <div class="panel-body">
+        <div class="station-con common-con leak-management-con">
+            <form id="leak-management-query">
+                <div class="condition-list">
+                    <div class="clearfix">
+                        <div class="form-group form-btn-group">
+                            <label><span data-i18n="10004"></span>：</label>
+                            <div class="form-control">
+                                <input type="text" class="input-date ui-datepicker-trigger pull-left" name="BeginDate" data-name="Date" data-title="10004" data-check="required date min">
+                            </div>
+                        </div>
+                        <div class="form-group form-btn-group">
+                            <label><span data-i18n="10005"></span>：</label>
+                            <div class="form-control">
+                                <input type="text" class="input-date ui-datepicker-trigger pull-left" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                            </div>
+                        </div>
+                        <div class="form-group leak-tab-dynamic">
+                            <label><span data-i18n="10002"></span>：</label>
+                            <div class="form-control">
+                                <div class="select-box" id="dynamic-tank-list" data-open="false">
+                                    <div class="select-title" data-value="0" name="tankIdList" data-check="default" data-default="1"><span></span><a href="javascript:;" class="icon"></a></div>
+                                    <ul class="select-con"></ul>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="btn-group pull-left">
+                            <a href="javascript:;" class="btn btn-default" id="leak-query"><span data-i18n="09901"></span></a>
+                        </div>
+                        <div class="btn-group pull-right">
+                            <a href="javascript:;" class="btn btn-default" id="modal-leak"><span data-i18n="26002"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="leak-tab-static">
+                <div class="record-box clearfix">
+                    <a href="javascript:;" class="tab-trigger">
+                        <span><span data-i18n="09009"></span></span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div class="tab-cont">
+                        <div class="pull-left">
+                            <a href="javascript:;">10</a>
+                            <a href="javascript:;">20</a>
+                            <a href="javascript:;">50</a>
+                            <a href="javascript:;">75</a>
+                            <a href="javascript:;">100</a>
+                        </div>
+                        <div class="input pull-left">
+                            <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+                        </div>
+                    </div>
+                    <input type="hidden">
+                </div>
+                <div class="clear"></div>
+                <table class="table-result" id="leakQueryTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th><span><span data-i18n="10002"></span></span></th>
+                            <th class="even"><span><span data-i18n="10049"></span></span></th>
+                            <th><span><span data-i18n="26003"></span></span></th>
+                            <th class="even"><span><span data-i18n="10004"></span>（+30min）</span></th>
+                            <th><span><span data-i18n="26004"></span></span></th>
+                            <th class="even"><span><span data-i18n="26005"></span></span></th>
+                            <th><span><span data-i18n="26006"></span></span></th>
+                            <th class="even"><span><span data-i18n="26007"></span></span></th>
+                            <th><span><span data-i18n="26008"></span></span></th>
+                            <th class="even"><span><span data-i18n="26009"></span></span></th>
+                            <th><span><span data-i18n="26010"></span></span></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="leak-tab-dynamic">
+                <div class="record-box clearfix">
+                    <a href="javascript:;" class="tab-trigger">
+                        <span><span data-i18n="09009"></span></span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div class="tab-cont">
+                        <div class="pull-left">
+                            <a href="javascript:;">10</a>
+                            <a href="javascript:;">20</a>
+                            <a href="javascript:;">50</a>
+                            <a href="javascript:;">75</a>
+                            <a href="javascript:;">100</a>
+                        </div>
+                        <div class="input pull-left">
+                            <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+                        </div>
+                    </div>
+                    <input type="hidden">
+                </div>
+                <div class="clear"></div>
+                <table class="table-result" id="dynamicLeakQueryTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th><span><span data-i18n="10002"></span></span></th>
+                            <th class="even"><span><span data-i18n="10049"></span></span></th>
+                            <th><span><span data-i18n="26003"></span></span></th>
+                            <th class="even"><span><span data-i18n="20005"></span></span></th>
+                            <th><span><span data-i18n="26025"></span></span></th>
+                            <th class="even"><span><span data-i18n="26026"></span></span></th>
+                            <th><span><span data-i18n="26027"></span></span></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <!--油罐列表-->
+                <!--<div class="form-group clearfix" id="dynamic-tank-list-panel">
+                    <label class="control-label"><span class="must must-forward">*</span><span data-i18n="14029"></span>：</label>
+                    <div class="form-control">
+                        <div class="form-control-inner inline-list-lg" id="dynamic-tank-list"></div>
+                    </div>
+                    <div class="btn-group pull-left">
+                        <a href="javascript:;" class="btn btn-default" id="dynamic-tank-leak-query"><span data-i18n="09901"></span></a>
+                    </div>
+                </div>-->
+                <!--测试泄漏率曲线-->
+                <div class="panel panel-inventory" id="dynamic-leak-chart-panel">
+                    <div class="panel-body">
+                        <div id="dynamic-leak-test-chart" class="line-chart"></div>
+                    </div>
+                    <div class="block-loading"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="leak-tab-sensor"></div>
+
+
+<div class="leak-tab-static">
+    <div class="modal modal-leak">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h4 class="modal-title"><span data-i18n="26011"></span></h4>
+                <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="main-header">
+                    <p class="style01"><span data-i18n="26012"></span></p>
+                    <p class="style01"><span data-i18n="26013"></span></p>
+                </div>
+                <div class="main-content">
+                    <h5 class="title"><span data-i18n="26002"></span></h5>
+                    <form id="start-leak-form">
+                        <ul class="clearfix">
+                            <li class="form-item">
+                                <label><span data-i18n="10002"></span>：</label>
+                                <div class="form-con">
+                                    <div class="select-box select_tankLeakMethod select-callback" id="TankList" data-select="TankID">
+                                        <div class="select-title"><span></span><i class="fa fa-chevron-down"></i></div>
+                                        <ul class="select-con"></ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="form-item">
+                                <label><span data-i18n="26014"></span>：</label>
+                                <div class="form-con">
+                                    <div class="select-box" id="LeakMethod" data-select="LeakMethod LeakMethodDisplayName" data-check="displayName">
+                                        <div class="select-title"><span></span><i class="fa fa-chevron-down"></i></div>
+                                        <ul class="select-con"></ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="form-item last">
+                                <label><span data-i18n="26015"></span>：</label>
+                                <div class="form-con">
+                                    <input type="text" class="input-date ui-dateminutespicker-trigger" name="BeginDate" data-title="26015" data-check="required">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="btn-group clearfix">
+                            <a href="javascript:;" class="btn btn-save pull-left" id="open-static-leak"><span data-i18n="09903"></span></a>
+                            <a href="javascript:;" class="btn btn-cancel pull-left"><span data-i18n="09904"></span></a>
+                        </div>
+                    </form>
+                    <p class="msg-tip style01 init-hide"><span data-i18n="26016"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="leak-tab-dynamic">
+    <div class="modal modal-leak">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h4 class="modal-title"><span data-i18n="26002"></span></h4>
+                <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="modal-body"> 
+                <div class="main-content"> 
+                    <form id="dynamic-start-leak-form">
+                        <ul class="clearfix">
+                            <li class="form-item">
+                                <label><span data-i18n="10002"></span>：</label>
+                                <div class="form-con">
+                                    <div class="select-box select_tankLeakMethod select-callback" id="dynamic-TankList" data-select="TankID">
+                                        <div class="select-title"><span></span><i class="fa fa-chevron-down"></i></div>
+                                        <ul class="select-con"></ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="form-item last" id="dynamic-modal-date-box">
+                                <label><span data-i18n="26015"></span>：</label>
+                                <div class="form-con">
+                                    <input type="text" id="model-date-time-picker" class="input-date" name="StartDate" data-title="26015" data-check="required">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="btn-group clearfix">
+                            <a href="javascript:;" class="btn btn-save pull-left" id="stop-dynamic-leak"><span><span data-i18n="26024"></span></span></a>
+                            <a href="javascript:;" class="btn btn-save pull-left" id="open-dynamic-leak"><span data-i18n="26023"></span></a>
+                            <a href="javascript:;" class="btn btn-cancel pull-left"><span data-i18n="09904"></span></a>
+                        </div>
+                    </form>
+                    <p class="dynamic-msg-tip style01"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="statics/js/leakStatic.js"></script>
+<script src="statics/js/leakManagement.js"></script>
+<script src="statics/js/leakDynamic.js"></script>
+

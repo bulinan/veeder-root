@@ -1,0 +1,51 @@
+ 
+<div class="inner station">
+    <div class="col-lg-12">
+        <div class="station-header">
+            <div class="station-heading clearfix">
+                <div class="station-info pull-left">
+                    <strong class="station-name" id="station-name"></strong>
+                    <span class="line-status"></span>
+                    <em>|</em>
+                    <span id="station-id"></span>
+                    <em>|</em>
+                    <span id="station-mode"></span>
+                    <em>|</em>
+                    <span id="station-officer"></span>
+                    <em>|</em>
+                    <span id="station-telphone"></span>
+                    <em>|</em>
+                    <span id="station-address"></span>
+                </div>
+                <div class="station-options pull-right">
+                    <div class="alarm-box pull-left" id="alarm-collapse">
+                        <ul class="alarm-con clearfix">
+                            <li class="btn"><i class="fa fa-angle-left"></i></li>
+                        </ul>
+                        <div class="item bg-primary">
+                            <a href="javascript:;" class="alarm-count" target="_blank">
+                                <h3></h3>
+                                <span><span data-i18n="00008"></span></span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" class="update pull-left" id="alarm-summary-refresh"><i class="fa fa-refresh"></i><span data-i18n="20031"></span></a>
+                </div>
+            </div>
+            <div class="station-nav">
+                <ul class="station-nav-horizontal">
+                    <li class="select-box common" data-type="drop-down" data-open="false"  > 
+                        <div class="select-title" data-value=""><i class="fa fa-list"></i></div>
+                        <ul class="select-con station-box-hamburger"> 
+                        </ul>
+                    </li>
+                </ul> 
+            </div>
+        </div>
+        <div class="station-body" id="station-body"></div>
+        <div class="main-body-loading"></div>
+    </div>
+</div>
+<script src="statics/js/station.js"></script>
+
+

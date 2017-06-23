@@ -1,0 +1,311 @@
+<!--校罐状态/新罐表-->
+<div class="modal-tankStatus" id="tankChart-newChart">
+    <div class="modal-inner-header">
+        <div class="header-title">
+            <h4 class="pull-left"><span data-i18n="15002"></span>：<small><span data-i18n="15005"></span></small></h4>
+            <div class="header-nav pull-left">
+                <a href="javascript:;" class="tankChart-submit" id="btn-tankChartSubmit"><span data-i18n="15006"></span></a>
+                <a href="javascript:;" data-confirm="15919" id="btn-cancelCalibration"><span data-i18n="15040"></span></a>
+                <a href="javascript:;" class="isShow" id="manual-chart"><span data-i18n="15048"></span></a>
+                <a href="javascript:;" class="isShow" id="cancelManual-chart"><span data-i18n="15049"></span></a>
+            </div>
+            <h4 class="pull-left"><span data-i18n="20021"></span></h4>
+            <div class="header-nav pull-left">
+                <a href="javascript:;" class="detailTank-view"><span data-i18n="20021"></span></a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-inner-body modal-dialog">
+        <!--新旧罐表损益率比较-->
+        <div class="tank-check">
+            <div id="tankChartBir-query-form">
+                <div class="form-group clearfix">
+                    <label class="control-label"><span data-i18n="15050"></span>：</label>
+                    <div class="form-control">
+                        <input type="text" class="input-date ui-datepicker-trigger form-control-inner pull-left" name="BeginDate" data-name="Date" data-title="10004" data-check="required date min">
+                        <span class="line pull-left"></span>
+                        <input type="text" class="input-date ui-datepicker-trigger form-control-inner pull-left" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                        <a href="javascript:;" class="btn btn-primary pull-left" id="TankChartBir-get"><span data-i18n="09901"></span></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table-result" id="TankChartBirList" style="display: none;">
+                <thead class="thead-border">
+                    <tr>
+                        <th rowspan="2"><span data-i18n="10049"></span></th>
+                        <th rowspan="2"><span data-i18n="10005"></span></th>
+                        <th rowspan="2" class="multi-line"><span data-i18n="10051"></span><br><i class="measure-volume">（L）</i></th>
+                        <th rowspan="2" class="multi-line"><span data-i18n="15017"></span><br><i class="measure-height">（mm）</i></th>
+                        <th rowspan="2" class="multi-line"><span data-i18n="15018"></span><br><i class="measure-height">（mm）</i></th>
+                        <th colspan="4"><span data-i18n="15019"></span></th>
+                        <th colspan="4"><span data-i18n="15005"></span></th>
+                    </tr>
+                    <tr>
+                        <th class="even"><span data-i18n="10050"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="15025"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="10904"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="10905"></span>（%）</th>
+                        <th class="even"><span data-i18n="10050"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="15025"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="10904"></span><i class="measure-volume">（L）</i></th>
+                        <th class="even"><span data-i18n="10905"></span>（%）</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <!--新旧罐表损溢率对比图-->
+        <section class="section-con">
+            <div id="tank-varianceRate-chart"></div>
+            <div class="plotLine-text" id="plotLine-text03"></div>
+        </section>
+        <!--新旧罐表损溢高度对比图-->
+        <section class="section-con">
+            <div id="tank-avgHeight-chart"></div>
+            <div class="plotLine-text" id="plotLine-text04"></div>
+        </section>
+        <!--新旧罐表圆滑度图形对比图-->
+        <section id="draw-tank-chart" class="section-con"></section>
+        <!--进油范围-->
+        <section id="oil-range-chart02" class="section-con"></section>
+        <!--进油详情-->
+        <section class="section-con">
+            <div class="oil-detail-chart02" id="oil-detail-chart02"></div>
+            <div class="plotLine-text" id="plotLine-text05"></div>
+        </section>
+        <div id="tankChartDataSuff">
+            <!--校罐数据充足率-->
+            <section class="section-con">
+                <div id="tank-dataRate-chart02"></div>
+                <table class="table-result" id="dataRate-table02">
+                    <thead>
+                        <tr><th><span data-i18n="15041"></span></th><th><span data-i18n="15042"></span></th><th><span data-i18n="15043"></span></th><th><span data-i18n="15044"></span></th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+            <!--校罐数据充足率历史曲线-->
+            <section class="section-con">
+                <div id="tank-dataHistory-chart02"></div>
+                <div class="plotLine-text" id="plotLine-text06"></div>
+            </section>
+        </div>
+        <!--历史报警信息-->
+        <section class="alarm-history section-con">
+            <h5 class="section-title"><span data-i18n="15045"></span></h5>
+            <table class="table-result" id="historyAlarm02">
+                <thead>
+                    <tr>
+                        <th><span data-i18n="10059"></span></th>
+                        <th class="even"><span data-i18n="09803"></span></th>
+                        <th><span data-i18n="10011"></span></th>
+                        <th class="even"><span data-i18n="10013"></span></th>
+                        <th><span data-i18n="15026"></span></th>
+                        <th class="even"><span data-i18n="17012"></span></th>
+                        <th><span data-i18n="10058"></span></th>
+                        <th class="even"><span data-i18n="10057"></span></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+        <section class="remark-box section-con">
+            <h5 class="section-title"><span data-i18n="15039"></span></h5>
+            <textarea name="Remark"></textarea>
+        </section>
+        <div class="block-loading"></div>
+    </div>
+</div>
+<!--选择其他罐表-->
+<div class="modal modal-tankStatus" id="tankChart-manualRecommend">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="15021"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <div class="section-common">
+                    <h5 class="section-title"><span data-i18n="15022"></span></h5>
+                    <div class="form-group clearfix">
+                        <label class="control-label" data-i18n-title="15023"><span data-i18n="15023"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" name="chartID" class="input-box form-control-inner digital-control pull-left">
+                            <a href="javascript:;" class="btn btn-primary pull-left" id="manualRecommend-query"><span data-i18n="09901"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-con multi-tank">
+                    <h5 class="section-title"><span data-i18n="15028"></span></h5>
+                    <div class="form-group clearfix">
+                        <a href="javascript:;" class="btn btn-primary pull-left" id="multiToTwentyPt"><span data-i18n="15051"></span></a>
+                    </div>
+                    <table class="table-result init-hide">
+                        <thead>
+                            <tr>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                                <th><span data-i18n="10006"></span><i class="measure-height">（mm）</i></th>
+                                <th class="even"><span data-i18n="10007"></span><i class="measure-volume">（L）</i></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="section-con twenty-tank">
+                    <h5 class="section-title"><span data-i18n="15027"></span></h5>
+                    <div class="clearfix">
+                        <div class="form-group pull-left">
+                            <label class="control-label" data-i18n-title="10052"><span data-i18n="10052"></span><i class="measure-height">（mm）</i>：</label>
+                            <div class="form-control">
+                                <input type="text" name="diameter" class="input-box form-control-inner digital-control">
+                            </div>
+                        </div>
+                        <div class="form-group pull-left">
+                            <label class="control-label"><span data-i18n="15052"></span>：</label>
+                            <div class="form-control">
+                                <input type="text" name="TwentyPtVolume" class="input-box form-control-inner twentyPt pull-left">
+                                <a href="javascript:;" class="btn btn-primary pull-left" id="tank-convert"><span data-i18n="15047"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-common">
+                        <h6 class="section-subTitle"><span data-i18n="15053"></span><i class="measure-volume">（L）</i>：</h6>
+                        <div class="form-list">
+                            <ul class="form-list-5 clearfix">
+                                <li class="form-group">
+                                    <label class="control-label">1：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume01" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">2：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume02" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">3：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume03" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">4：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume04" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">5：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume05" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">6：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume06" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">7：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume07" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">8：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume08" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">9：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume09" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">10：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume10" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">11：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume11" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">12：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume12" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">13：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume13" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">14：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume14" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">15：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume15" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">16：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume16" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">17：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume17" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">18：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume18" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">19：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume19" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label">20：</label>
+                                    <div class="form-control">
+                                        <input type="text" name="tankVolume20" class="input-box form-control-inner" disabled>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="form-group btn-submit"><a href="javascript:;" class="btn btn-primary" id="tankChart-lock"><span data-i18n="15054"></span></a></div>
+                        </div>
+                        <p class="help-block"><span data-i18n="20014"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/calibrationChartConfig.js"></script>
+<script src="statics/js/calibrationStatus.js"></script>

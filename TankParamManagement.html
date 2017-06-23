@@ -1,0 +1,171 @@
+<div class="station-title">
+    <h2><span data-i18n="27001"></span></h2>
+</div>
+<div class="station-con">
+    <div class="condition-list">
+        <div class="btn-group clearfix">
+            <a href="javascript:;" class="btn btn-default pull-left" id="global-param"><span data-i18n="20020"></span></a>
+        </div>
+    </div>
+    <table class="table-result" id="tankParamInfo" width="100%">
+        <thead>
+            <tr>
+                <th><span data-i18n="10002"></span></th>
+                <th class="even"><span data-i18n="10013"></span></th>
+                <th><span data-i18n="27002"></span></th>
+                <th class="even"><span data-i18n="10057"></span></th>
+                <th><span data-i18n="10058"></span></th>
+                <th class="even"><span data-i18n="27003"></span></th>
+                <th><span data-i18n="27012"></span></th>
+                <th class="even"><span data-i18n="27004"></span></th>
+                <th><span data-i18n="27005"></span></th>
+            </tr>
+        </thead>
+        <tbody><tr class="loading"><td colspan="9"><span data-i18n="10801"></span></td></tr></tbody>
+    </table>
+    <div class="section-con">
+        <div class="section-title"><span data-i18n="27006"></span></div>
+        <div class="record-select clearfix">
+            <a href="javascript:;" class="btn btn-default pull-left" id="lastest-records"><span data-i18n="09905"></span></a>
+        </div>
+        <div class="record-box clearfix">
+            <a href="javascript:;" class="tab-trigger">
+                <span><span data-i18n="09009"></span></span>
+                <i class="fa fa-angle-down"></i>
+            </a>
+            <div class="tab-cont">
+                <div class="pull-left">
+                    <a href="javascript:;">10</a>
+                    <a href="javascript:;">20</a>
+                    <a href="javascript:;">50</a>
+                    <a href="javascript:;">75</a>
+                    <a href="javascript:;">100</a>
+                </div>
+                <div class="input pull-left">
+                    <input type="text" name="pageLength"><button><span data-i18n="09906"></span></button>
+                </div>
+            </div>
+            <input type="hidden">
+        </div>
+    </div>
+    <table class="table-result" id="tankParamAlarm" width="100%">
+        <thead>
+            <tr>
+                <th><span data-i18n="27008"></span></th>
+                <th class="even"><span data-i18n="27009"></span></th>
+                <th><span><span data-i18n="10002"></span></span></th>
+                <th class="even"><span><span data-i18n="10059"></span></span></th>
+                <th><span data-i18n="20002"></span></th>
+                <th class="even"><span data-i18n="27010"></span></th>
+                <th><span data-i18n="27011"></span></th>
+            </tr>
+        </thead>
+        <tbody><tr class="loading"><td colspan="7"><span data-i18n="10801"></span></td></tr></tbody>
+    </table>
+</div>
+<!--参数详情-->
+<div class="modal modal-tankParam" id="modal-tankParam-detail">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="27012"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <table class="table-result">
+                    <thead>
+                        <tr>
+                            <th><span data-i18n="10002"></span></th>
+                            <th class="even"><span data-i18n="20002"></span></th>
+                            <th><span data-i18n="27013"></span></th>
+                            <th class="even"><span data-i18n="27014"></span></th>
+                            <th><span data-i18n="10060"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--油品变更-->
+<div class="modal modal-tankParam" id="modal-oil-change">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="27004"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <div class="clearfix" id="oil-change-form">
+                    <div class="form-group pull-left">
+                        <label class="control-label"><span data-i18n="27016"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="show-line" name="ProductName" data-check="delete">
+                            <input type="hidden" name="ParamID">
+                            <input type="hidden" name="TankID">
+                        </div>
+                    </div>
+                    <div class="form-group pull-left">
+                        <label class="control-label"><span data-i18n="27017"></span>：</label>
+                        <div class="form-control">
+                            <div class="select-box" id="product-list" data-select="ModifiedValue" data-check="selectText">
+                                <div class="select-title form-control-inner"><span></span><a href="javascript:;" class="icon"></a></div>
+                                <ul class="select-con"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group pull-left">
+                        <a href="javascript:;" class="btn btn-primary" id="oil-change-confirm"><span data-i18n="27018"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--历史查询-->
+<div class="modal modal-tankParam" id="modal-tankParam-query">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title"><span data-i18n="27005"></span></h4>
+            <a href="javascript:;" class="modal-close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+            <div class="main-content">
+                <div class="form clearfix" id="tankParam-query-form">
+                    <input type="hidden" name="TankID">
+                    <div class="form-group pull-left">
+                        <label class="control-label"><span data-i18n="10004"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-date ui-datepicker-trigger form-control-inner pull-left" name="BeginDate" data-name="Date" data-title="10004" data-check="required date min">
+                        </div>
+                    </div>
+                    <div class="form-group pull-left">
+                        <label class="control-label"><span data-i18n="10005"></span>：</label>
+                        <div class="form-control">
+                            <input type="text" class="input-date ui-datepicker-trigger form-control-inner pull-left" name="EndDate" data-name="Date" data-title="10005" data-check="required date max">
+                            <a href="javascript:;" class="btn btn-primary pull-left" id="tankParam-query"><span data-i18n="09901"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <table class="table-result">
+                    <thead>
+                        <tr>
+                            <th><span data-i18n="10002"></span></th>
+                            <th class="even"><span data-i18n="20002"></span></th>
+                            <th><span data-i18n="27010"></span></th>
+                            <th class="even"><span data-i18n="27011"></span></th>
+                            <th><span><span data-i18n="10046"></span></span></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="statics/js/tankParamManagement.js"></script>
+
+
+
+

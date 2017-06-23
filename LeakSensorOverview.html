@@ -1,0 +1,59 @@
+
+<script src="statics/js/vendor/handlebars-v4.0.5.js"></script>
+<div class="inner-heading clearfix leak-sensor-update-panel">
+    <div class="inner-options pull-right">
+        <div class="btn-group clearfix">
+            <span id="sensor-list-update-time"></span>
+            <a href="javascript:;" class="update" id="leak-sensor-overview-update"><i class="fa fa-refresh"></i><span data-i18n="09905"></span></a>
+        </div>
+    </div>
+</div>
+
+<div class="panel" id="leak-sensor-overview-page">
+    <div class="panel-body">
+        <div class="station-con common-con leak-management-con clearfix">
+            <div class="sensor-nodata-block"><span data-i18n="10803"></span></div>
+            <div class="block-loading"></div>
+            <ul class="station-overview " id="leak-sensor-overview-block"></ul>
+        </div>
+    </div>
+</div>
+
+<script id="sensor-tpl" type="text/x-handlebars-template">
+
+    {{#each SensorOverview}}
+    <li class="station-item">
+        <div class="panel">
+            <div class="panel-heading clearfix">
+                <div class="panel-title pull-left">
+                    <span>{{this.Location}}</span>
+                </div>
+            </div>
+            <div class="panel-body  sensor-overview-body">
+                <div class="pull-left sensor-overview-left">
+                    <img src="statics/img/sensors/{{imageName this}}" style="{{ishasimagedisplay this}}" />
+                </div>
+                <div class="pull-left clearfix sensor-overview-right">
+                    <ul>
+                        <li class="clearfix">
+                            <div class="div-title"><span data-i18n="26037"></span></div>
+                            <div class="div-content">{{this.Status}}</div>
+                        </li>
+                        <li class="clearfix">
+                            <div class="div-title"><span data-i18n="26034"></span></div>
+                            <div class="div-content">{{this.Model}}</div>
+                        </li>
+                        <li class="clearfix">
+                            <div class="div-title"><span data-i18n="26036"></span></div>
+                            <div class="div-content">{{this.Category}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script src="statics/js/leakSensorOverview.js"></script>
+
+
